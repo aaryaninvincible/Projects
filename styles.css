@@ -1,0 +1,46 @@
+body {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #ffffff;
+}
+
+.form-group label {
+    color: #ffffff;
+}
+
+#convertButton {
+    background-color: #0072ff;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#convertButton:hover {
+    background-color: #0056b3;
+}
+
+#result {
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #ffffff;
+}
