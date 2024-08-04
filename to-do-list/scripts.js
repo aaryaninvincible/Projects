@@ -95,8 +95,8 @@ function completeTask(taskItem) {
 
 function editTask(taskItem, taskContent) {
     const editInput = document.createElement('input');
-    editInput.type = 'text';
-    editInput.className = 'form-control';
+    editInput.type = 'text';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+     editInput.className = 'form-control';
     editInput.value = taskContent.textContent;
 
     const saveButton = document.createElement('button');
