@@ -5,9 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Custom CSS for additional styling -->
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">To-Do App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto"> <!-- Align menu items to the right -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#todayTasks">Today</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tomorrowTasks">Tomorrow</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#upcomingTasks">Upcoming</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container mt-5">
         <h1 class="text-center mb-4">To-Do List</h1>
         <div class="card p-4">
@@ -16,11 +38,31 @@
                 <input type="text" class="form-control" id="taskInput" placeholder="Enter a new task">
                 <small class="form-text text-muted">Enter a task and press "Add Task" to add it to the list.</small>
             </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="todayTask">
+                <label class="form-check-label" for="todayTask">Add for Today</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="tomorrowTask">
+                <label class="form-check-label" for="tomorrowTask">Add for Tomorrow</label>
+            </div>
+            <div class="form-group">
+                <label for="hashtagsInput">Hashtags (comma-separated)</label>
+                <input type="text" class="form-control" id="hashtagsInput" placeholder="e.g., #work, #personal">
+            </div>
             <button id="addTaskButton" class="btn btn-primary btn-block">Add Task</button>
         </div>
-        <div class="mt-5">
-            <h2>Pending Tasks</h2>
-            <ul id="pendingTasksList" class="list-group"></ul>
+        <div class="mt-5" id="todayTasks">
+            <h2>Today's Tasks</h2>
+            <ul id="pendingTasksListToday" class="list-group"></ul>
+        </div>
+        <div class="mt-5" id="tomorrowTasks">
+            <h2>Tomorrow's Tasks</h2>
+            <ul id="pendingTasksListTomorrow" class="list-group"></ul>
+        </div>
+        <div class="mt-5" id="upcomingTasks">
+            <h2>Upcoming Tasks</h2>
+            <ul id="pendingTasksListUpcoming" class="list-group"></ul>
         </div>
         <div class="mt-5">
             <h2>Completed Tasks</h2>

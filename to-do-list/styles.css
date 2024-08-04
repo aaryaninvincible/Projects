@@ -1,24 +1,48 @@
-body {
-    color: rgb(13, 0, 255);
-    background-color: #000000;
-    font-family: Arial, sans-serif;
-}
-
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
+/* General styles for the task item */
 .list-group-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    background-color: #fff;
 }
 
-.list-group-item.completed {
-    text-decoration: line-through;
-    background-color: #d4edda;
+/* Styles for task text */
+.task-text {
+    flex: 1;
+    margin-right: 10px;
 }
 
-button {
-    margin-left: 10px;
+/* Styles for the action buttons container */
+.list-group-item .btn-group {
+    display: flex;
+    gap: 5px; /* Space between buttons */
+}
+
+/* Button styling */
+.btn {
+    font-size: 0.875rem; /* Adjust font size */
+    padding: 0.375rem 0.75rem; /* Adjust padding */
+    border-radius: 0.25rem; /* Adjust border radius */
+}
+
+/* Styles for the editing input */
+.list-group-item .form-control {
+    margin-right: 10px;
+}
+
+/* Styles when editing task */
+.list-group-item.editing .task-text {
+    display: none; /* Hide task text during editing */
+}
+
+.list-group-item.editing .form-control {
+    flex: 1;
+}
+
+.list-group-item.editing .btn-primary {
+    margin-left: 10px; /* Space for the Save button */
 }
