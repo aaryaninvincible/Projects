@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Meenakshi Pandey | Graphic Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --soft-pink: #F8D7E6;
+            --pink: #F2B0C9;
+            --beige: #F5F0E6;
+            --white: #FFFFFF;
+            --charcoal: #2C3A47;
+            --light-charcoal: #3A506B;
+            --radius: 16px;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -12,141 +26,1905 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--beige);
+            color: var(--charcoal);
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
         
-        .container {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 100%;
-            padding: 50px 40px;
-            text-align: center;
-        }
-        
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            margin: 0 auto 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 50px;
-            font-weight: bold;
-        }
-        
-        h1 {
-            color: #333;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #667eea;
-            font-size: 16px;
-            margin-bottom: 30px;
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
         
-        .bio {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            text-align: left;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .skills {
-            text-align: left;
-            margin-bottom: 40px;
+        section {
+            padding: 80px 0;
         }
         
-        .skills h3 {
-            color: #333;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .skill-tags {
+        /* Cover Page */
+        #cover {
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: center;
+            background: linear-gradient(135deg, var(--soft-pink) 0%, var(--white) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .cover-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .cover-image {
+            flex: 1;
+            display: flex;
             justify-content: center;
         }
         
-        .skill-tag {
-            background: #f0f0f0;
-            color: #667eea;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            border: 2px solid #667eea;
+        .designer-mockup {
+            width: 400px;
+            height: 500px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .contact-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .mockup-screen {
+            width: 85%;
+            height: 70%;
+            background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mockup-content {
+            position: absolute;
+            top: 20px;
+            left: 20px;
             color: white;
-            padding: 12px 40px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-decoration: none;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .title {
+            font-size: 1.8rem;
+            color: var(--light-charcoal);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--light-charcoal);
+            max-width: 600px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 4px solid var(--pink);
+        }
+        
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-number {
             display: inline-block;
+            background-color: var(--soft-pink);
+            color: var(--charcoal);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
         
-        .contact-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--charcoal);
+            margin-bottom: 15px;
         }
         
-        .footer {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-            color: #999;
-            font-size: 14px;
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--light-charcoal);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* About Me */
+        #about {
+            background-color: var(--white);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            height: 400px;
+            background-color: var(--soft-pink);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .circle-pattern {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: var(--pink);
+            opacity: 0.7;
+            position: relative;
+        }
+        
+        .circle-pattern::before {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-color: var(--soft-pink);
+            top: 25px;
+            left: 25px;
+        }
+        
+        /* Digital Content Section - Reels & Posts */
+        #digital-content {
+            background-color: var(--white);
+        }
+        
+        .content-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .content-section-title {
+            font-size: 2.2rem;
+            color: var(--charcoal);
+        }
+        
+        .content-category-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            background-color: var(--beige);
+            color: var(--charcoal);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab.active {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+        
+        .category-tab:hover:not(.active) {
+            background-color: var(--soft-pink);
+        }
+        
+        /* Reels Carousel */
+        .reels-section {
+            margin-bottom: 80px;
+        }
+        
+        .reels-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reels-container {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+            padding: 10px;
+        }
+        
+        .reel-card {
+            min-width: 320px;
+            background-color: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+        
+        .reel-thumbnail {
+            height: 550px;
+            background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .reel-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .reel-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .reel-play-btn:hover {
+            background-color: var(--white);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .reel-info {
+            padding: 20px;
+        }
+        
+        .reel-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .reel-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-charcoal);
+            font-size: 0.9rem;
+        }
+        
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--soft-pink);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+        
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--soft-pink);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .carousel-dot.active {
+            background-color: var(--pink);
+            transform: scale(1.2);
+        }
+        
+        /* Posts Grid */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .post-card {
+            background-color: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .post-image {
+            height: 300px;
+            background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .post-content {
+            padding: 20px;
+        }
+        
+        .post-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .post-platform {
+            display: inline-block;
+            background-color: var(--soft-pink);
+            color: var(--charcoal);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        /* Thumbnails Section */
+        .thumbnails-section {
+            margin-top: 80px;
+        }
+        
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .thumbnail-card {
+            background-color: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .thumbnail-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnail-image {
+            height: 200px;
+            background-color: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .thumbnail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail-info {
+            padding: 15px;
+        }
+        
+        .thumbnail-info h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-card h3 i {
+            margin-right: 10px;
+            color: var(--pink);
+        }
+        
+        .skill-list {
+            list-style-type: none;
+        }
+        
+        .skill-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--beige);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .skill-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--pink);
+            font-weight: bold;
+        }
+        
+        .skills-tagline {
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 50px;
+            color: var(--light-charcoal);
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .skills-tagline:before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background-color: var(--pink);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Work Experience */
+        #experience {
+            background-color: var(--white);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--soft-pink);
+        }
+        
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--pink);
+            border-radius: 50%;
+            top: 10px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-marker {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-marker {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            background-color: var(--beige);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .timeline-content .date {
+            color: var(--pink);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Projects Carousel */
+        .projects-carousel-section {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .projects-carousel {
+            overflow: hidden;
+        }
+        
+        .projects-container {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease;
+            padding: 10px;
+        }
+        
+        .project-card {
+            min-width: 350px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            flex-shrink: 0;
+        }
+        
+        .project-mockup {
+            height: 220px;
+            background-color: var(--soft-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .mockup-display {
+            width: 80%;
+            height: 70%;
+            background-color: var(--charcoal);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .mockup-display:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background-color: var(--light-charcoal);
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+        
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .tool-tag {
+            background-color: var(--soft-pink);
+            color: var(--charcoal);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .project-type {
+            display: inline-block;
+            background-color: var(--pink);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Strengths */
+        #strengths {
+            background-color: var(--white);
+        }
+        
+        .strengths-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .strength-item {
+            background-color: var(--beige);
+            padding: 25px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-item:hover {
+            background-color: var(--soft-pink);
+        }
+        
+        .strength-icon {
+            font-size: 2.5rem;
+            color: var(--pink);
+            margin-bottom: 20px;
+        }
+        
+        /* Achievements */
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .achievement-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .achievement-icon {
+            font-size: 2rem;
+            color: var(--pink);
+            background-color: var(--soft-pink);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        /* Contact */
+        #contact {
+            background-color: var(--charcoal);
+            color: var(--white);
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--pink);
+            margin-right: 15px;
+            width: 40px;
+        }
+        
+        .qr-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        
+        .qr-code i {
+            font-size: 8rem;
+            color: var(--charcoal);
+        }
+        
+        .section-title.white {
+            color: var(--white);
+        }
+        
+        .section-subtitle.white {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: var(--pink);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .cover-content, .about-content {
+                flex-direction: column;
+            }
+            
+            .cover-text, .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-right: 0 !important;
+                padding-left: 80px !important;
+                text-align: left !important;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-marker,
+            .timeline-item:nth-child(even) .timeline-marker {
+                left: 20px;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .qr-section {
+                margin-top: 40px;
+            }
+            
+            .content-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .reel-card, .project-card {
+                min-width: 280px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-container {
+                padding: 10px 20px;
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+            
+            .reels-container, .projects-container {
+                gap: 20px;
+            }
+            
+            .reel-card, .project-card {
+                min-width: 260px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="profile-img">👨‍💻</div>
-        
-        <h1>Aaryan Trivedi</h1>
-        <p class="subtitle">M.Tech Student | AI/ML Enthusiast</p>
-        
-        <div class="bio">
-            <p>Welcome to my portfolio! I'm a passionate computer science student pursuing M.Tech in AI/ML. I love building innovative projects that blend artificial intelligence with real-world applications.</p>
-        </div>
-        
-        <div class="skills">
-            <h3>Skills & Interests</h3>
-            <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Machine Learning</span>
-                <span class="skill-tag">IoT</span>
-                <span class="skill-tag">Data Structures</span>
-                <span class="skill-tag">Web Development</span>
-                <span class="skill-tag">AI/Deep Learning</span>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <a href="#cover" class="nav-item">Home</a>
+        <a href="#about" class="nav-item">About</a>
+        <a href="#digital-content" class="nav-item">Content</a>
+        <a href="#skills" class="nav-item">Skills</a>
+        <a href="#experience" class="nav-item">Experience</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#contact" class="nav-item">Contact</a>
+    </div>
+
+    <!-- Cover Page -->
+    <section id="cover">
+        <div class="container">
+            <div class="cover-content">
+                <div class="cover-text">
+                    <h1>Meenakshi Pandey</h1>
+                    <div class="title">Graphic Designer | Digital Content & UI/UX Design</div>
+                    <div class="tagline">Bringing brand stories to life through smart, creative & high-impact digital design.</div>
+                </div>
+                <div class="cover-image">
+                    <div class="designer-mockup">
+                        <div class="mockup-screen">
+                            <div class="mockup-content">
+                                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">Design Portfolio</h3>
+                                <p>Visual Storytelling</p>
+                                <p>Brand Identity</p>
+                                <p>UI/UX Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <button class="contact-btn" onclick="alert('Contact feature coming soon!')">Get In Touch</button>
-        
-        <div class="footer">
-            <p>© 2025 Aaryan Trivedi. Hosted on GitHub Pages.</p>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Get to know the designer behind the work</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p style="font-size: 1.2rem; margin-bottom: 20px;">Creative graphic designer with strong digital marketing and branding focus, based in Indore, India.</p>
+                    <p style="margin-bottom: 20px;">I specialize in creating visually compelling designs that tell brand stories and drive engagement. With expertise in both traditional design principles and modern digital tools, I bridge the gap between aesthetics and functionality.</p>
+                    <p style="margin-bottom: 20px;">Skilled in high-volume content creation and AI-enhanced design workflows, I deliver efficient solutions without compromising on creativity or quality. My approach combines strategic thinking with artistic execution to produce designs that resonate with target audiences.</p>
+                    <p>Passionate about creating intuitive visuals aligned with brand goals, I believe good design should not only look beautiful but also solve problems and enhance user experiences.</p>
+                </div>
+                <div class="about-image">
+                    <div class="circle-pattern"></div>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Digital Content Section -->
+    <section id="digital-content">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Digital Content</h2>
+                <p class="section-subtitle">Reels, social posts, and thumbnails that drive engagement</p>
+            </div>
+
+            <!-- Reels Carousel -->
+            <div class="reels-section">
+                <div class="content-section-header">
+                    <h3 class="content-section-title">Instagram Reels</h3>
+                    <div class="content-category-tabs">
+                        <div class="category-tab active" data-category="all">All</div>
+                        <div class="category-tab" data-category="design">Design</div>
+                        <div class="category-tab" data-category="tutorial">Tutorial</div>
+                        <div class="category-tab" data-category="behind-scenes">Behind Scenes</div>
+                    </div>
+                </div>
+
+                <div class="reels-carousel">
+                    <div class="reels-container" id="reels-container">
+                        <!-- Reel 1 -->
+                        <div class="reel-card" data-category="design">
+                            <div class="reel-thumbnail">
+                                <div class="reel-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="reel-info">
+                                <h3>Logo Design Process</h3>
+                                <p>Step-by-step creation of a modern brand logo from concept to final design.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 12.5K views</span>
+                                    <span><i class="fas fa-heart"></i> 1.2K likes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reel 2 -->
+                        <div class="reel-card" data-category="tutorial">
+                            <div class="reel-thumbnail">
+                                <div class="reel-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="reel-info">
+                                <h3>Figma Tips for Beginners</h3>
+                                <p>5 essential Figma features that will speed up your design workflow.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 8.7K views</span>
+                                    <span><i class="fas fa-heart"></i> 890 likes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reel 3 -->
+                        <div class="reel-card" data-category="behind-scenes">
+                            <div class="reel-thumbnail">
+                                <div class="reel-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="reel-info">
+                                <h3>My Workspace Tour</h3>
+                                <p>A day in the life of a graphic designer - tools, setup, and creative process.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 15.3K views</span>
+                                    <span><i class="fas fa-heart"></i> 1.8K likes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reel 4 -->
+                        <div class="reel-card" data-category="design">
+                            <div class="reel-thumbnail">
+                                <div class="reel-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="reel-info">
+                                <h3>Color Theory in Practice</h3>
+                                <p>How to choose the perfect color palette for brand identity projects.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 10.2K views</span>
+                                    <span><i class="fas fa-heart"></i> 1.1K likes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reel 5 -->
+                        <div class="reel-card" data-category="tutorial">
+                            <div class="reel-thumbnail">
+                                <div class="reel-play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="reel-info">
+                                <h3>AI Design Tools Demo</h3>
+                                <p>Enhancing creative workflows with AI-powered design assistance tools.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 9.5K views</span>
+                                    <span><i class="fas fa-heart"></i> 950 likes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="reels-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn" id="reels-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="carousel-dots" id="reels-dots">
+                        <div class="carousel-dot active" data-index="0"></div>
+                        <div class="carousel-dot" data-index="1"></div>
+                        <div class="carousel-dot" data-index="2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Posts Grid -->
+            <div class="posts-section">
+                <div class="content-section-header">
+                    <h3 class="content-section-title">Social Media Posts</h3>
+                    <div class="content-category-tabs">
+                        <div class="category-tab active" data-posts-category="all">All</div>
+                        <div class="category-tab" data-posts-category="instagram">Instagram</div>
+                        <div class="category-tab" data-posts-category="linkedin">LinkedIn</div>
+                        <div class="category-tab" data-posts-category="twitter">Twitter</div>
+                    </div>
+                </div>
+
+                <div class="posts-grid" id="posts-grid">
+                    <!-- Post 1 -->
+                    <div class="post-card" data-posts-category="instagram">
+                        <div class="post-image">
+                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-platform">Instagram</span>
+                            <h3>Brand Awareness Campaign</h3>
+                            <p>Visual series for a sustainable fashion brand launch.</p>
+                        </div>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="post-card" data-posts-category="linkedin">
+                        <div class="post-image">
+                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-platform">LinkedIn</span>
+                            <h3>UI Design Case Study</h3>
+                            <p>Redesigning a fintech app for better user experience.</p>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="post-card" data-posts-category="twitter">
+                        <div class="post-image">
+                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="fab fa-twitter"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-platform">Twitter</span>
+                            <h3>Design Tip of the Day</h3>
+                            <p>Quick visual hierarchy techniques for social media graphics.</p>
+                        </div>
+                    </div>
+
+                    <!-- Post 4 -->
+                    <div class="post-card" data-posts-category="instagram">
+                        <div class="post-image">
+                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <span class="post-platform">Instagram</span>
+                            <h3>Color Palette Inspiration</h3>
+                            <p>Seasonal color combinations for autumn branding projects.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Thumbnails Section -->
+            <div class="thumbnails-section">
+                <div class="content-section-header">
+                    <h3 class="content-section-title">YouTube Thumbnails</h3>
+                    <div class="content-category-tabs">
+                        <div class="category-tab active" data-thumb-category="all">All</div>
+                        <div class="category-tab" data-thumb-category="tutorial">Tutorial</div>
+                        <div class="category-tab" data-thumb-category="design">Design</div>
+                        <div class="category-tab" data-thumb-category="portfolio">Portfolio</div>
+                    </div>
+                </div>
+
+                <div class="thumbnails-grid" id="thumbnails-grid">
+                    <!-- Thumbnail 1 -->
+                    <div class="thumbnail-card" data-thumb-category="tutorial">
+                        <div class="thumbnail-image">
+                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <h4>Figma Masterclass</h4>
+                            <p>Click-through: 8.2%</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail 2 -->
+                    <div class="thumbnail-card" data-thumb-category="design">
+                        <div class="thumbnail-image">
+                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-pen-fancy"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <h4>Logo Design Process</h4>
+                            <p>Click-through: 12.5%</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail 3 -->
+                    <div class="thumbnail-card" data-thumb-category="portfolio">
+                        <div class="thumbnail-image">
+                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <h4>My Design Portfolio</h4>
+                            <p>Click-through: 10.3%</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail 4 -->
+                    <div class="thumbnail-card" data-thumb-category="tutorial">
+                        <div class="thumbnail-image">
+                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-magic"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <h4>Photoshop Tricks</h4>
+                            <p>Click-through: 9.7%</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnail 5 -->
+                    <div class="thumbnail-card" data-thumb-category="design">
+                        <div class="thumbnail-image">
+                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <h4>UI Design Principles</h4>
+                            <p>Click-through: 11.2%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">My Skills</h2>
+                <p class="section-subtitle">Combining creative vision with technical expertise</p>
+            </div>
+            
+            <div class="skills-container">
+                <!-- Personal Skills -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-heart"></i> Personal Skills</h3>
+                    <ul class="skill-list">
+                        <li>Visual storytelling</li>
+                        <li>Attention to detail</li>
+                        <li>Time management</li>
+                        <li>Collaboration & communication</li>
+                        <li>User-centered thinking</li>
+                        <li>Fast learning & adaptation</li>
+                    </ul>
+                </div>
+                
+                <!-- Technical Skills -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
+                    <ul class="skill-list">
+                        <li>Adobe Photoshop, Illustrator, InDesign</li>
+                        <li>Figma, Canva</li>
+                        <li>CapCut, VN, Premiere Basic</li>
+                        <li>Brand Style Guidelines</li>
+                        <li>AI Tools for concept enhancement</li>
+                        <li>Website banner & landing page graphics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="skills-tagline">Designing visuals that connect, engage, and inspire.</div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2 class="section-title">Work Experience</h2>
+                <p class="section-subtitle">Professional journey in design and digital creation</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Graphic Designer</h3>
+                        <span class="date">2025–Present | Viionn Labs Pvt. Ltd.</span>
+                        <p>Created comprehensive branding and high-quality social media campaign creatives for fast-paced internal and client requirements. Managed multiple projects simultaneously while maintaining brand consistency and visual excellence.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>UI/UX & Creative Support</h3>
+                        <span class="date">2024 | Grow With Algo</span>
+                        <p>Designed intuitive UI elements and graphics for web platforms with improved usability and visual consistency. Collaborated with developers to ensure seamless implementation of design concepts.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Graphic Designer + Creator</h3>
+                        <span class="date">2022–Present | MinnieBlogHub</span>
+                        <p>Designed engaging thumbnails, banners, and social media posts using engagement analytics for better audience retention. Developed visual strategies that increased viewer interaction and content performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Carousel -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Selected design work with case studies</p>
+            </div>
+            
+            <!-- Projects Carousel 1 -->
+            <div class="projects-carousel-section">
+                <div class="content-section-header">
+                    <h3 class="content-section-title">Branding Projects</h3>
+                    <div class="content-category-tabs">
+                        <div class="category-tab active" data-project-type="all">All</div>
+                        <div class="category-tab" data-project-type="social">Social Media</div>
+                        <div class="category-tab" data-project-type="packaging">Packaging</div>
+                    </div>
+                </div>
+                
+                <div class="projects-carousel">
+                    <div class="projects-container" id="branding-projects">
+                        <!-- Project 1 -->
+                        <div class="project-card" data-project-type="social">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Social Media</span>
+                                <h3>Café Brand - Social Media Kit</h3>
+                                <p><strong>Brief:</strong> Create a cohesive visual identity for a specialty café's social media presence.</p>
+                                <p><strong>Objectives:</strong> Develop recognizable brand assets that reflect the café's cozy aesthetic.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">Photoshop</span>
+                                    <span class="tool-tag">Canva</span>
+                                </div>
+                                <p><strong>Impact:</strong> 40% increase in social engagement and consistent brand recognition.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="project-card" data-project-type="packaging">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Packaging</span>
+                                <h3>Beauty Brand - Packaging Design</h3>
+                                <p><strong>Brief:</strong> Design eco-friendly packaging and digital campaign for a skincare line.</p>
+                                <p><strong>Objectives:</strong> Communicate product benefits while emphasizing sustainability.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">InDesign</span>
+                                    <span class="tool-tag">Figma</span>
+                                </div>
+                                <p><strong>Impact:</strong> Successful product launch with positive customer feedback on packaging.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="project-card" data-project-type="social">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Social Media</span>
+                                <h3>Tech Brand - LinkedIn Graphics</h3>
+                                <p><strong>Brief:</strong> Create professional LinkedIn graphics for a B2B tech company.</p>
+                                <p><strong>Objectives:</strong> Establish thought leadership and improve brand visibility.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Figma</span>
+                                    <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">Photoshop</span>
+                                </div>
+                                <p><strong>Impact:</strong> 65% increase in profile views and 30% more connection requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="branding-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn" id="branding-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects Carousel 2 -->
+            <div class="projects-carousel-section">
+                <div class="content-section-header">
+                    <h3 class="content-section-title">UI/UX Projects</h3>
+                    <div class="content-category-tabs">
+                        <div class="category-tab active" data-ui-type="all">All</div>
+                        <div class="category-tab" data-ui-type="mobile">Mobile App</div>
+                        <div class="category-tag" data-ui-type="web">Website</div>
+                    </div>
+                </div>
+                
+                <div class="projects-carousel">
+                    <div class="projects-container" id="ui-projects">
+                        <!-- Project 1 -->
+                        <div class="project-card" data-ui-type="mobile">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Mobile App</span>
+                                <h3>Travel App - "RoamEase"</h3>
+                                <p><strong>Brief:</strong> Create user-friendly interface for a travel planning application.</p>
+                                <p><strong>Objectives:</strong> Simplify complex travel planning with intuitive navigation.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Figma</span>
+                                    <span class="tool-tag">Adobe XD</span>
+                                    <span class="tool-tag">Illustrator</span>
+                                </div>
+                                <p><strong>Impact:</strong> Improved user flow with 25% reduction in steps to complete bookings.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="project-card" data-ui-type="web">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Website</span>
+                                <h3>News Website Redesign</h3>
+                                <p><strong>Brief:</strong> Modernize a news website for better readability and engagement.</p>
+                                <p><strong>Objectives:</strong> Improve content hierarchy and mobile responsiveness.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Figma</span>
+                                    <span class="tool-tag">Photoshop</span>
+                                    <span class="tool-tag">Illustrator</span>
+                                </div>
+                                <p><strong>Impact:</strong> 40% decrease in bounce rate and 15% longer session duration.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="project-card" data-ui-type="mobile">
+                            <div class="project-mockup"></div>
+                            <div class="project-content">
+                                <span class="project-type">Mobile App</span>
+                                <h3>Fitness App UI</h3>
+                                <p><strong>Brief:</strong> Design motivating interface for a personal fitness tracking app.</p>
+                                <p><strong>Objectives:</strong> Create engaging visuals that encourage daily usage.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Figma</span>
+                                    <span class="tool-tag">Illustrator</span>
+                                </div>
+                                <p><strong>Impact:</strong> User testing showed 90% satisfaction with the visual appeal.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-controls">
+                        <button class="carousel-btn" id="ui-prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn" id="ui-next">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strengths -->
+    <section id="strengths">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2 class="section-title">Strengths for Agency Role</h2>
+                <p class="section-subtitle">What I bring to collaborative design environments</p>
+            </div>
+            
+            <div class="strengths-container">
+                <div class="strength-item">
+                    <div class="strength-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Quick Execution</h3>
+                    <p>Rapid delivery while maintaining exceptional quality standards</p>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>High-Volume Output</h3>
+                    <p>Efficient handling of multiple projects and tight deadlines</p>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Creative Problem Solving</h3>
+                    <p>Trend-focused approaches to design challenges</p>
+                </div>
+                
+                <div class="strength-item">
+                    <div class="strength-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Brand Consistency</h3>
+                    <p>Meticulous adherence to brand guidelines across all deliverables</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2 class="section-title">Key Achievements</h2>
+                <p class="section-subtitle">Milestones in my design career</p>
+            </div>
+            
+            <div class="achievements-container">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <div>
+                        <h3>Diverse Design Expertise</h3>
+                        <p>Experience in both UI/UX + Branding + Digital content creation, providing comprehensive design solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3>Visual Engagement Growth</h3>
+                        <p>Successfully grown visual engagement metrics for digital brands through strategic design implementations.</p>
+                    </div>
+                </div>
+                
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div>
+                        <h3>Client-Based Deliverables</h3>
+                        <p>Hands-on experience with real client-based projects, from concept to final execution and delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2 class="section-title white">Let's Connect</h2>
+                <p class="section-subtitle white">Ready to bring your brand story to life? Get in touch!</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91 7999572118</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>Meenakshipandey1312@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Indore, Madhya Pradesh, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <i class="fab fa-behance"></i>
+                    </div>
+                    <p>Scan for Behance / LinkedIn Portfolio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('.nav-item').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add active state to navigation
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === currentSection) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        // Add active class styling
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .nav-item.active {
+                color: var(--pink) !important;
+                font-weight: 600;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Reels Carousel Functionality
+        const reelsContainer = document.getElementById('reels-container');
+        const reelsCards = document.querySelectorAll('.reel-card');
+        const reelWidth = 320 + 30; // card width + gap
+        let currentReelIndex = 0;
+        const visibleReels = 3;
+        const totalReels = reelsCards.length;
+        
+        // Create dots for reels
+        const reelsDotsContainer = document.getElementById('reels-dots');
+        for (let i = 0; i < Math.ceil(totalReels / visibleReels); i++) {
+            if (i > 0) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                dot.dataset.index = i;
+                reelsDotsContainer.appendChild(dot);
+            }
+        }
+        
+        const reelDots = document.querySelectorAll('#reels-dots .carousel-dot');
+        
+        document.getElementById('reels-next').addEventListener('click', () => {
+            if (currentReelIndex < Math.ceil(totalReels / visibleReels) - 1) {
+                currentReelIndex++;
+                updateReelsCarousel();
+            }
+        });
+        
+        document.getElementById('reels-prev').addEventListener('click', () => {
+            if (currentReelIndex > 0) {
+                currentReelIndex--;
+                updateReelsCarousel();
+            }
+        });
+        
+        reelDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentReelIndex = parseInt(dot.dataset.index);
+                updateReelsCarousel();
+            });
+        });
+        
+        function updateReelsCarousel() {
+            const translateX = -currentReelIndex * (visibleReels * reelWidth);
+            reelsContainer.style.transform = `translateX(${translateX}px)`;
+            
+            // Update dots
+            reelDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentReelIndex);
+            });
+        }
+        
+        // Filter functionality for reels
+        const reelCategoryTabs = document.querySelectorAll('.content-category-tabs .category-tab');
+        reelCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                reelCategoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.dataset.category;
+                
+                // Filter reels
+                reelsCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Reset carousel position
+                currentReelIndex = 0;
+                updateReelsCarousel();
+            });
+        });
+        
+        // Filter functionality for posts
+        const postsCategoryTabs = document.querySelectorAll('[data-posts-category]');
+        const postCards = document.querySelectorAll('.post-card');
+        
+        postsCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('[data-posts-category]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.dataset.postsCategory;
+                
+                // Filter posts
+                postCards.forEach(card => {
+                    if (category === 'all' || card.dataset.postsCategory === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Filter functionality for thumbnails
+        const thumbCategoryTabs = document.querySelectorAll('[data-thumb-category]');
+        const thumbnailCards = document.querySelectorAll('.thumbnail-card');
+        
+        thumbCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('[data-thumb-category]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const category = tab.dataset.thumbCategory;
+                
+                // Filter thumbnails
+                thumbnailCards.forEach(card => {
+                    if (category === 'all' || card.dataset.thumbCategory === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Projects Carousel 1 (Branding)
+        const brandingContainer = document.getElementById('branding-projects');
+        const brandingCards = document.querySelectorAll('#branding-projects .project-card');
+        const brandingCardWidth = 350 + 30;
+        let currentBrandingIndex = 0;
+        const visibleBranding = 2;
+        
+        document.getElementById('branding-next').addEventListener('click', () => {
+            if (currentBrandingIndex < brandingCards.length - visibleBranding) {
+                currentBrandingIndex++;
+                updateBrandingCarousel();
+            }
+        });
+        
+        document.getElementById('branding-prev').addEventListener('click', () => {
+            if (currentBrandingIndex > 0) {
+                currentBrandingIndex--;
+                updateBrandingCarousel();
+            }
+        });
+        
+        function updateBrandingCarousel() {
+            const translateX = -currentBrandingIndex * brandingCardWidth;
+            brandingContainer.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        // Filter for branding projects
+        const brandingCategoryTabs = document.querySelectorAll('[data-project-type]');
+        
+        brandingCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('[data-project-type]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const type = tab.dataset.projectType;
+                
+                // Filter branding projects
+                brandingCards.forEach(card => {
+                    if (type === 'all' || card.dataset.projectType === type) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Reset carousel position
+                currentBrandingIndex = 0;
+                updateBrandingCarousel();
+            });
+        });
+        
+        // Projects Carousel 2 (UI/UX)
+        const uiContainer = document.getElementById('ui-projects');
+        const uiCards = document.querySelectorAll('#ui-projects .project-card');
+        const uiCardWidth = 350 + 30;
+        let currentUiIndex = 0;
+        const visibleUi = 2;
+        
+        document.getElementById('ui-next').addEventListener('click', () => {
+            if (currentUiIndex < uiCards.length - visibleUi) {
+                currentUiIndex++;
+                updateUiCarousel();
+            }
+        });
+        
+        document.getElementById('ui-prev').addEventListener('click', () => {
+            if (currentUiIndex > 0) {
+                currentUiIndex--;
+                updateUiCarousel();
+            }
+        });
+        
+        function updateUiCarousel() {
+            const translateX = -currentUiIndex * uiCardWidth;
+            uiContainer.style.transform = `translateX(${translateX}px)`;
+        }
+        
+        // Filter for UI projects
+        const uiCategoryTabs = document.querySelectorAll('[data-ui-type]');
+        
+        uiCategoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('[data-ui-type]').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const type = tab.dataset.uiType;
+                
+                // Filter UI projects
+                uiCards.forEach(card => {
+                    if (type === 'all' || card.dataset.uiType === type) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Reset carousel position
+                currentUiIndex = 0;
+                updateUiCarousel();
+            });
+        });
+        
+        // Play button interaction for reels
+        const playButtons = document.querySelectorAll('.reel-play-btn');
+        playButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.reel-card');
+                const title = card.querySelector('h3').textContent;
+                alert(`Playing reel: "${title}"\n\nThis would open the video in a modal or redirect to Instagram in a real implementation.`);
+            });
+        });
+    </script>
 </body>
 </html>
