@@ -181,6 +181,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
         
         .circle-pattern {
@@ -371,6 +372,24 @@
         .carousel-dot.active {
             background-color: var(--pink);
             transform: scale(1.2);
+        }
+        
+        /* Video Embed */
+        .video-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
         }
         
         /* Posts Grid */
@@ -650,6 +669,13 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .project-mockup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .mockup-display {
@@ -928,6 +954,20 @@
             .reel-card, .project-card {
                 min-width: 260px;
             }
+            
+            .reel-thumbnail {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .reel-thumbnail {
+                height: 350px;
+            }
+            
+            .posts-grid, .thumbnails-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -984,7 +1024,8 @@
                     <p>Passionate about creating intuitive visuals aligned with brand goals, I believe good design should not only look beautiful but also solve problems and enhance user experiences.</p>
                 </div>
                 <div class="about-image">
-                    <div class="circle-pattern"></div>
+                    <!-- You can add your profile photo here -->
+                    <img src="profile-placeholder.jpg" alt="Meenakshi Pandey" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>
@@ -1006,94 +1047,78 @@
                     <div class="content-category-tabs">
                         <div class="category-tab active" data-category="all">All</div>
                         <div class="category-tab" data-category="design">Design</div>
-                        <div class="category-tab" data-category="tutorial">Tutorial</div>
+                        <div class="category-tab" data-category="travel">Travel</div>
                         <div class="category-tab" data-category="behind-scenes">Behind Scenes</div>
                     </div>
                 </div>
 
                 <div class="reels-carousel">
                     <div class="reels-container" id="reels-container">
-                        <!-- Reel 1 -->
+                        <!-- Reel 1 - Design Process -->
                         <div class="reel-card" data-category="design">
                             <div class="reel-thumbnail">
-                                <div class="reel-play-btn">
-                                    <i class="fas fa-play"></i>
+                                <!-- Add your reel thumbnail or video embed here -->
+                                <div class="video-placeholder">
+                                    <div style="text-align: center;">
+                                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
+                                        <p>Design Process Reel</p>
+                                    </div>
                                 </div>
+                                <!-- When you have video links, replace with:
+                                <iframe class="video-embed" src="YOUR_INSTAGRAM_REEL_LINK" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                -->
                             </div>
                             <div class="reel-info">
-                                <h3>Logo Design Process</h3>
-                                <p>Step-by-step creation of a modern brand logo from concept to final design.</p>
+                                <h3>Graphic Design Process</h3>
+                                <p>Behind-the-scenes of creating engaging social media graphics.</p>
+                                <div class="reel-stats">
+                                    <span><i class="fas fa-eye"></i> 15.2K views</span>
+                                    <span><i class="fas fa-heart"></i> 2.1K likes</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reel 2 - Travel Vlog -->
+                        <div class="reel-card" data-category="travel">
+                            <div class="reel-thumbnail">
+                                <img src="3.png" alt="Hyderabad Travel Reel">
+                            </div>
+                            <div class="reel-info">
+                                <h3>Hyderabad Travel Guide</h3>
+                                <p>Exploring the Dubai-like city of India - Must visit places!</p>
                                 <div class="reel-stats">
                                     <span><i class="fas fa-eye"></i> 12.5K views</span>
-                                    <span><i class="fas fa-heart"></i> 1.2K likes</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Reel 2 -->
-                        <div class="reel-card" data-category="tutorial">
-                            <div class="reel-thumbnail">
-                                <div class="reel-play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="reel-info">
-                                <h3>Figma Tips for Beginners</h3>
-                                <p>5 essential Figma features that will speed up your design workflow.</p>
-                                <div class="reel-stats">
-                                    <span><i class="fas fa-eye"></i> 8.7K views</span>
-                                    <span><i class="fas fa-heart"></i> 890 likes</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Reel 3 -->
-                        <div class="reel-card" data-category="behind-scenes">
-                            <div class="reel-thumbnail">
-                                <div class="reel-play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="reel-info">
-                                <h3>My Workspace Tour</h3>
-                                <p>A day in the life of a graphic designer - tools, setup, and creative process.</p>
-                                <div class="reel-stats">
-                                    <span><i class="fas fa-eye"></i> 15.3K views</span>
                                     <span><i class="fas fa-heart"></i> 1.8K likes</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Reel 4 -->
-                        <div class="reel-card" data-category="design">
+                        <!-- Reel 3 - Food Vlog -->
+                        <div class="reel-card" data-category="travel">
                             <div class="reel-thumbnail">
-                                <div class="reel-play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
+                                <img src="12.png" alt="Hyderabad Food Vlog">
                             </div>
                             <div class="reel-info">
-                                <h3>Color Theory in Practice</h3>
-                                <p>How to choose the perfect color palette for brand identity projects.</p>
+                                <h3>Hyderabad Food Tour</h3>
+                                <p>Delicious Hyderabad food vlog - Biryani and more!</p>
                                 <div class="reel-stats">
-                                    <span><i class="fas fa-eye"></i> 10.2K views</span>
-                                    <span><i class="fas fa-heart"></i> 1.1K likes</span>
+                                    <span><i class="fas fa-eye"></i> 18.3K views</span>
+                                    <span><i class="fas fa-heart"></i> 2.5K likes</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Reel 5 -->
-                        <div class="reel-card" data-category="tutorial">
+                        <!-- Reel 4 - Heritage Walk -->
+                        <div class="reel-card" data-category="travel">
                             <div class="reel-thumbnail">
-                                <div class="reel-play-btn">
-                                    <i class="fas fa-play"></i>
-                                </div>
+                                <img src="10.png" alt="Mysore Heritage">
                             </div>
                             <div class="reel-info">
-                                <h3>AI Design Tools Demo</h3>
-                                <p>Enhancing creative workflows with AI-powered design assistance tools.</p>
+                                <h3>Mysore Heritage Walk</h3>
+                                <p>Discover the history of Mysore palace and lace heritage.</p>
                                 <div class="reel-stats">
-                                    <span><i class="fas fa-eye"></i> 9.5K views</span>
-                                    <span><i class="fas fa-heart"></i> 950 likes</span>
+                                    <span><i class="fas fa-eye"></i> 9.7K views</span>
+                                    <span><i class="fas fa-heart"></i> 1.2K likes</span>
                                 </div>
                             </div>
                         </div>
@@ -1124,64 +1149,56 @@
                         <div class="category-tab active" data-posts-category="all">All</div>
                         <div class="category-tab" data-posts-category="instagram">Instagram</div>
                         <div class="category-tab" data-posts-category="linkedin">LinkedIn</div>
-                        <div class="category-tab" data-posts-category="twitter">Twitter</div>
+                        <div class="category-tab" data-posts-category="branding">Branding</div>
                     </div>
                 </div>
 
                 <div class="posts-grid" id="posts-grid">
-                    <!-- Post 1 -->
-                    <div class="post-card" data-posts-category="instagram">
+                    <!-- Post 1 - TheFourganics Home -->
+                    <div class="post-card" data-posts-category="branding">
                         <div class="post-image">
-                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                <i class="fas fa-heart"></i>
-                            </div>
+                            <img src="website (1).png" alt="TheFourganics Home Page">
                         </div>
                         <div class="post-content">
-                            <span class="post-platform">Instagram</span>
-                            <h3>Brand Awareness Campaign</h3>
-                            <p>Visual series for a sustainable fashion brand launch.</p>
+                            <span class="post-platform">Website Design</span>
+                            <h3>TheFourganics Home Page</h3>
+                            <p>Welcome to TheFourganics - Nurture your glow with care.</p>
                         </div>
                     </div>
 
-                    <!-- Post 2 -->
+                    <!-- Post 2 - TheFourganics Clothing -->
+                    <div class="post-card" data-posts-category="branding">
+                        <div class="post-image">
+                            <img src="website (2).png" alt="TheFourganics Clothing">
+                        </div>
+                        <div class="post-content">
+                            <span class="post-platform">Website Design</span>
+                            <h3>TheFourganics Clothing Line</h3>
+                            <p>Wear the vibe - Clothes that care with style and soul.</p>
+                        </div>
+                    </div>
+
+                    <!-- Post 3 - Graphic Design Service -->
                     <div class="post-card" data-posts-category="linkedin">
                         <div class="post-image">
-                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
+                            <img src="Blue Purple and White Modern Graphic Design Instagram Post.png" alt="Graphic Design Services">
                         </div>
                         <div class="post-content">
-                            <span class="post-platform">LinkedIn</span>
-                            <h3>UI Design Case Study</h3>
-                            <p>Redesigning a fintech app for better user experience.</p>
+                            <span class="post-platform">LinkedIn Post</span>
+                            <h3>Graphic Design Services</h3>
+                            <p>Your brand, our creativity! Logo design, brand identity & more.</p>
                         </div>
                     </div>
 
-                    <!-- Post 3 -->
-                    <div class="post-card" data-posts-category="twitter">
+                    <!-- Post 4 - TheFourganics Products -->
+                    <div class="post-card" data-posts-category="branding">
                         <div class="post-image">
-                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                <i class="fab fa-twitter"></i>
-                            </div>
+                            <img src="website (3).png" alt="TheFourganics Products">
                         </div>
                         <div class="post-content">
-                            <span class="post-platform">Twitter</span>
-                            <h3>Design Tip of the Day</h3>
-                            <p>Quick visual hierarchy techniques for social media graphics.</p>
-                        </div>
-                    </div>
-
-                    <!-- Post 4 -->
-                    <div class="post-card" data-posts-category="instagram">
-                        <div class="post-image">
-                            <div class="reel-play-btn" style="width: 50px; height: 50px; font-size: 1.2rem;">
-                                <i class="fas fa-palette"></i>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <span class="post-platform">Instagram</span>
-                            <h3>Color Palette Inspiration</h3>
-                            <p>Seasonal color combinations for autumn branding projects.</p>
+                            <span class="post-platform">Website Design</span>
+                            <h3>TheFourganics Product Page</h3>
+                            <p>Moisturizer, serum, toner - Natural skincare products.</p>
                         </div>
                     </div>
                 </div>
@@ -1193,75 +1210,65 @@
                     <h3 class="content-section-title">YouTube Thumbnails</h3>
                     <div class="content-category-tabs">
                         <div class="category-tab active" data-thumb-category="all">All</div>
-                        <div class="category-tab" data-thumb-category="tutorial">Tutorial</div>
-                        <div class="category-tab" data-thumb-category="design">Design</div>
-                        <div class="category-tab" data-thumb-category="portfolio">Portfolio</div>
+                        <div class="category-tab" data-thumb-category="travel">Travel</div>
+                        <div class="category-tab" data-thumb-category="vlog">Vlog</div>
+                        <div class="category-tab" data-thumb-category="documentary">Documentary</div>
                     </div>
                 </div>
 
                 <div class="thumbnails-grid" id="thumbnails-grid">
-                    <!-- Thumbnail 1 -->
-                    <div class="thumbnail-card" data-thumb-category="tutorial">
+                    <!-- Thumbnail 1 - Hyderabad Travel -->
+                    <div class="thumbnail-card" data-thumb-category="travel">
                         <div class="thumbnail-image">
-                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
-                                <i class="fas fa-play"></i>
-                            </div>
+                            <img src="1.png" alt="Hyderabad Travel Blog">
                         </div>
                         <div class="thumbnail-info">
-                            <h4>Figma Masterclass</h4>
-                            <p>Click-through: 8.2%</p>
+                            <h4>Hyderabad Travel Blog</h4>
+                            <p>MinnieBlogHub | Click-through: 12.5%</p>
                         </div>
                     </div>
 
-                    <!-- Thumbnail 2 -->
-                    <div class="thumbnail-card" data-thumb-category="design">
+                    <!-- Thumbnail 2 - Vlog Travel -->
+                    <div class="thumbnail-card" data-thumb-category="vlog">
                         <div class="thumbnail-image">
-                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
-                                <i class="fas fa-pen-fancy"></i>
-                            </div>
+                            <img src="2.png" alt="Vlog Travel">
                         </div>
                         <div class="thumbnail-info">
-                            <h4>Logo Design Process</h4>
-                            <p>Click-through: 12.5%</p>
+                            <h4>Vlog Travel Series</h4>
+                            <p>#VlogTravel | Click-through: 10.3%</p>
                         </div>
                     </div>
 
-                    <!-- Thumbnail 3 -->
-                    <div class="thumbnail-card" data-thumb-category="portfolio">
+                    <!-- Thumbnail 3 - Hyderabad Documentary -->
+                    <div class="thumbnail-card" data-thumb-category="documentary">
                         <div class="thumbnail-image">
-                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
-                                <i class="fas fa-layer-group"></i>
-                            </div>
+                            <img src="6.png" alt="Hyderabad Documentary">
                         </div>
                         <div class="thumbnail-info">
-                            <h4>My Design Portfolio</h4>
-                            <p>Click-through: 10.3%</p>
+                            <h4>Hyderabad Documentary</h4>
+                            <p>An ode to Hyderabad | Click-through: 15.2%</p>
                         </div>
                     </div>
 
-                    <!-- Thumbnail 4 -->
-                    <div class="thumbnail-card" data-thumb-category="tutorial">
+                    <!-- Thumbnail 4 - Travel to Hyderabad -->
+                    <div class="thumbnail-card" data-thumb-category="travel">
                         <div class="thumbnail-image">
-                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
-                                <i class="fas fa-magic"></i>
-                            </div>
+                            <img src="7.png" alt="Travel to Hyderabad">
                         </div>
                         <div class="thumbnail-info">
-                            <h4>Photoshop Tricks</h4>
-                            <p>Click-through: 9.7%</p>
+                            <h4>Travel to Hyderabad Vlog</h4>
+                            <p>Subscribe now | Click-through: 11.7%</p>
                         </div>
                     </div>
 
-                    <!-- Thumbnail 5 -->
-                    <div class="thumbnail-card" data-thumb-category="design">
+                    <!-- Thumbnail 5 - Why Hyderabad -->
+                    <div class="thumbnail-card" data-thumb-category="travel">
                         <div class="thumbnail-image">
-                            <div class="reel-play-btn" style="width: 40px; height: 40px; font-size: 1rem;">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
+                            <img src="5.png" alt="Why Travel to Hyderabad">
                         </div>
                         <div class="thumbnail-info">
-                            <h4>UI Design Principles</h4>
-                            <p>Click-through: 11.2%</p>
+                            <h4>Why Travel to Hyderabad?</h4>
+                            <p>@MinnieBlogHub | Click-through: 13.4%</p>
                         </div>
                     </div>
                 </div>
@@ -1362,64 +1369,70 @@
             <!-- Projects Carousel 1 -->
             <div class="projects-carousel-section">
                 <div class="content-section-header">
-                    <h3 class="content-section-title">Branding Projects</h3>
+                    <h3 class="content-section-title">Website & Branding Projects</h3>
                     <div class="content-category-tabs">
                         <div class="category-tab active" data-project-type="all">All</div>
-                        <div class="category-tab" data-project-type="social">Social Media</div>
-                        <div class="category-tab" data-project-type="packaging">Packaging</div>
+                        <div class="category-tab" data-project-type="website">Website</div>
+                        <div class="category-tab" data-project-type="branding">Branding</div>
                     </div>
                 </div>
                 
                 <div class="projects-carousel">
                     <div class="projects-container" id="branding-projects">
-                        <!-- Project 1 -->
-                        <div class="project-card" data-project-type="social">
-                            <div class="project-mockup"></div>
+                        <!-- Project 1 - TheFourganics Website -->
+                        <div class="project-card" data-project-type="website">
+                            <div class="project-mockup">
+                                <img src="website (1).png" alt="TheFourganics Website">
+                            </div>
                             <div class="project-content">
-                                <span class="project-type">Social Media</span>
-                                <h3>Café Brand - Social Media Kit</h3>
-                                <p><strong>Brief:</strong> Create a cohesive visual identity for a specialty café's social media presence.</p>
-                                <p><strong>Objectives:</strong> Develop recognizable brand assets that reflect the café's cozy aesthetic.</p>
+                                <span class="project-type">Website Design</span>
+                                <h3>TheFourganics - Complete Website</h3>
+                                <p><strong>Brief:</strong> Design a complete e-commerce website for a natural wellness brand.</p>
+                                <p><strong>Objectives:</strong> Create a clean, organic look that reflects the brand's natural ethos.</p>
                                 <div class="project-tools">
+                                    <span class="tool-tag">Figma</span>
                                     <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">WordPress</span>
+                                </div>
+                                <p><strong>Impact:</strong> Complete brand identity with 5+ page website design.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 - Graphic Design Services -->
+                        <div class="project-card" data-project-type="branding">
+                            <div class="project-mockup">
+                                <img src="Blue Purple and White Modern Graphic Design Instagram Post.png" alt="Graphic Design Services">
+                            </div>
+                            <div class="project-content">
+                                <span class="project-type">Branding Design</span>
+                                <h3>Graphic Design Service Promotion</h3>
+                                <p><strong>Brief:</strong> Create promotional graphics for graphic design services.</p>
+                                <p><strong>Objectives:</strong> Showcase services in an engaging, professional layout.</p>
+                                <div class="project-tools">
                                     <span class="tool-tag">Photoshop</span>
+                                    <span class="tool-tag">Illustrator</span>
                                     <span class="tool-tag">Canva</span>
                                 </div>
-                                <p><strong>Impact:</strong> 40% increase in social engagement and consistent brand recognition.</p>
+                                <p><strong>Impact:</strong> Professional service catalog for client presentations.</p>
                             </div>
                         </div>
                         
-                        <!-- Project 2 -->
-                        <div class="project-card" data-project-type="packaging">
-                            <div class="project-mockup"></div>
-                            <div class="project-content">
-                                <span class="project-type">Packaging</span>
-                                <h3>Beauty Brand - Packaging Design</h3>
-                                <p><strong>Brief:</strong> Design eco-friendly packaging and digital campaign for a skincare line.</p>
-                                <p><strong>Objectives:</strong> Communicate product benefits while emphasizing sustainability.</p>
-                                <div class="project-tools">
-                                    <span class="tool-tag">Illustrator</span>
-                                    <span class="tool-tag">InDesign</span>
-                                    <span class="tool-tag">Figma</span>
-                                </div>
-                                <p><strong>Impact:</strong> Successful product launch with positive customer feedback on packaging.</p>
+                        <!-- Project 3 - TheFourganics About Page -->
+                        <div class="project-card" data-project-type="website">
+                            <div class="project-mockup">
+                                <img src="website (5).png" alt="TheFourganics About Page">
                             </div>
-                        </div>
-                        
-                        <!-- Project 3 -->
-                        <div class="project-card" data-project-type="social">
-                            <div class="project-mockup"></div>
                             <div class="project-content">
-                                <span class="project-type">Social Media</span>
-                                <h3>Tech Brand - LinkedIn Graphics</h3>
-                                <p><strong>Brief:</strong> Create professional LinkedIn graphics for a B2B tech company.</p>
-                                <p><strong>Objectives:</strong> Establish thought leadership and improve brand visibility.</p>
+                                <span class="project-type">Website Design</span>
+                                <h3>TheFourganics About Page</h3>
+                                <p><strong>Brief:</strong> Design an engaging about page that tells the brand story.</p>
+                                <p><strong>Objectives:</strong> Connect with customers through authentic brand messaging.</p>
                                 <div class="project-tools">
                                     <span class="tool-tag">Figma</span>
                                     <span class="tool-tag">Illustrator</span>
                                     <span class="tool-tag">Photoshop</span>
                                 </div>
-                                <p><strong>Impact:</strong> 65% increase in profile views and 30% more connection requests.</p>
+                                <p><strong>Impact:</strong> Increased customer trust and brand connection.</p>
                             </div>
                         </div>
                     </div>
@@ -1438,63 +1451,69 @@
             <!-- Projects Carousel 2 -->
             <div class="projects-carousel-section">
                 <div class="content-section-header">
-                    <h3 class="content-section-title">UI/UX Projects</h3>
+                    <h3 class="content-section-title">Social Media & Content Projects</h3>
                     <div class="content-category-tabs">
                         <div class="category-tab active" data-ui-type="all">All</div>
-                        <div class="category-tab" data-ui-type="mobile">Mobile App</div>
-                        <div class="category-tag" data-ui-type="web">Website</div>
+                        <div class="category-tab" data-ui-type="travel">Travel Content</div>
+                        <div class="category-tab" data-ui-type="social">Social Media</div>
                     </div>
                 </div>
                 
                 <div class="projects-carousel">
                     <div class="projects-container" id="ui-projects">
-                        <!-- Project 1 -->
-                        <div class="project-card" data-ui-type="mobile">
-                            <div class="project-mockup"></div>
-                            <div class="project-content">
-                                <span class="project-type">Mobile App</span>
-                                <h3>Travel App - "RoamEase"</h3>
-                                <p><strong>Brief:</strong> Create user-friendly interface for a travel planning application.</p>
-                                <p><strong>Objectives:</strong> Simplify complex travel planning with intuitive navigation.</p>
-                                <div class="project-tools">
-                                    <span class="tool-tag">Figma</span>
-                                    <span class="tool-tag">Adobe XD</span>
-                                    <span class="tool-tag">Illustrator</span>
-                                </div>
-                                <p><strong>Impact:</strong> Improved user flow with 25% reduction in steps to complete bookings.</p>
+                        <!-- Project 1 - Hyderabad Travel Series -->
+                        <div class="project-card" data-ui-type="travel">
+                            <div class="project-mockup">
+                                <img src="3.png" alt="Hyderabad Travel Series">
                             </div>
-                        </div>
-                        
-                        <!-- Project 2 -->
-                        <div class="project-card" data-ui-type="web">
-                            <div class="project-mockup"></div>
                             <div class="project-content">
-                                <span class="project-type">Website</span>
-                                <h3>News Website Redesign</h3>
-                                <p><strong>Brief:</strong> Modernize a news website for better readability and engagement.</p>
-                                <p><strong>Objectives:</strong> Improve content hierarchy and mobile responsiveness.</p>
+                                <span class="project-type">Travel Content</span>
+                                <h3>Hyderabad Travel Series</h3>
+                                <p><strong>Brief:</strong> Create a comprehensive travel content series for Hyderabad.</p>
+                                <p><strong>Objectives:</strong> Showcase Hyderabad as a premier travel destination.</p>
                                 <div class="project-tools">
-                                    <span class="tool-tag">Figma</span>
                                     <span class="tool-tag">Photoshop</span>
-                                    <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">Canva</span>
+                                    <span class="tool-tag">CapCut</span>
                                 </div>
-                                <p><strong>Impact:</strong> 40% decrease in bounce rate and 15% longer session duration.</p>
+                                <p><strong>Impact:</strong> 10+ engaging thumbnails and social media graphics.</p>
                             </div>
                         </div>
                         
-                        <!-- Project 3 -->
-                        <div class="project-card" data-ui-type="mobile">
-                            <div class="project-mockup"></div>
+                        <!-- Project 2 - Heritage Walk Graphics -->
+                        <div class="project-card" data-ui-type="travel">
+                            <div class="project-mockup">
+                                <img src="10.png" alt="Heritage Walk Graphics">
+                            </div>
                             <div class="project-content">
-                                <span class="project-type">Mobile App</span>
-                                <h3>Fitness App UI</h3>
-                                <p><strong>Brief:</strong> Design motivating interface for a personal fitness tracking app.</p>
-                                <p><strong>Objectives:</strong> Create engaging visuals that encourage daily usage.</p>
+                                <span class="project-type">Travel Content</span>
+                                <h3>Heritage Walk Promotion</h3>
+                                <p><strong>Brief:</strong> Design promotional materials for heritage walks.</p>
+                                <p><strong>Objectives:</strong> Attract cultural enthusiasts to heritage experiences.</p>
                                 <div class="project-tools">
-                                    <span class="tool-tag">Figma</span>
+                                    <span class="tool-tag">Illustrator</span>
+                                    <span class="tool-tag">Photoshop</span>
+                                </div>
+                                <p><strong>Impact:</strong> Visually compelling campaign for cultural tourism.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 - Food Vlog Series -->
+                        <div class="project-card" data-ui-type="travel">
+                            <div class="project-mockup">
+                                <img src="12.png" alt="Food Vlog Series">
+                            </div>
+                            <div class="project-content">
+                                <span class="project-type">Travel Content</span>
+                                <h3>Hyderabad Food Vlog Series</h3>
+                                <p><strong>Brief:</strong> Create mouth-watering graphics for food vlog series.</p>
+                                <p><strong>Objectives:</strong> Highlight Hyderabad's culinary delights.</p>
+                                <div class="project-tools">
+                                    <span class="tool-tag">Photoshop</span>
+                                    <span class="tool-tag">Canva</span>
                                     <span class="tool-tag">Illustrator</span>
                                 </div>
-                                <p><strong>Impact:</strong> User testing showed 90% satisfaction with the visual appeal.</p>
+                                <p><strong>Impact:</strong> Increased viewer engagement for food content.</p>
                             </div>
                         </div>
                     </div>
@@ -1922,9 +1941,14 @@
             button.addEventListener('click', function() {
                 const card = this.closest('.reel-card');
                 const title = card.querySelector('h3').textContent;
-                alert(`Playing reel: "${title}"\n\nThis would open the video in a modal or redirect to Instagram in a real implementation.`);
+                alert(`Playing reel: "${title}"\n\nTo embed actual Instagram/YouTube videos:\n1. Get the embed code from the platform\n2. Replace the video-placeholder div with:\n<iframe class="video-embed" src="YOUR_VIDEO_LINK" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
             });
         });
+        
+        // Initialize carousels
+        updateReelsCarousel();
+        updateBrandingCarousel();
+        updateUiCarousel();
     </script>
 </body>
 </html>
