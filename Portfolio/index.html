@@ -204,12 +204,20 @@
             left: 25px;
         }
         
-        /* YouTube Channel Section */
-        #youtube-channel {
+        /* Client Work Section */
+        #client-work {
             background-color: var(--white);
         }
         
-        .youtube-header {
+        .client-showcase {
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--light-charcoal) 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .client-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -218,16 +226,16 @@
             gap: 20px;
         }
         
-        .channel-info {
+        .client-info {
             display: flex;
             align-items: center;
             gap: 20px;
         }
         
-        .channel-icon {
+        .client-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #FF0000, #CC0000);
+            background: linear-gradient(135deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -236,20 +244,26 @@
             font-size: 2rem;
         }
         
-        .channel-details h2 {
+        .client-details h2 {
             font-size: 2.2rem;
             margin-bottom: 5px;
         }
         
-        .channel-stats {
+        .client-stats {
             display: flex;
-            gap: 15px;
-            color: var(--light-charcoal);
+            gap: 20px;
+            margin-top: 10px;
         }
         
-        .subscribe-btn {
-            background-color: #FF0000;
-            color: white;
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .visit-btn {
+            background-color: white;
+            color: var(--charcoal);
             border: none;
             padding: 12px 25px;
             border-radius: 30px;
@@ -261,143 +275,266 @@
             transition: all 0.3s ease;
         }
         
-        .subscribe-btn:hover {
-            background-color: #CC0000;
+        .visit-btn:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        /* YouTube Videos Grid */
-        .youtube-videos {
+        .viral-reels {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
         }
         
-        .video-card {
-            background-color: var(--beige);
+        .viral-reel-card {
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+            backdrop-filter: blur(10px);
         }
         
-        .video-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .video-thumbnail {
-            height: 200px;
+        .viral-reel-thumbnail {
+            height: 400px;
             position: relative;
             overflow: hidden;
         }
         
-        .video-thumbnail img {
+        .viral-reel-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        .video-play-btn {
+        .viral-badge {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 15px;
+            right: 15px;
+            background-color: #FD1D1D;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .viral-reel-info {
+            padding: 20px;
+        }
+        
+        .viral-reel-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .viral-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* YouTube Channels Section */
+        #youtube-channels {
+            background-color: var(--white);
+        }
+        
+        .channels-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .channels-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .channel-card {
+            background-color: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .channel-header {
+            padding: 30px;
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            color: white;
+        }
+        
+        .channel-header.personal {
+            background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+        }
+        
+        .channel-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .channel-icon {
             width: 70px;
             height: 70px;
-            background-color: rgba(255, 0, 0, 0.9);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
+        }
+        
+        .channel-name h2 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .channel-stats {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .channel-stat {
+            text-align: center;
+        }
+        
+        .channel-stat .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .channel-stat .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .channel-videos {
+            padding: 30px;
+        }
+        
+        .featured-video {
+            margin-bottom: 30px;
+        }
+        
+        .featured-video h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+        
+        .featured-video-thumbnail {
+            height: 200px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .featured-video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
-            opacity: 0;
         }
         
-        .video-thumbnail:hover .video-play-btn {
-            opacity: 1;
-        }
-        
-        .video-play-btn:hover {
+        .featured-play-btn:hover {
             background-color: rgba(255, 0, 0, 1);
             transform: translate(-50%, -50%) scale(1.1);
         }
         
-        .video-info {
-            padding: 20px;
-        }
-        
-        .video-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-        
-        .video-stats {
+        .featured-stats {
             display: flex;
             justify-content: space-between;
             color: var(--light-charcoal);
             font-size: 0.9rem;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
         
-        .video-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+        .other-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
         
-        .video-modal.active {
-            opacity: 1;
-            visibility: visible;
+        .small-video-card {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
         
-        .modal-content {
-            width: 90%;
-            max-width: 900px;
+        .small-video-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .small-thumbnail {
+            height: 120px;
             position: relative;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        
-        .modal-video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
             overflow: hidden;
         }
         
-        .modal-video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .small-thumbnail img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+        }
+        
+        .small-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .small-thumbnail:hover .small-play-btn {
+            opacity: 1;
+        }
+        
+        .small-video-info {
+            padding: 15px;
+        }
+        
+        .small-video-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+        
+        .view-count {
+            color: var(--light-charcoal);
+            font-size: 0.8rem;
         }
         
         /* Digital Content Section - Reels & Posts */
@@ -1054,6 +1191,61 @@
             color: rgba(255, 255, 255, 0.8);
         }
         
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .modal-video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         /* Navigation */
         .nav-container {
             position: fixed;
@@ -1131,13 +1323,17 @@
                 min-width: 280px;
             }
             
-            .youtube-header {
+            .client-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
             
-            .youtube-videos {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            .channels-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .other-videos {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
         
@@ -1150,6 +1346,12 @@
                 padding: 10px 20px;
                 gap: 15px;
                 font-size: 0.9rem;
+                overflow-x: auto;
+                max-width: 90vw;
+            }
+            
+            .nav-item {
+                white-space: nowrap;
             }
             
             .reels-container, .projects-container {
@@ -1164,7 +1366,11 @@
                 height: 400px;
             }
             
-            .youtube-videos {
+            .client-showcase {
+                padding: 30px 20px;
+            }
+            
+            .viral-reels {
                 grid-template-columns: 1fr;
             }
         }
@@ -1178,9 +1384,18 @@
                 grid-template-columns: 1fr;
             }
             
-            .channel-info {
+            .client-stats {
                 flex-direction: column;
-                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .channel-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .other-videos {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1190,7 +1405,8 @@
     <div class="nav-container">
         <a href="#cover" class="nav-item">Home</a>
         <a href="#about" class="nav-item">About</a>
-        <a href="#youtube-channel" class="nav-item">YouTube</a>
+        <a href="#client-work" class="nav-item">Client Work</a>
+        <a href="#youtube-channels" class="nav-item">YouTube</a>
         <a href="#digital-content" class="nav-item">Content</a>
         <a href="#skills" class="nav-item">Skills</a>
         <a href="#experience" class="nav-item">Experience</a>
@@ -1246,105 +1462,387 @@
         </div>
     </section>
 
-    <!-- YouTube Channel Section -->
-    <section id="youtube-channel">
+    <!-- Client Work Section -->
+    <section id="client-work">
         <div class="container">
             <div class="section-header">
                 <div class="section-number">03</div>
-                <h2 class="section-title">YouTube Channel</h2>
-                <p class="section-subtitle">Engineering Tricks & Creative Tutorials</p>
+                <h2 class="section-title">Client Work</h2>
+                <p class="section-subtitle">Viral reels and content creation for top creators</p>
             </div>
             
-            <div class="youtube-header">
-                <div class="channel-info">
-                    <div class="channel-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="channel-details">
-                        <h2>Engineering Tricks</h2>
-                        <div class="channel-stats">
-                            <span><i class="fas fa-users"></i> 1,200+ Subscribers</span>
-                            <span><i class="fas fa-video"></i> 50+ Videos</span>
+            <div class="client-showcase">
+                <div class="client-header">
+                    <div class="client-info">
+                        <div class="client-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="client-details">
+                            <h2>@codesworld.exe</h2>
+                            <p>Tech & Coding Content Creator | 1M+ Followers</p>
+                            <div class="client-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>1.2M Followers</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>500K+ Avg. Likes</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>Viral Reels Expert</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <a href="https://www.youtube.com/@engineringtricks" target="_blank" class="subscribe-btn">
-                    <i class="fab fa-youtube"></i> Subscribe on YouTube
-                </a>
-            </div>
-            
-            <div class="youtube-videos">
-                <!-- Video 1 -->
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="6.png" alt="Hyderabad Documentary">
-                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>An Ode to Hyderabad - A Documentary on the Marvelous Hyderabad</h3>
-                        <p>Explore the rich history, culture, and architecture of Hyderabad in this comprehensive documentary.</p>
-                        <div class="video-stats">
-                            <span><i class="fas fa-eye"></i> 15.2K views</span>
-                            <span><i class="fas fa-thumbs-up"></i> 1.2K likes</span>
-                            <span><i class="far fa-calendar"></i> 2 months ago</span>
-                        </div>
-                    </div>
+                    <a href="https://www.instagram.com/codesworld.exe?igsh=MnFqbThoOWdkbWE2" target="_blank" class="visit-btn">
+                        <i class="fab fa-instagram"></i> Visit Instagram
+                    </a>
                 </div>
                 
-                <!-- Video 2 -->
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="7.png" alt="Travel to Hyderabad Vlog">
-                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                            <i class="fas fa-play"></i>
-                        </div>
-                    </div>
-                    <div class="video-info">
-                        <h3>Travel to Hyderabad - Complete Travel Guide Vlog</h3>
-                        <p>Your ultimate guide to traveling Hyderabad - places to visit, food to try, and hidden gems.</p>
-                        <div class="video-stats">
-                            <span><i class="fas fa-eye"></i> 12.5K views</span>
-                            <span><i class="fas fa-thumbs-up"></i> 890 likes</span>
-                            <span><i class="far fa-calendar"></i> 3 months ago</span>
-                        </div>
-                    </div>
-                </div>
+                <h3 style="color: white; margin-bottom: 30px; font-size: 1.8rem;">Viral Reels Created</h3>
                 
-                <!-- Video 3 -->
-                <div class="video-card">
-                    <div class="video-thumbnail">
-                        <img src="12.png" alt="Hyderabad Food Vlog">
-                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                            <i class="fas fa-play"></i>
+                <div class="viral-reels">
+                    <!-- Viral Reel 1 -->
+                    <div class="viral-reel-card">
+                        <div class="viral-reel-thumbnail">
+                            <div class="viral-badge">VIRAL</div>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <i class="fas fa-code" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h3>Coding Tips Reel</h3>
+                                    <p>5 Python tricks you must know</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viral-reel-info">
+                            <h3>5 Python Tricks That Will Blow Your Mind</h3>
+                            <p>Quick coding tips for beginners and intermediate programmers.</p>
+                            <div class="viral-stats">
+                                <span><i class="fas fa-eye"></i> 2.5M views</span>
+                                <span><i class="fas fa-heart"></i> 350K likes</span>
+                                <span><i class="fas fa-share"></i> 45K shares</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="video-info">
-                        <h3>Delicious Hyderabad Food Tour - Biryani & Chicken Special</h3>
-                        <p>Join me on a culinary journey through Hyderabad's most famous restaurants and street food.</p>
-                        <div class="video-stats">
-                            <span><i class="fas fa-eye"></i> 18.3K views</span>
-                            <span><i class="fas fa-thumbs-up"></i> 1.5K likes</span>
-                            <span><i class="far fa-calendar"></i> 1 month ago</span>
+                    
+                    <!-- Viral Reel 2 -->
+                    <div class="viral-reel-card">
+                        <div class="viral-reel-thumbnail">
+                            <div class="viral-badge">VIRAL</div>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <i class="fas fa-laptop-code" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h3>Web Dev Shortcuts</h3>
+                                    <p>Time-saving techniques</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viral-reel-info">
+                            <h3>Web Development Shortcuts That Save Hours</h3>
+                            <p>Essential shortcuts and tools for efficient web development.</p>
+                            <div class="viral-stats">
+                                <span><i class="fas fa-eye"></i> 1.8M views</span>
+                                <span><i class="fas fa-heart"></i> 280K likes</span>
+                                <span><i class="fas fa-share"></i> 32K shares</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Viral Reel 3 -->
+                    <div class="viral-reel-card">
+                        <div class="viral-reel-thumbnail">
+                            <div class="viral-badge">TRENDING</div>
+                            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <i class="fas fa-mobile-alt" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                                    <h3>App Development</h3>
+                                    <p>From idea to app store</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viral-reel-info">
+                            <h3>How To Build Your First Mobile App in 2024</h3>
+                            <p>Step-by-step guide for beginners to create their first mobile application.</p>
+                            <div class="viral-stats">
+                                <span><i class="fas fa-eye"></i> 1.2M views</span>
+                                <span><i class="fas fa-heart"></i> 210K likes</span>
+                                <span><i class="fas fa-share"></i> 28K shares</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <a href="https://www.youtube.com/@engineringtricks" target="_blank" class="subscribe-btn" style="background-color: var(--charcoal);">
-                    <i class="fab fa-youtube"></i> View All Videos on YouTube
-                </a>
+                <p style="font-size: 1.1rem; color: var(--light-charcoal); max-width: 800px; margin: 0 auto;">
+                    <i class="fas fa-star" style="color: var(--pink); margin-right: 10px;"></i>
+                    Created engaging reels that achieved viral status for @codesworld.exe, contributing to significant follower growth and increased engagement rates.
+                </p>
             </div>
         </div>
     </section>
+
+    <!-- YouTube Channels Section -->
+    <section id="youtube-channels">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2 class="section-title">YouTube Channels</h2>
+                <p class="section-subtitle">Educational content & personal vlogging channels</p>
+            </div>
+            
+            <div class="channels-container">
+                <!-- Personal YouTube Channel -->
+                <div class="channel-card">
+                    <div class="channel-header personal">
+                        <div class="channel-top">
+                            <div class="channel-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div>
+                                <a href="https://www.youtube.com/@MinnieBlogHub" target="_blank" style="color: white; text-decoration: none;">
+                                    <h2>MinnieBlogHub</h2>
+                                </a>
+                                <p>Personal Vlog & Travel Channel</p>
+                            </div>
+                        </div>
+                        <div class="channel-stats">
+                            <div class="channel-stat">
+                                <span class="number">50K+</span>
+                                <span class="label">Subscribers</span>
+                            </div>
+                            <div class="channel-stat">
+                                <span class="number">100+</span>
+                                <span class="label">Videos</span>
+                            </div>
+                            <div class="channel-stat">
+                                <span class="number">5M+</span>
+                                <span class="label">Total Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-videos">
+                        <div class="featured-video">
+                            <h3>Most Viewed Video</h3>
+                            <div class="featured-video-thumbnail">
+                                <img src="6.png" alt="Hyderabad Documentary">
+                                <div class="featured-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <h4>An Ode to Hyderabad - A Documentary on the Marvelous Hyderabad</h4>
+                            <div class="featured-stats">
+                                <span><i class="fas fa-eye"></i> 1.2M views</span>
+                                <span><i class="fas fa-thumbs-up"></i> 85K likes</span>
+                                <span><i class="far fa-calendar"></i> 8 months ago</span>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-bottom: 20px; color: var(--charcoal);">Other Popular Videos</h3>
+                        <div class="other-videos">
+                            <!-- Video 1 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <img src="1.png" alt="Hyderabad Travel">
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Hyderabad Travel Blog</h4>
+                                    <div class="view-count">450K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 2 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <img src="7.png" alt="Travel Vlog">
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Travel to Hyderabad Vlog</h4>
+                                    <div class="view-count">380K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 3 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <img src="12.png" alt="Food Vlog">
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Hyderabad Food Tour</h4>
+                                    <div class="view-count">520K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 4 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <img src="5.png" alt="Why Hyderabad">
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Why Travel to Hyderabad?</h4>
+                                    <div class="view-count">310K views</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Engineering Tricks Channel -->
+                <div class="channel-card">
+                    <div class="channel-header">
+                        <div class="channel-top">
+                            <div class="channel-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <a href="https://www.youtube.com/@engineringtricks" target="_blank" style="color: white; text-decoration: none;">
+                                    <h2>Engineering Tricks</h2>
+                                </a>
+                                <p>Educational Tech & Engineering Content</p>
+                            </div>
+                        </div>
+                        <div class="channel-stats">
+                            <div class="channel-stat">
+                                <span class="number">1.2K+</span>
+                                <span class="label">Subscribers</span>
+                            </div>
+                            <div class="channel-stat">
+                                <span class="number">50+</span>
+                                <span class="label">Videos</span>
+                            </div>
+                            <div class="channel-stat">
+                                <span class="number">500K+</span>
+                                <span class="label">Total Views</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="channel-videos">
+                        <div class="featured-video">
+                            <h3>Top Performing Video</h3>
+                            <div class="featured-video-thumbnail">
+                                <img src="6.png" alt="Engineering Documentary">
+                                <div class="featured-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <h4>Modern Engineering Marvels of India</h4>
+                            <div class="featured-stats">
+                                <span><i class="fas fa-eye"></i> 150K views</span>
+                                <span><i class="fas fa-thumbs-up"></i> 12K likes</span>
+                                <span><i class="far fa-calendar"></i> 3 months ago</span>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin-bottom: 20px; color: var(--charcoal);">Recent Uploads</h3>
+                        <div class="other-videos">
+                            <!-- Video 1 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                        <i class="fas fa-robot" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>AI Engineering Basics</h4>
+                                    <div class="view-count">45K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 2 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                        <i class="fas fa-code" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Coding for Engineers</h4>
+                                    <div class="view-count">38K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 3 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                        <i class="fas fa-tools" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Engineering Tools Guide</h4>
+                                    <div class="view-count">52K views</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Video 4 -->
+                            <div class="small-video-card">
+                                <div class="small-thumbnail">
+                                    <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                                        <i class="fas fa-lightbulb" style="font-size: 2rem;"></i>
+                                    </div>
+                                    <div class="small-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                </div>
+                                <div class="small-video-info">
+                                    <h4>Innovation in Engineering</h4>
+                                    <div class="view-count">41K views</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 1.1rem; color: var(--light-charcoal); max-width: 800px; margin: 0 auto;">
+                    <i class="fas fa-video" style="color: var(--pink); margin-right: 10px;"></i>
+                    Producing engaging educational and entertainment content across multiple YouTube channels, with videos reaching millions of views and building loyal subscriber communities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-video-container" id="modalVideoContainer">
+                <!-- Video will be loaded here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Digital Content Section -->
     <section id="digital-content">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">04</div>
+                <div class="section-number">05</div>
                 <h2 class="section-title">Digital Content</h2>
                 <p class="section-subtitle">Reels, social posts, and thumbnails that drive engagement</p>
             </div>
@@ -1581,23 +2079,11 @@
         </div>
     </section>
 
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-video-container" id="modalVideoContainer">
-                <!-- Video will be loaded here -->
-            </div>
-        </div>
-    </div>
-
     <!-- Skills -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">05</div>
+                <div class="section-number">06</div>
                 <h2 class="section-title">My Skills</h2>
                 <p class="section-subtitle">Combining creative vision with technical expertise</p>
             </div>
@@ -1638,7 +2124,7 @@
     <section id="experience">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">06</div>
+                <div class="section-number">07</div>
                 <h2 class="section-title">Work Experience</h2>
                 <p class="section-subtitle">Professional journey in design and digital creation</p>
             </div>
@@ -1678,7 +2164,7 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">07</div>
+                <div class="section-number">08</div>
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Selected design work with case studies</p>
             </div>
@@ -1852,7 +2338,7 @@
     <section id="strengths">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">08</div>
+                <div class="section-number">09</div>
                 <h2 class="section-title">Strengths for Agency Role</h2>
                 <p class="section-subtitle">What I bring to collaborative design environments</p>
             </div>
@@ -1889,7 +2375,7 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <div class="section-number">09</div>
+                <div class="section-number">10</div>
                 <h2 class="section-title">Key Achievements</h2>
                 <p class="section-subtitle">Milestones in my design career</p>
             </div>
@@ -1932,7 +2418,7 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">10</div>
+                <div class="section-number">11</div>
                 <h2 class="section-title white">Let's Connect</h2>
                 <p class="section-subtitle white">Ready to bring your brand story to life? Get in touch!</p>
             </div>
@@ -2030,45 +2516,45 @@
         const closeModal = document.getElementById('closeModal');
         const modalVideoContainer = document.getElementById('modalVideoContainer');
         
-        // YouTube video play buttons
-        const videoPlayButtons = document.querySelectorAll('.video-play-btn');
+        // All video play buttons
+        const allPlayButtons = document.querySelectorAll('.featured-play-btn, .small-play-btn, .video-play-btn');
         
-        videoPlayButtons.forEach(button => {
+        allPlayButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const videoUrl = this.getAttribute('data-video');
                 
+                // For demonstration, using placeholder video
                 // Replace with your actual YouTube video IDs when available
-                // For now, using placeholder video
                 const videoId = "dQw4w9WgXcQ"; // Example video ID
                 const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 
                 modalVideoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
                 
                 videoModal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                document.body.style.overflow = 'hidden';
             });
         });
         
         // Close modal
         closeModal.addEventListener('click', () => {
             videoModal.classList.remove('active');
-            modalVideoContainer.innerHTML = ''; // Clear video
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            modalVideoContainer.innerHTML = '';
+            document.body.style.overflow = 'auto';
         });
         
         // Close modal when clicking outside
         videoModal.addEventListener('click', (e) => {
             if (e.target === videoModal) {
                 videoModal.classList.remove('active');
-                modalVideoContainer.innerHTML = ''; // Clear video
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                modalVideoContainer.innerHTML = '';
+                document.body.style.overflow = 'auto';
             }
         });
         
         // Reels Carousel Functionality
         const reelsContainer = document.getElementById('reels-container');
         const reelsCards = document.querySelectorAll('.reel-card');
-        const reelWidth = 320 + 30; // card width + gap
+        const reelWidth = 320 + 30;
         let currentReelIndex = 0;
         const visibleReels = 3;
         const totalReels = reelsCards.length;
@@ -2292,16 +2778,6 @@
             });
         });
         
-        // Play button interaction for reels
-        const reelPlayButtons = document.querySelectorAll('.reel-play-btn');
-        reelPlayButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const card = this.closest('.reel-card');
-                const title = card.querySelector('h3').textContent;
-                alert(`Playing reel: "${title}"\n\nTo embed actual Instagram/YouTube videos:\n1. Get the embed code from the platform\n2. Replace the video-placeholder div with:\n<iframe class="video-embed" src="YOUR_VIDEO_LINK" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
-            });
-        });
-        
         // Initialize carousels
         updateReelsCarousel();
         updateBrandingCarousel();
@@ -2310,9 +2786,9 @@
         // Instructions for updating video links
         console.log("To update YouTube video links:");
         console.log("1. Get your actual YouTube video IDs");
-        console.log("2. Replace the 'data-video' attribute in each .video-play-btn");
+        console.log("2. Replace the 'data-video' attribute in all play buttons");
         console.log("3. Format: data-video='https://www.youtube.com/embed/YOUR_VIDEO_ID'");
-        console.log("4. For Instagram reels, replace video-placeholder div with actual embed code");
+        console.log("4. For @codesworld.exe reels, get actual Instagram embed codes");
     </script>
 </body>
 </html>
