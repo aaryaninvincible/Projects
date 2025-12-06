@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Work | Meenakshi Pandey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --soft-pink: #F8D7E6;
+            --pink: #F2B0C9;
+            --beige: #F5F0E6;
+            --white: #FFFFFF;
+            --charcoal: #2C3A47;
+            --light-charcoal: #3A506B;
+            --radius: 16px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--beige);
+            color: var(--charcoal);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .all-work-header {
+            background: linear-gradient(135deg, var(--soft-pink) 0%, var(--white) 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .all-work-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--charcoal);
+        }
+        
+        .all-work-header p {
+            font-size: 1.2rem;
+            color: var(--light-charcoal);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background-color: var(--pink);
+            color: var(--white);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--charcoal);
+            transform: translateY(-3px);
+        }
+        
+        /* Content Sections */
+        .content-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--charcoal);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--pink);
+        }
+        
+        /* Grid Templates */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .content-item {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .content-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .content-info {
+            padding: 20px;
+        }
+        
+        .content-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--charcoal);
+        }
+        
+        .content-info p {
+            color: var(--light-charcoal);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        
+        .content-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-charcoal);
+            font-size: 0.85rem;
+        }
+        
+        /* YouTube Section */
+        .youtube-video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .youtube-item {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .youtube-thumbnail {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .youtube-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Instagram Section */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .instagram-item {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .instagram-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .instagram-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Thumbnails Section */
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 10px 25px;
+            background-color: var(--beige);
+            color: var(--charcoal);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .category-tab.active {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+        
+        .category-tab:hover:not(.active) {
+            background-color: var(--soft-pink);
+        }
+        
+        /* Load More Button */
+        .load-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .load-btn {
+            padding: 12px 30px;
+            background-color: var(--charcoal);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .load-btn:hover {
+            background-color: var(--pink);
+            transform: translateY(-3px);
+        }
+        
+        /* Navigation */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-item {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            color: var(--pink);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--pink);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-grid, .youtube-video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .nav-container {
+                padding: 10px 20px;
+                gap: 15px;
+                font-size: 0.9rem;
+                overflow-x: auto;
+                max-width: 90vw;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .all-work-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid, .youtube-video-grid, .instagram-grid, .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .category-tabs {
+                justify-content: flex-start;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content-grid, .youtube-video-grid, .instagram-grid, .thumbnails-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="nav-container">
+        <a href="index.html" class="nav-item">Main Portfolio</a>
+        <a href="#youtube" class="nav-item">YouTube</a>
+        <a href="#instagram" class="nav-item">Instagram</a>
+        <a href="#thumbnails" class="nav-item">Thumbnails</a>
+        <a href="#design" class="nav-item">Design Work</a>
+        <a href="#projects" class="nav-item">Projects</a>
+        <a href="#contact" class="nav-item">Contact</a>
+    </div>
+
+    <!-- Header -->
+    <header class="all-work-header">
+        <div class="container">
+            <h1>All My Work</h1>
+            <p>A comprehensive collection of all my YouTube content, Instagram reels, thumbnails, design work, and projects in one place.</p>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Main Portfolio
+            </a>
+        </div>
+    </header>
+
+    <!-- YouTube Content -->
+    <section id="youtube" class="content-section">
+        <div class="container">
+            <h2 class="section-title">YouTube Content</h2>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Videos</div>
+                <div class="category-tab" data-category="travel">Travel Vlogs</div>
+                <div class="category-tab" data-category="education">Educational</div>
+                <div class="category-tab" data-category="documentary">Documentaries</div>
+            </div>
+            
+            <div class="youtube-video-grid" id="youtube-content">
+                <!-- Template for YouTube Items -->
+                <!--
+                <div class="youtube-item">
+                    <div class="youtube-thumbnail">
+                        <img src="IMAGE_PATH" alt="Video Title">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>Video Title</h3>
+                        <p>Video description goes here. This could be a short summary of what the video is about.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-eye"></i> 100K views</span>
+                            <span><i class="far fa-calendar"></i> 2 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- YouTube Video 1 -->
+                <div class="youtube-item" data-category="documentary">
+                    <div class="youtube-thumbnail">
+                        <img src="6.png" alt="Hyderabad Documentary">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>An Ode to Hyderabad - Documentary</h3>
+                        <p>A comprehensive documentary exploring the history, culture, and architecture of Hyderabad.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-eye"></i> 1.2M views</span>
+                            <span><i class="far fa-calendar"></i> 8 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Video 2 -->
+                <div class="youtube-item" data-category="travel">
+                    <div class="youtube-thumbnail">
+                        <img src="1.png" alt="Hyderabad Travel">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>Hyderabad Travel Guide</h3>
+                        <p>Complete travel guide to Hyderabad covering must-visit places, food, and cultural experiences.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-eye"></i> 450K views</span>
+                            <span><i class="far fa-calendar"></i> 6 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Video 3 -->
+                <div class="youtube-item" data-category="travel">
+                    <div class="youtube-thumbnail">
+                        <img src="12.png" alt="Food Vlog">
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>Hyderabad Food Tour</h3>
+                        <p>Exploring the delicious cuisine of Hyderabad including famous biryani and street food.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-eye"></i> 520K views</span>
+                            <span><i class="far fa-calendar"></i> 5 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- YouTube Video 4 -->
+                <div class="youtube-item" data-category="education">
+                    <div class="youtube-thumbnail">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-robot" style="font-size: 3rem;"></i>
+                        </div>
+                        <div class="play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>AI Engineering Basics</h3>
+                        <p>Introduction to artificial intelligence concepts and applications in modern engineering.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-eye"></i> 45K views</span>
+                            <span><i class="far fa-calendar"></i> 3 months ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-btn" id="load-more-youtube">
+                    <i class="fas fa-plus"></i> Load More YouTube Videos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Content -->
+    <section id="instagram" class="content-section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Instagram Content</h2>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Posts</div>
+                <div class="category-tab" data-category="reels">Reels</div>
+                <div class="category-tab" data-category="posts">Posts</div>
+                <div class="category-tab" data-category="stories">Stories</div>
+            </div>
+            
+            <div class="instagram-grid" id="instagram-content">
+                <!-- Template for Instagram Items -->
+                <!--
+                <div class="instagram-item">
+                    <div class="instagram-image">
+                        <img src="IMAGE_PATH" alt="Post Title">
+                    </div>
+                    <div class="content-info">
+                        <h3>Post Title</h3>
+                        <p>Description of the Instagram post or reel content.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-heart"></i> 10K likes</span>
+                            <span><i class="fas fa-comment"></i> 500 comments</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- Instagram Post 1 -->
+                <div class="instagram-item" data-category="reels">
+                    <div class="instagram-image">
+                        <img src="3.png" alt="Hyderabad Reel">
+                    </div>
+                    <div class="content-info">
+                        <h3>Hyderabad Must Visit Places</h3>
+                        <p>Instagram reel showcasing the top places to visit in Hyderabad.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-heart"></i> 125K likes</span>
+                            <span><i class="fas fa-comment"></i> 2.5K comments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 2 -->
+                <div class="instagram-item" data-category="reels">
+                    <div class="instagram-image">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-code" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>Coding Tips Reel</h3>
+                        <p>Quick coding tips and tricks for beginners in programming.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-heart"></i> 350K likes</span>
+                            <span><i class="fas fa-comment"></i> 8.5K comments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 3 -->
+                <div class="instagram-item" data-category="posts">
+                    <div class="instagram-image">
+                        <img src="website (1).png" alt="Website Design">
+                    </div>
+                    <div class="content-info">
+                        <h3>TheFourganics Website Design</h3>
+                        <p>Showcasing the complete website design for TheFourganics brand.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-heart"></i> 45K likes</span>
+                            <span><i class="fas fa-comment"></i> 850 comments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Instagram Post 4 -->
+                <div class="instagram-item" data-category="posts">
+                    <div class="instagram-image">
+                        <img src="Blue Purple and White Modern Graphic Design Instagram Post.png" alt="Graphic Design">
+                    </div>
+                    <div class="content-info">
+                        <h3>Graphic Design Services</h3>
+                        <p>Promotional post for graphic design services including logo and branding.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-heart"></i> 38K likes</span>
+                            <span><i class="fas fa-comment"></i> 720 comments</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-btn" id="load-more-instagram">
+                    <i class="fas fa-plus"></i> Load More Instagram Content
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thumbnails -->
+    <section id="thumbnails" class="content-section">
+        <div class="container">
+            <h2 class="section-title">YouTube Thumbnails</h2>
+            
+            <div class="thumbnails-grid" id="thumbnails-content">
+                <!-- Template for Thumbnail Items -->
+                <!--
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="IMAGE_PATH" alt="Thumbnail Title">
+                    </div>
+                    <div class="content-info">
+                        <h3>Thumbnail Title</h3>
+                        <p>Description of the video this thumbnail represents.</p>
+                        <div class="content-meta">
+                            <span>Click-through: 12.5%</span>
+                            <span>Views: 500K</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- Thumbnail 1 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="1.png" alt="Hyderabad Travel">
+                    </div>
+                    <div class="content-info">
+                        <h3>Hyderabad Travel Blog</h3>
+                        <p>Thumbnail for Hyderabad travel vlog series.</p>
+                        <div class="content-meta">
+                            <span>Click-through: 12.5%</span>
+                            <span>Views: 450K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thumbnail 2 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="2.png" alt="Vlog Travel">
+                    </div>
+                    <div class="content-info">
+                        <h3>Vlog Travel Series</h3>
+                        <p>Thumbnail for travel vlog series with hashtag #VlogTravel.</p>
+                        <div class="content-meta">
+                            <span>Click-through: 10.3%</span>
+                            <span>Views: 380K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thumbnail 3 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="5.png" alt="Why Hyderabad">
+                    </div>
+                    <div class="content-info">
+                        <h3>Why Travel to Hyderabad?</h3>
+                        <p>Thumbnail for video explaining why Hyderabad is a must-visit destination.</p>
+                        <div class="content-meta">
+                            <span>Click-through: 13.4%</span>
+                            <span>Views: 310K</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Thumbnail 4 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="7.png" alt="Travel Vlog">
+                    </div>
+                    <div class="content-info">
+                        <h3>Travel to Hyderabad Vlog</h3>
+                        <p>Thumbnail for complete Hyderabad travel guide vlog.</p>
+                        <div class="content-meta">
+                            <span>Click-through: 11.7%</span>
+                            <span>Views: 520K</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-btn" id="load-more-thumbnails">
+                    <i class="fas fa-plus"></i> Load More Thumbnails
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Work -->
+    <section id="design" class="content-section" style="background-color: var(--white);">
+        <div class="container">
+            <h2 class="section-title">Design Work</h2>
+            
+            <div class="category-tabs">
+                <div class="category-tab active" data-category="all">All Designs</div>
+                <div class="category-tab" data-category="website">Website</div>
+                <div class="category-tab" data-category="branding">Branding</div>
+                <div class="category-tab" data-category="social">Social Media</div>
+            </div>
+            
+            <div class="content-grid" id="design-content">
+                <!-- Template for Design Items -->
+                <!--
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="IMAGE_PATH" alt="Design Title">
+                    </div>
+                    <div class="content-info">
+                        <h3>Design Title</h3>
+                        <p>Description of the design work and its purpose.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-palette"></i> Photoshop</span>
+                            <span>Client: Client Name</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- Design 1 -->
+                <div class="content-item" data-category="website">
+                    <div class="content-image">
+                        <img src="website (1).png" alt="TheFourganics Home">
+                    </div>
+                    <div class="content-info">
+                        <h3>TheFourganics Home Page</h3>
+                        <p>Complete homepage design for natural wellness brand.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-palette"></i> Figma</span>
+                            <span>Client: TheFourganics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design 2 -->
+                <div class="content-item" data-category="website">
+                    <div class="content-image">
+                        <img src="website (2).png" alt="TheFourganics Clothing">
+                    </div>
+                    <div class="content-info">
+                        <h3>TheFourganics Clothing Line</h3>
+                        <p>Clothing section design for sustainable fashion brand.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-palette"></i> Illustrator</span>
+                            <span>Client: TheFourganics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design 3 -->
+                <div class="content-item" data-category="branding">
+                    <div class="content-image">
+                        <img src="Blue Purple and White Modern Graphic Design Instagram Post.png" alt="Graphic Design">
+                    </div>
+                    <div class="content-info">
+                        <h3>Graphic Design Service Promotion</h3>
+                        <p>Branding and promotional graphics for design services.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-palette"></i> Photoshop</span>
+                            <span>Category: Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design 4 -->
+                <div class="content-item" data-category="social">
+                    <div class="content-image">
+                        <img src="website (5).png" alt="About Page">
+                    </div>
+                    <div class="content-info">
+                        <h3>TheFourganics About Page</h3>
+                        <p>About page design telling the brand story and values.</p>
+                        <div class="content-meta">
+                            <span><i class="fas fa-palette"></i> Figma</span>
+                            <span>Client: TheFourganics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-btn" id="load-more-design">
+                    <i class="fas fa-plus"></i> Load More Design Work
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="content-section">
+        <div class="container">
+            <h2 class="section-title">All Projects</h2>
+            
+            <div class="content-grid" id="projects-content">
+                <!-- Template for Project Items -->
+                <!--
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="IMAGE_PATH" alt="Project Title">
+                    </div>
+                    <div class="content-info">
+                        <h3>Project Title</h3>
+                        <p>Brief description of the project and its objectives.</p>
+                        <div class="content-meta">
+                            <span>Status: Completed</span>
+                            <span>Tools: Photoshop, Figma</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- Project 1 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="3.png" alt="Hyderabad Series">
+                    </div>
+                    <div class="content-info">
+                        <h3>Hyderabad Travel Series</h3>
+                        <p>Complete content series covering travel, food, and culture of Hyderabad.</p>
+                        <div class="content-meta">
+                            <span>Status: Completed</span>
+                            <span>Tools: Photoshop, CapCut</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="10.png" alt="Heritage Walk">
+                    </div>
+                    <div class="content-info">
+                        <h3>Heritage Walk Promotion</h3>
+                        <p>Design and promotion materials for cultural heritage walks.</p>
+                        <div class="content-meta">
+                            <span>Status: Completed</span>
+                            <span>Tools: Illustrator, Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <img src="12.png" alt="Food Vlog">
+                    </div>
+                    <div class="content-info">
+                        <h3>Food Vlog Series</h3>
+                        <p>Complete food vlog series with thumbnails and promotional content.</p>
+                        <div class="content-meta">
+                            <span>Status: Ongoing</span>
+                            <span>Tools: Photoshop, Canva</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="content-item">
+                    <div class="content-image">
+                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-laptop-code" style="font-size: 3rem;"></i>
+                        </div>
+                    </div>
+                    <div class="content-info">
+                        <h3>Portfolio Website</h3>
+                        <p>Complete portfolio website design and development.</p>
+                        <div class="content-meta">
+                            <span>Status: Completed</span>
+                            <span>Tools: HTML, CSS, JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="load-more">
+                <button class="load-btn" id="load-more-projects">
+                    <i class="fas fa-plus"></i> Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html" class="footer-link">Main Portfolio</a>
+                    <a href="#youtube" class="footer-link">YouTube</a>
+                    <a href="#instagram" class="footer-link">Instagram</a>
+                    <a href="#thumbnails" class="footer-link">Thumbnails</a>
+                    <a href="#design" class="footer-link">Design Work</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                </div>
+                <div class="copyright">
+                    © 2024 Meenakshi Pandey. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category filtering
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                const container = this.closest('.content-section');
+                container.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                const contentGrid = container.querySelector('.content-grid, .youtube-video-grid, .instagram-grid, .thumbnails-grid');
+                
+                if (contentGrid) {
+                    const items = contentGrid.querySelectorAll('.content-item, .youtube-item, .instagram-item');
+                    
+                    items.forEach(item => {
+                        if (category === 'all' || item.dataset.category === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Load more functionality
+        const loadButtons = document.querySelectorAll('.load-btn');
+        
+        loadButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const sectionId = this.closest('.content-section').id;
+                alert(`Loading more ${sectionId} content...\n\nIn a real implementation, this would load additional items from a database or API. For now, you can add more items using the provided templates in the HTML comments.`);
+            });
+        });
+        
+        // Navigation smooth scrolling
+        document.querySelectorAll('.nav-item, .footer-link').forEach(anchor => {
+            if (anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('#')) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+        
+        console.log("All Work page is ready!");
+        console.log("To add more content:");
+        console.log("1. Use the templates provided in the HTML comments");
+        console.log("2. Add your images to the same folder");
+        console.log("3. Update the data-category attribute for filtering");
+        console.log("4. Add actual YouTube/Instagram embed codes for video playback");
+    </script>
+</body>
+</html>

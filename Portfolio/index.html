@@ -128,6 +128,48 @@
             border-left: 4px solid var(--pink);
         }
         
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--pink);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--charcoal);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-secondary {
+            background-color: var(--beige);
+            color: var(--charcoal);
+            border: 2px solid var(--pink);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--soft-pink);
+            transform: translateY(-3px);
+        }
+        
         /* Section Headers */
         .section-header {
             text-align: center;
@@ -204,6 +246,123 @@
             left: 25px;
         }
         
+        /* GitHub Section */
+        #github {
+            background-color: var(--white);
+        }
+        
+        .github-profile {
+            background: linear-gradient(135deg, #24292e 0%, #0d1117 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .github-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .github-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .github-icon {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        
+        .github-details h2 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .github-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .github-btn {
+            background-color: white;
+            color: var(--charcoal);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .repositories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .repo-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .repo-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .repo-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .repo-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .repo-stats {
+            display: flex;
+            gap: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
         /* Client Work Section */
         #client-work {
             background-color: var(--white);
@@ -255,12 +414,6 @@
             margin-top: 10px;
         }
         
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
         .visit-btn {
             background-color: white;
             color: var(--charcoal);
@@ -273,6 +426,7 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .visit-btn:hover {
@@ -537,7 +691,7 @@
             font-size: 0.8rem;
         }
         
-        /* Digital Content Section - Reels & Posts */
+        /* Digital Content Section */
         #digital-content {
             background-color: var(--white);
         }
@@ -705,24 +859,6 @@
         .carousel-dot.active {
             background-color: var(--pink);
             transform: scale(1.2);
-        }
-        
-        /* Video Embed */
-        .video-embed {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
         }
         
         /* Posts Grid */
@@ -1158,6 +1294,31 @@
             width: 40px;
         }
         
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            background-color: var(--pink);
+            transform: translateY(-5px);
+        }
+        
         .qr-section {
             flex: 1;
             display: flex;
@@ -1189,6 +1350,43 @@
         
         .section-subtitle.white {
             color: rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--charcoal);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--pink);
+        }
+        
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
         }
         
         /* Video Modal */
@@ -1323,7 +1521,7 @@
                 min-width: 280px;
             }
             
-            .client-header {
+            .client-header, .github-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
@@ -1334,6 +1532,11 @@
             
             .other-videos {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
         
@@ -1348,9 +1551,6 @@
                 font-size: 0.9rem;
                 overflow-x: auto;
                 max-width: 90vw;
-            }
-            
-            .nav-item {
                 white-space: nowrap;
             }
             
@@ -1366,12 +1566,16 @@
                 height: 400px;
             }
             
-            .client-showcase {
+            .client-showcase, .github-profile {
                 padding: 30px 20px;
             }
             
-            .viral-reels {
+            .viral-reels, .repositories-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                justify-content: center;
             }
         }
         
@@ -1384,7 +1588,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .client-stats {
+            .client-stats, .github-stats {
                 flex-direction: column;
                 gap: 10px;
             }
@@ -1397,6 +1601,16 @@
             .other-videos {
                 grid-template-columns: 1fr;
             }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -1405,6 +1619,7 @@
     <div class="nav-container">
         <a href="#cover" class="nav-item">Home</a>
         <a href="#about" class="nav-item">About</a>
+        <a href="#github" class="nav-item">GitHub</a>
         <a href="#client-work" class="nav-item">Client Work</a>
         <a href="#youtube-channels" class="nav-item">YouTube</a>
         <a href="#digital-content" class="nav-item">Content</a>
@@ -1412,6 +1627,7 @@
         <a href="#experience" class="nav-item">Experience</a>
         <a href="#projects" class="nav-item">Projects</a>
         <a href="#contact" class="nav-item">Contact</a>
+        <a href="all-work.html" class="nav-item" target="_blank">All Work</a>
     </div>
 
     <!-- Cover Page -->
@@ -1422,6 +1638,14 @@
                     <h1>Meenakshi Pandey</h1>
                     <div class="title">Graphic Designer | Digital Content & UI/UX Design</div>
                     <div class="tagline">Bringing brand stories to life through smart, creative & high-impact digital design.</div>
+                    <div class="action-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                        <a href="all-work.html" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i> View All My Work
+                        </a>
+                    </div>
                 </div>
                 <div class="cover-image">
                     <div class="designer-mockup">
@@ -1456,8 +1680,93 @@
                 </div>
                 <div class="about-image">
                     <!-- You can add your profile photo here -->
-                    <img src="dp.jpg" alt="Meenakshi Pandey" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="profile-placeholder.jpg" alt="Meenakshi Pandey" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section id="github">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">GitHub Profile</h2>
+                <p class="section-subtitle">Code repositories and development projects</p>
+            </div>
+            
+            <div class="github-profile">
+                <div class="github-header">
+                    <div class="github-info">
+                        <div class="github-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="github-details">
+                            <h2>Meenakshi1312</h2>
+                            <p>Front-end Development & Design Projects</p>
+                            <div class="github-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-code-branch"></i>
+                                    <span>15+ Repositories</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>45 Stars</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-code"></i>
+                                    <span>JavaScript, HTML, CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Meenakshi1312" target="_blank" class="github-btn">
+                        <i class="fab fa-github"></i> Visit GitHub
+                    </a>
+                </div>
+                
+                <h3 style="color: white; margin-bottom: 30px; font-size: 1.8rem;">Featured Repositories</h3>
+                
+                <div class="repositories-grid">
+                    <!-- Repository 1 -->
+                    <div class="repo-card">
+                        <h3><i class="fas fa-palette"></i> Portfolio-Website</h3>
+                        <p>Complete portfolio website with responsive design and interactive elements.</p>
+                        <div class="repo-stats">
+                            <span><i class="fas fa-star"></i> 12 stars</span>
+                            <span><i class="fas fa-code-branch"></i> 3 forks</span>
+                            <span><i class="fas fa-circle" style="color: #f1e05a;"></i> JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Repository 2 -->
+                    <div class="repo-card">
+                        <h3><i class="fas fa-shopping-cart"></i> E-Commerce-UI</h3>
+                        <p>Modern e-commerce user interface design with product filtering and cart functionality.</p>
+                        <div class="repo-stats">
+                            <span><i class="fas fa-star"></i> 8 stars</span>
+                            <span><i class="fas fa-code-branch"></i> 2 forks</span>
+                            <span><i class="fas fa-circle" style="color: #563d7c;"></i> CSS</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Repository 3 -->
+                    <div class="repo-card">
+                        <h3><i class="fas fa-mobile-alt"></i> React-Weather-App</h3>
+                        <p>Weather application built with React.js featuring real-time data and location services.</p>
+                        <div class="repo-stats">
+                            <span><i class="fas fa-star"></i> 15 stars</span>
+                            <span><i class="fas fa-code-branch"></i> 5 forks</span>
+                            <span><i class="fas fa-circle" style="color: #61dafb;"></i> React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://github.com/Meenakshi1312" target="_blank" class="btn btn-primary">
+                    <i class="fab fa-github"></i> Explore All Repositories
+                </a>
             </div>
         </div>
     </section>
@@ -1466,7 +1775,7 @@
     <section id="client-work">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">03</div>
+                <div class="section-number">04</div>
                 <h2 class="section-title">Client Work</h2>
                 <p class="section-subtitle">Viral reels and content creation for top creators</p>
             </div>
@@ -1588,7 +1897,7 @@
     <section id="youtube-channels">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">04</div>
+                <div class="section-number">05</div>
                 <h2 class="section-title">YouTube Channels</h2>
                 <p class="section-subtitle">Educational content & personal vlogging channels</p>
             </div>
@@ -1818,31 +2127,18 @@
             </div>
             
             <div style="text-align: center; margin-top: 40px;">
-                <p style="font-size: 1.1rem; color: var(--light-charcoal); max-width: 800px; margin: 0 auto;">
-                    <i class="fas fa-video" style="color: var(--pink); margin-right: 10px;"></i>
-                    Producing engaging educational and entertainment content across multiple YouTube channels, with videos reaching millions of views and building loyal subscriber communities.
-                </p>
+                <a href="all-work.html#youtube" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-video"></i> View All YouTube Content
+                </a>
             </div>
         </div>
     </section>
-
-    <!-- Video Modal -->
-    <div class="video-modal" id="videoModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-video-container" id="modalVideoContainer">
-                <!-- Video will be loaded here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Digital Content Section -->
     <section id="digital-content">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">05</div>
+                <div class="section-number">06</div>
                 <h2 class="section-title">Digital Content</h2>
                 <p class="section-subtitle">Reels, social posts, and thumbnails that drive engagement</p>
             </div>
@@ -2076,6 +2372,12 @@
                     </div>
                 </div>
             </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="all-work.html" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-layer-group"></i> View All Digital Content
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2083,7 +2385,7 @@
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">06</div>
+                <div class="section-number">07</div>
                 <h2 class="section-title">My Skills</h2>
                 <p class="section-subtitle">Combining creative vision with technical expertise</p>
             </div>
@@ -2124,7 +2426,7 @@
     <section id="experience">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">07</div>
+                <div class="section-number">08</div>
                 <h2 class="section-title">Work Experience</h2>
                 <p class="section-subtitle">Professional journey in design and digital creation</p>
             </div>
@@ -2164,7 +2466,7 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">08</div>
+                <div class="section-number">09</div>
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Selected design work with case studies</p>
             </div>
@@ -2331,6 +2633,12 @@
                     </div>
                 </div>
             </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="all-work.html#projects" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-folder-open"></i> View All Projects
+                </a>
+            </div>
         </div>
     </section>
 
@@ -2338,7 +2646,7 @@
     <section id="strengths">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">09</div>
+                <div class="section-number">10</div>
                 <h2 class="section-title">Strengths for Agency Role</h2>
                 <p class="section-subtitle">What I bring to collaborative design environments</p>
             </div>
@@ -2375,7 +2683,7 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <div class="section-number">10</div>
+                <div class="section-number">11</div>
                 <h2 class="section-title">Key Achievements</h2>
                 <p class="section-subtitle">Milestones in my design career</p>
             </div>
@@ -2418,7 +2726,7 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">11</div>
+                <div class="section-number">12</div>
                 <h2 class="section-title white">Let's Connect</h2>
                 <p class="section-subtitle white">Ready to bring your brand story to life? Get in touch!</p>
             </div>
@@ -2449,6 +2757,21 @@
                                 <p>Indore, Madhya Pradesh, India</p>
                             </div>
                         </div>
+                        
+                        <div class="social-links">
+                            <a href="https://github.com/Meenakshi1312" target="_blank" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@engineringtricks" target="_blank" class="social-link">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://www.instagram.com/codesworld.exe?igsh=MnFqbThoOWdkbWE2" target="_blank" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -2462,20 +2785,60 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#cover" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#github" class="footer-link">GitHub</a>
+                    <a href="#client-work" class="footer-link">Client Work</a>
+                    <a href="#youtube-channels" class="footer-link">YouTube</a>
+                    <a href="#digital-content" class="footer-link">Content</a>
+                    <a href="#skills" class="footer-link">Skills</a>
+                    <a href="#experience" class="footer-link">Experience</a>
+                    <a href="#projects" class="footer-link">Projects</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                    <a href="all-work.html" target="_blank" class="footer-link">All Work</a>
+                </div>
+                <div class="copyright">
+                    © 2024 Meenakshi Pandey. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-video-container" id="modalVideoContainer">
+                <!-- Video will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Smooth scrolling for navigation
-        document.querySelectorAll('.nav-item').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
+        document.querySelectorAll('.nav-item, .footer-link').forEach(anchor => {
+            if (anchor.getAttribute('href') && anchor.getAttribute('href').startsWith('#')) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-            });
+            }
         });
         
         // Add active state to navigation
@@ -2524,7 +2887,6 @@
                 const videoUrl = this.getAttribute('data-video');
                 
                 // For demonstration, using placeholder video
-                // Replace with your actual YouTube video IDs when available
                 const videoId = "dQw4w9WgXcQ"; // Example video ID
                 const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
                 
@@ -2783,12 +3145,11 @@
         updateBrandingCarousel();
         updateUiCarousel();
         
-        // Instructions for updating video links
-        console.log("To update YouTube video links:");
-        console.log("1. Get your actual YouTube video IDs");
-        console.log("2. Replace the 'data-video' attribute in all play buttons");
-        console.log("3. Format: data-video='https://www.youtube.com/embed/YOUR_VIDEO_ID'");
-        console.log("4. For @codesworld.exe reels, get actual Instagram embed codes");
+        console.log("Portfolio is ready!");
+        console.log("To add more content in the future:");
+        console.log("1. Use the templates in all-work.html");
+        console.log("2. Add new images to the same folder");
+        console.log("3. Update video links with actual YouTube/Instagram embed codes");
     </script>
 </body>
 </html>
