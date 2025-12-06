@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .bio {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .skills {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .skills h3 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .skill-tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: 2px solid #667eea;
+        }
+        
+        .contact-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-img">👨‍💻</div>
+        
+        <h1>Aaryan Trivedi</h1>
+        <p class="subtitle">M.Tech Student | AI/ML Enthusiast</p>
+        
+        <div class="bio">
+            <p>Welcome to my portfolio! I'm a passionate computer science student pursuing M.Tech in AI/ML. I love building innovative projects that blend artificial intelligence with real-world applications.</p>
+        </div>
+        
+        <div class="skills">
+            <h3>Skills & Interests</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">IoT</span>
+                <span class="skill-tag">Data Structures</span>
+                <span class="skill-tag">Web Development</span>
+                <span class="skill-tag">AI/Deep Learning</span>
+            </div>
+        </div>
+        
+        <button class="contact-btn" onclick="alert('Contact feature coming soon!')">Get In Touch</button>
+        
+        <div class="footer">
+            <p>© 2025 Aaryan Trivedi. Hosted on GitHub Pages.</p>
+        </div>
+    </div>
+</body>
+</html>
