@@ -204,6 +204,202 @@
             left: 25px;
         }
         
+        /* YouTube Channel Section */
+        #youtube-channel {
+            background-color: var(--white);
+        }
+        
+        .youtube-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .channel-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF0000, #CC0000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .channel-details h2 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .channel-stats {
+            display: flex;
+            gap: 15px;
+            color: var(--light-charcoal);
+        }
+        
+        .subscribe-btn {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .subscribe-btn:hover {
+            background-color: #CC0000;
+            transform: translateY(-3px);
+        }
+        
+        /* YouTube Videos Grid */
+        .youtube-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .video-card {
+            background-color: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .video-thumbnail {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .video-thumbnail:hover .video-play-btn {
+            opacity: 1;
+        }
+        
+        .video-play-btn:hover {
+            background-color: rgba(255, 0, 0, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-info {
+            padding: 20px;
+        }
+        
+        .video-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-charcoal);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            width: 90%;
+            max-width: 900px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        
+        .modal-video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .modal-video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
         /* Digital Content Section - Reels & Posts */
         #digital-content {
             background-color: var(--white);
@@ -934,6 +1130,15 @@
             .reel-card, .project-card {
                 min-width: 280px;
             }
+            
+            .youtube-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .youtube-videos {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
         }
         
         @media (max-width: 768px) {
@@ -958,6 +1163,10 @@
             .reel-thumbnail {
                 height: 400px;
             }
+            
+            .youtube-videos {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 480px) {
@@ -968,6 +1177,11 @@
             .posts-grid, .thumbnails-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .channel-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -976,6 +1190,7 @@
     <div class="nav-container">
         <a href="#cover" class="nav-item">Home</a>
         <a href="#about" class="nav-item">About</a>
+        <a href="#youtube-channel" class="nav-item">YouTube</a>
         <a href="#digital-content" class="nav-item">Content</a>
         <a href="#skills" class="nav-item">Skills</a>
         <a href="#experience" class="nav-item">Experience</a>
@@ -1031,11 +1246,105 @@
         </div>
     </section>
 
+    <!-- YouTube Channel Section -->
+    <section id="youtube-channel">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2 class="section-title">YouTube Channel</h2>
+                <p class="section-subtitle">Engineering Tricks & Creative Tutorials</p>
+            </div>
+            
+            <div class="youtube-header">
+                <div class="channel-info">
+                    <div class="channel-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <div class="channel-details">
+                        <h2>Engineering Tricks</h2>
+                        <div class="channel-stats">
+                            <span><i class="fas fa-users"></i> 1,200+ Subscribers</span>
+                            <span><i class="fas fa-video"></i> 50+ Videos</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.youtube.com/@engineringtricks" target="_blank" class="subscribe-btn">
+                    <i class="fab fa-youtube"></i> Subscribe on YouTube
+                </a>
+            </div>
+            
+            <div class="youtube-videos">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="6.png" alt="Hyderabad Documentary">
+                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>An Ode to Hyderabad - A Documentary on the Marvelous Hyderabad</h3>
+                        <p>Explore the rich history, culture, and architecture of Hyderabad in this comprehensive documentary.</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 15.2K views</span>
+                            <span><i class="fas fa-thumbs-up"></i> 1.2K likes</span>
+                            <span><i class="far fa-calendar"></i> 2 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="7.png" alt="Travel to Hyderabad Vlog">
+                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Travel to Hyderabad - Complete Travel Guide Vlog</h3>
+                        <p>Your ultimate guide to traveling Hyderabad - places to visit, food to try, and hidden gems.</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 12.5K views</span>
+                            <span><i class="fas fa-thumbs-up"></i> 890 likes</span>
+                            <span><i class="far fa-calendar"></i> 3 months ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="12.png" alt="Hyderabad Food Vlog">
+                        <div class="video-play-btn" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Delicious Hyderabad Food Tour - Biryani & Chicken Special</h3>
+                        <p>Join me on a culinary journey through Hyderabad's most famous restaurants and street food.</p>
+                        <div class="video-stats">
+                            <span><i class="fas fa-eye"></i> 18.3K views</span>
+                            <span><i class="fas fa-thumbs-up"></i> 1.5K likes</span>
+                            <span><i class="far fa-calendar"></i> 1 month ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://www.youtube.com/@engineringtricks" target="_blank" class="subscribe-btn" style="background-color: var(--charcoal);">
+                    <i class="fab fa-youtube"></i> View All Videos on YouTube
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Digital Content Section -->
     <section id="digital-content">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">03</div>
+                <div class="section-number">04</div>
                 <h2 class="section-title">Digital Content</h2>
                 <p class="section-subtitle">Reels, social posts, and thumbnails that drive engagement</p>
             </div>
@@ -1057,16 +1366,12 @@
                         <!-- Reel 1 - Design Process -->
                         <div class="reel-card" data-category="design">
                             <div class="reel-thumbnail">
-                                <!-- Add your reel thumbnail or video embed here -->
                                 <div class="video-placeholder">
                                     <div style="text-align: center;">
                                         <i class="fas fa-play-circle" style="font-size: 3rem; margin-bottom: 10px;"></i>
                                         <p>Design Process Reel</p>
                                     </div>
                                 </div>
-                                <!-- When you have video links, replace with:
-                                <iframe class="video-embed" src="YOUR_INSTAGRAM_REEL_LINK" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                -->
                             </div>
                             <div class="reel-info">
                                 <h3>Graphic Design Process</h3>
@@ -1276,11 +1581,23 @@
         </div>
     </section>
 
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-video-container" id="modalVideoContainer">
+                <!-- Video will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Skills -->
     <section id="skills">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">04</div>
+                <div class="section-number">05</div>
                 <h2 class="section-title">My Skills</h2>
                 <p class="section-subtitle">Combining creative vision with technical expertise</p>
             </div>
@@ -1321,7 +1638,7 @@
     <section id="experience">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">05</div>
+                <div class="section-number">06</div>
                 <h2 class="section-title">Work Experience</h2>
                 <p class="section-subtitle">Professional journey in design and digital creation</p>
             </div>
@@ -1361,7 +1678,7 @@
     <section id="projects">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">06</div>
+                <div class="section-number">07</div>
                 <h2 class="section-title">Featured Projects</h2>
                 <p class="section-subtitle">Selected design work with case studies</p>
             </div>
@@ -1535,7 +1852,7 @@
     <section id="strengths">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">07</div>
+                <div class="section-number">08</div>
                 <h2 class="section-title">Strengths for Agency Role</h2>
                 <p class="section-subtitle">What I bring to collaborative design environments</p>
             </div>
@@ -1572,7 +1889,7 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <div class="section-number">08</div>
+                <div class="section-number">09</div>
                 <h2 class="section-title">Key Achievements</h2>
                 <p class="section-subtitle">Milestones in my design career</p>
             </div>
@@ -1615,7 +1932,7 @@
     <section id="contact">
         <div class="container">
             <div class="section-header">
-                <div class="section-number">09</div>
+                <div class="section-number">10</div>
                 <h2 class="section-title white">Let's Connect</h2>
                 <p class="section-subtitle white">Ready to bring your brand story to life? Get in touch!</p>
             </div>
@@ -1708,6 +2025,46 @@
         `;
         document.head.appendChild(style);
 
+        // Video Modal Functionality
+        const videoModal = document.getElementById('videoModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalVideoContainer = document.getElementById('modalVideoContainer');
+        
+        // YouTube video play buttons
+        const videoPlayButtons = document.querySelectorAll('.video-play-btn');
+        
+        videoPlayButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const videoUrl = this.getAttribute('data-video');
+                
+                // Replace with your actual YouTube video IDs when available
+                // For now, using placeholder video
+                const videoId = "dQw4w9WgXcQ"; // Example video ID
+                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                
+                modalVideoContainer.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                
+                videoModal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+            modalVideoContainer.innerHTML = ''; // Clear video
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+        
+        // Close modal when clicking outside
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+                modalVideoContainer.innerHTML = ''; // Clear video
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        });
+        
         // Reels Carousel Functionality
         const reelsContainer = document.getElementById('reels-container');
         const reelsCards = document.querySelectorAll('.reel-card');
@@ -1936,8 +2293,8 @@
         });
         
         // Play button interaction for reels
-        const playButtons = document.querySelectorAll('.reel-play-btn');
-        playButtons.forEach(button => {
+        const reelPlayButtons = document.querySelectorAll('.reel-play-btn');
+        reelPlayButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const card = this.closest('.reel-card');
                 const title = card.querySelector('h3').textContent;
@@ -1949,6 +2306,13 @@
         updateReelsCarousel();
         updateBrandingCarousel();
         updateUiCarousel();
+        
+        // Instructions for updating video links
+        console.log("To update YouTube video links:");
+        console.log("1. Get your actual YouTube video IDs");
+        console.log("2. Replace the 'data-video' attribute in each .video-play-btn");
+        console.log("3. Format: data-video='https://www.youtube.com/embed/YOUR_VIDEO_ID'");
+        console.log("4. For Instagram reels, replace video-placeholder div with actual embed code");
     </script>
 </body>
 </html>
