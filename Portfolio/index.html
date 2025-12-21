@@ -147,6 +147,11 @@
             position: relative;
         }
         
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
@@ -163,7 +168,6 @@
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
             margin: 0 auto 40px;
             color: #aaa;
         }
@@ -180,6 +184,53 @@
         @keyframes rgbFlow {
             0% { background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); }
             100% { background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary)); }
+        }
+        
+        /* Instagram Channel Section */
+        .instagram-showcase {
+            background: rgba(255, 0, 170, 0.05);
+            border: 1px solid rgba(255, 0, 170, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .insta-icon {
+            font-size: 4rem;
+            color: #E1306C;
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .insta-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 0, 170, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent);
+            margin-bottom: 5px;
         }
         
         /* Section Styles */
@@ -205,6 +256,45 @@
             width: 100px;
             height: 3px;
             background-color: var(--primary);
+        }
+        
+        /* Client Showcase */
+        .client-showcase {
+            margin: 60px 0;
+        }
+        
+        .client-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .client-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .client-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 136, 255, 0.2);
+        }
+        
+        .client-logo {
+            height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .client-logo i {
+            font-size: 2.5rem;
+            color: var(--secondary);
         }
         
         /* Projects Section */
@@ -325,6 +415,44 @@
             box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
         }
         
+        .btn-instagram {
+            border-color: #E1306C;
+            color: #E1306C;
+        }
+        
+        .btn-instagram:hover {
+            background-color: #E1306C;
+            color: white;
+            box-shadow: 0 0 10px #E1306C, 0 0 20px #E1306C;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
         /* About Section */
         .about-content {
             display: grid;
@@ -359,6 +487,7 @@
             justify-content: center;
             gap: 30px;
             margin-top: 40px;
+            flex-wrap: wrap;
         }
         
         .social-icon {
@@ -406,6 +535,15 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .instagram-showcase {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .insta-stats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -422,6 +560,7 @@
                 <div class="nav-links">
                     <a href="#home">Home</a>
                     <a href="#projects">Projects</a>
+                    <a href="#clients">Clients</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -432,19 +571,147 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>ARyan <span>RAIKWAR</span></h1>
-            <div class="rgb-line"></div>
-            <p>IoT & Full Stack Developer | AI Engineer | Passionate about innovation and tackling real-world challenges with cutting-edge technology.</p>
-            <div class="social-links">
-                <a href="https://linkedin.com/in/aryanraikwar" class="social-icon" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/aaryaninvincible" class="social-icon" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:aryanraikwar78@gmail.com" class="social-icon">
-                    <i class="fas fa-envelope"></i>
-                </a>
+            <div class="hero-content">
+                <h1>ARyan <span>RAIKWAR</span></h1>
+                <div class="rgb-line"></div>
+                <p>IoT & Full Stack Developer | AI Engineer | Tech Content Creator with 13K+ followers | Passionate about innovation and tackling real-world challenges with cutting-edge technology.</p>
+                
+                <!-- Instagram Channel Showcase -->
+                <div class="instagram-showcase">
+                    <div class="insta-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h3 style="color: #E1306C; margin-bottom: 10px; font-family: 'Orbitron', sans-serif;">@codesworld.exe</h3>
+                        <p>Sharing tech tutorials, coding tips, and project showcases with a growing community of 13K+ followers and millions of views.</p>
+                        
+                        <div class="insta-stats">
+                            <div class="stat-box">
+                                <div class="stat-number">13K+</div>
+                                <div>Followers</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">2M+</div>
+                                <div>Views</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-number">100+</div>
+                                <div>Tech Videos</div>
+                            </div>
+                        </div>
+                        
+                        <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram" target="_blank" style="margin-top: 20px;">
+                            <i class="fab fa-instagram"></i> Visit Instagram Channel
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/aryanraikwar" class="social-icon" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/aaryaninvincible" class="social-icon" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://instagram.com/codesworld.exe" class="social-icon" target="_blank" style="color: #E1306C;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:aryanraikwar78@gmail.com" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Client Showcase Section -->
+    <section id="clients">
+        <div class="container">
+            <h2 class="section-title">CLIENT PROJECTS</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Successfully delivered e-commerce solutions and digital products for clients across various industries.</p>
+            
+            <div class="client-grid">
+                <!-- Client 1: Voltros -->
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-bolt"></i>
+                        <h3 style="color: var(--secondary);">Voltros</h3>
+                    </div>
+                    <p>Complete e-commerce platform for electronics and tech products. Built with modern web technologies and integrated payment gateways.</p>
+                    <div class="project-links" style="margin-top: 20px;">
+                        <a href="https://voltros.in" class="btn" target="_blank">Visit Website</a>
+                    </div>
+                </div>
+                
+                <!-- Client 2: Ouranos Robotics -->
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-robot"></i>
+                        <h3 style="color: var(--primary);">Ouranos Robotics</h3>
+                    </div>
+                    <p>E-commerce platform for IoT devices and robotics products. Integrated Shopify with custom IoT solutions for enhanced user experience.</p>
+                    <div class="project-links" style="margin-top: 20px;">
+                        <a href="https://shop.ouranosrobotics.com" class="btn" target="_blank">Visit Store</a>
+                    </div>
+                </div>
+                
+                <!-- Client 3: Krishi Verse -->
+                <div class="client-card">
+                    <div class="client-logo">
+                        <i class="fas fa-leaf"></i>
+                        <h3 style="color: #00ff9d;">Krishi Verse</h3>
+                    </div>
+                    <p>IoT-based agricultural solutions platform. Developed patented smart devices and scalable e-commerce integration.</p>
+                    <div class="project-links" style="margin-top: 20px;">
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonials -->
+            <div style="margin-top: 80px;">
+                <h2 class="section-title">CLIENT TESTIMONIALS</h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Aryan delivered an exceptional e-commerce platform for our robotics company. His attention to detail and technical expertise exceeded our expectations."</p>
+                        <div style="margin-top: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <strong>Ouranos Robotics</strong>
+                                <div style="color: #aaa; font-size: 0.9rem;">Client</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"The Voltros platform developed by Aryan has significantly increased our online sales. His understanding of both frontend and backend technologies is impressive."</p>
+                        <div style="margin-top: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <strong>Voltros Team</strong>
+                                <div style="color: #aaa; font-size: 0.9rem;">Client</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p>"Working with Aryan on our IoT project was a great experience. He brought innovative solutions and helped us achieve 25% efficiency improvements in our systems."</p>
+                        <div style="margin-top: 20px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 50px; height: 50px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <strong>Krishi Verse</strong>
+                                <div style="color: #aaa; font-size: 0.9rem;">Client</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -452,7 +719,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">MAJOR PROJECTS</h2>
+            <h2 class="section-title">MY PROJECTS</h2>
             <div class="projects-grid">
                 
                 <!-- Project 1: Ambulance Booking System -->
@@ -476,28 +743,7 @@
                     </div>
                 </div>
                 
-                <!-- Project 2: POS System -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-cash-register"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Python POS System</h3>
-                        <p class="project-desc">Python-based Point of Sale system using Pandas, NumPy, and Flask. Improved billing speed by 20% and optimized performance by 15% through efficient data handling.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">NumPy</span>
-                            <span class="tech-tag">Flask</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3: AI Career Counseling -->
+                <!-- Project 2: AI Career Counseling -->
                 <div class="project-card">
                     <div class="project-img">
                         <i class="fas fa-robot"></i>
@@ -518,28 +764,7 @@
                     </div>
                 </div>
                 
-                <!-- Project 4: Dynamic To-Do List -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Dynamic To-Do List</h3>
-                        <p class="project-desc">Full CRUD application built with MERN stack (MongoDB, Express.js, React.js, Node.js). Achieved 30% performance improvement in task management with optimized components.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Express.js</span>
-                            <span class="tech-tag">React.js</span>
-                            <span class="tech-tag">Node.js</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5: IoT Smart Device -->
+                <!-- Project 3: IoT Smart Device -->
                 <div class="project-card">
                     <div class="project-img">
                         <i class="fas fa-microchip"></i>
@@ -556,27 +781,6 @@
                         <div class="project-links">
                             <a href="#" class="btn">Live Demo</a>
                             <a href="#" class="btn btn-secondary">Details</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6: E-commerce Platform -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Scalable E-commerce Platform</h3>
-                        <p class="project-desc">Developed scalable e-commerce solution during internship at Krishi Verse. Integrated with Shopify and custom IoT solutions for enhanced user experience.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Shopify</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -629,6 +833,9 @@
                 <a href="https://github.com/aaryaninvincible" class="social-icon" target="_blank">
                     <i class="fab fa-github"></i>
                 </a>
+                <a href="https://instagram.com/codesworld.exe" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
                 <a href="mailto:aryanraikwar78@gmail.com" class="social-icon">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -647,6 +854,7 @@
         <div class="container">
             <p style="margin-bottom: 10px;">&copy; 2024 Aryan Zone. All rights reserved.</p>
             <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email: aryanraikwar78@gmail.com</p>
+            <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">Instagram: @codesworld.exe | E-commerce Projects: Voltros.in & OuranosRobotics.com</p>
         </div>
     </footer>
     
@@ -677,6 +885,25 @@
             } else {
                 header.style.backgroundColor = 'rgba(10, 10, 15, 0.9)';
             }
+        });
+        
+        // Instagram stats counter animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
+                    }
+                }, 30);
+            });
         });
     </script>
 </body>
