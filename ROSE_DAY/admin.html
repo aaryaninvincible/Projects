@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine Admin Panel</title>
+    <title>Rose Day Admin Monitor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,16 +30,30 @@
         tryNext();
       })();
     </script>
+    <style>
+      .admin-list {
+        text-align: left;
+        max-height: 420px;
+        overflow: auto;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 14px;
+        border: 1px solid rgba(215, 38, 96, 0.2);
+        padding: 12px 16px;
+      }
+      .admin-list li {
+        margin: 8px 0;
+      }
+    </style>
   </head>
   <body>
     <div class="bg-hearts" id="bgHearts"></div>
     <main class="card">
-      <h1>Aryan Admin Panel</h1>
+      <h1>Aryan Dashboard</h1>
       <p class="subtitle">
-        Unlock days manually and monitor every click/update in real time.
+        Live Firebase events from Rose Day interactions.
       </p>
-      <p class="status" id="statusText">Loading admin data...</p>
-      <section id="appRoot"></section>
+      <p class="status" id="statusText">Waiting for incoming events...</p>
+      <ul class="admin-list" id="logList"></ul>
     </main>
     <script type="module">
       const scriptCandidates = [

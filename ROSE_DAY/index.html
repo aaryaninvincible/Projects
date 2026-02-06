@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Valentine Journey For Akanksha</title>
+    <title>Rose Day For Akanksha</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,10 +34,42 @@
   <body>
     <div class="bg-hearts" id="bgHearts"></div>
     <main class="card">
-      <h1>Valentine Week Journey</h1>
-      <p class="subtitle">A day-by-day surprise till 14 February. Each day unlocks by date or your admin panel.</p>
-      <p class="status" id="statusText">Loading journey...</p>
-      <section id="appRoot"></section>
+      <h1>Rose Day Surprise</h1>
+      <p class="subtitle">
+        If you want this rose, imagine me saying:<br />
+        <strong>"Akanksha, tu boht sundar hai."</strong>
+      </p>
+
+      <section class="rose-stage" id="roseStage">
+        <div class="single-rose" id="singleRose" aria-label="A rose for you">
+          <span class="petal p1"></span>
+          <span class="petal p2"></span>
+          <span class="petal p3"></span>
+          <span class="petal p4"></span>
+          <span class="center"></span>
+          <span class="stem"></span>
+          <span class="leaf l1"></span>
+          <span class="leaf l2"></span>
+        </div>
+      </section>
+
+      <button id="roseBtn" class="btn-primary">I Want This Rose</button>
+      <p class="status" id="statusText">Waiting for your click...</p>
+
+      <section id="messageBlock" class="hidden">
+        <p class="greet">
+          You are very beautiful Akanksha, here is your rose bouquet.
+        </p>
+        <p class="question">
+          If you want chocolate on Chocolate Day, say yes or no:
+        </p>
+        <div class="choice-row">
+          <button id="yesBtn" class="btn-secondary">Yes</button>
+          <button id="noBtn" class="btn-secondary">No</button>
+        </div>
+      </section>
+
+      <section id="responseBlock" class="hidden response-box"></section>
     </main>
 
     <script type="module">
@@ -58,7 +90,8 @@
       if (!loaded) {
         const s = document.getElementById("statusText");
         if (s) {
-          s.textContent = "App failed to load (404). Check GitHub Pages path or file names.";
+          s.textContent =
+            "App failed to load (404). Check GitHub Pages path or file names.";
         }
       }
     </script>
