@@ -1,0 +1,495 @@
+:root {
+    --bg-color: #ffffff;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --accent-color: #ff4757;
+    /* Soft Red/Pink for Love */
+    --accent-hover: #e84118;
+    --bot-msg-bg: #f1f3f4;
+    --user-msg-bg: #ff4757;
+    --user-msg-text: #ffffff;
+    --font-main: 'Outfit', sans-serif;
+    /* Keeping Outfit for modern feel, or could switch to Roboto/Open Sans */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    --shadow-hover: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Particles Container */
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /* Behind everything */
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.heart-particle {
+    position: absolute;
+    bottom: -20px;
+    color: rgba(255, 71, 87, 0.2);
+    /* Faint red */
+    animation: floatUp linear forwards;
+    font-size: 1.5rem;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.loader-content {
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.heart-loader {
+    display: inline-block;
+    position: relative;
+    width: 64px;
+    height: 64px;
+    transform: rotate(45deg);
+    transform-origin: 32px 32px;
+    margin-bottom: 20px;
+}
+
+.heart-loader div {
+    top: 23px;
+    left: 19px;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background: var(--accent-color);
+    animation: heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.heart-loader div:after,
+.heart-loader div:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 26px;
+    background: var(--accent-color);
+}
+
+.heart-loader div:before {
+    left: -17px;
+    border-radius: 50% 0 0 50%;
+}
+
+.heart-loader div:after {
+    top: -17px;
+    border-radius: 50% 50% 0 0;
+}
+
+@keyframes heart {
+    0% {
+        transform: scale(0.95);
+    }
+
+    5% {
+        transform: scale(1.1);
+    }
+
+    39% {
+        transform: scale(0.85);
+    }
+
+    45% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+/* App Structure */
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    /* Google typically has centered narrow content */
+    height: 90vh;
+    background: #ffffff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease;
+}
+
+.app-container:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+/* Header */
+.chat-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.logo h1 {
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo i {
+    color: var(--accent-color);
+}
+
+.mode-toggles {
+    display: flex;
+    gap: 8px;
+}
+
+.mode-btn {
+    background: transparent;
+    border: 1px solid #dadce0;
+    color: var(--text-secondary);
+    padding: 6px 16px;
+    border-radius: 18px;
+    /* Google-style chips */
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: var(--font-main);
+}
+
+.mode-btn:hover {
+    background: #f1f3f4;
+    color: var(--text-primary);
+}
+
+.mode-btn.active {
+    background: #e8f0fe;
+    /* Google Blue-ish tint, or maintain red theme? Let's use red tint */
+    background: rgba(255, 71, 87, 0.1);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.relationship-select-wrapper label {
+    color: var(--text-secondary);
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+select {
+    padding: 6px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    background: #fff;
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    outline: none;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: #f1f3f4;
+}
+
+.status-indicator {
+    color: #1e8e3e;
+    /* Google Green */
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #1e8e3e;
+    border-radius: 50%;
+}
+
+/* Chat Area */
+.chat-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background-color: #ffffff;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #dadce0 transparent;
+}
+
+.chat-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+    background-color: #dadce0;
+    border-radius: 3px;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    /* Align to top for cleaner look */
+    gap: 12px;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.advisor-avatar {
+    background: #e8f0fe;
+    color: #1967d2;
+}
+
+/* Partner mode avatar could change color logic in JS or CSS specific class */
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.bot-message .message-content {
+    background: var(--bot-msg-bg);
+    color: var(--text-primary);
+    border-top-left-radius: 4px;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.user-message .message-content {
+    background: var(--user-msg-bg);
+    color: var(--user-msg-text);
+    border-top-right-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.user-message .avatar {
+    display: none;
+    /* Hide user avatar for cleaner, typical chat look */
+}
+
+/* Input Area */
+.chat-input-area {
+    padding: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    background: #ffffff;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.quick-actions {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.action-pill {
+    background: #ffffff;
+    border: 1px solid #dadce0;
+    color: var(--text-secondary);
+    padding: 6px 16px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.action-pill:hover {
+    background: #f1f3f4;
+    color: var(--text-primary);
+    border-color: #bdc1c6;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    background: #f1f3f4;
+    border-radius: 24px;
+    padding: 4px 8px 4px 20px;
+    align-items: center;
+    border: 1px solid transparent;
+    /* Reserve space for border */
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-wrapper:focus-within {
+    background: #ffffff;
+    border-color: #dadce0;
+    /* Or accent color */
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+}
+
+#user-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 12px 0;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: var(--font-main);
+    outline: none;
+}
+
+#send-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    color: var(--accent-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+#send-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    background: #dadce0;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}

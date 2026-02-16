@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Your personal AI Relationship Advisor and Partner. Get advice, vent, and solve relationship problems with a Gen Z touch.">
+    <title>RelationFlow | AI Advice & Partner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="heart-loader"></div>
+            <h2>Finding Clarity...</h2>
+        </div>
+    </div>
+
+    <!-- Background Particles -->
+    <div id="particles-container"></div>
+
+    <!-- Main App Container -->
+    <main class="app-container">
+
+        <!-- Header -->
+        <header class="chat-header glass-panel">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fa-solid fa-heart-pulse gradient-text"></i>
+                    <h1>Relation<span class="gradient-text">Flow</span></h1>
+                </div>
+                <div class="mode-toggles">
+                    <button class="mode-btn active" data-mode="advisor" title="Get objective advice">
+                        <i class="fa-solid fa-user-graduate"></i> Advisor
+                    </button>
+                    <button class="mode-btn" data-mode="partner" title="Roleplay with an AI Partner">
+                        <i class="fa-solid fa-user-group"></i> Partner
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-controls">
+                <div class="relationship-select-wrapper">
+                    <label for="relationship-type"><i class="fa-solid fa-users"></i> Context:</label>
+                    <select id="relationship-type">
+                        <option value="romantic">Romantic 💘</option>
+                        <option value="friendship">Friendship 👯‍♀️</option>
+                        <option value="family">Family 🏠</option>
+                        <option value="professional">Work/Colleague 💼</option>
+                        <option value="self">Self-Love 🧘</option>
+                    </select>
+                </div>
+                <div class="status-indicator">
+                    <span class="dot"></span> Online
+                </div>
+            </div>
+        </header>
+
+        <!-- Chat Area -->
+        <section class="chat-area" id="chat-display">
+            <!-- Welcome Message -->
+            <div class="message bot-message welcome-message">
+                <div class="avatar advisor-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="message-content glass-panel">
+                    <p>Hey there! I'm your AI Relationship Advisor. Whether you're dealing with a crush, a breakup, or
+                        just need to vent, I'm here. Switch to <strong>Partner Mode</strong> if you want to roleplay a
+                        conversation!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Input Area -->
+        <footer class="chat-input-area glass-panel">
+            <div class="quick-actions">
+                <button class="action-pill" data-prompt="Give me a quick tip">💡 Quick Tip</button>
+                <button class="action-pill" data-prompt="Analyze this text...">🔍 Analyze Text</button>
+                <button class="action-pill" data-prompt="I need to vent">😤 Venting</button>
+            </div>
+            <div class="input-wrapper">
+                <input type="text" id="user-input" placeholder="Type your situation here..." autocomplete="off">
+                <button id="send-btn" aria-label="Send Message">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
