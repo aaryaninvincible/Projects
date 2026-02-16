@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Thumbnail Generator | Create Viral Thumbnails in Seconds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <header class="app-header">
+        <div class="logo">
+            <span class="logo-icon">✨</span>
+            <span class="logo-text">Thumb<span class="highlight">Gen</span>.AI</span>
+        </div>
+        <nav>
+            <button id="api-settings-btn" class="nav-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+                </svg>
+                Settings
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Create <span class="gradient-text">Viral Thumbnails</span><br>in Seconds with AI</h1>
+            <p class="subtitle">Stop wasting hours in Photoshop. Describe your video, pick a style, and get high-CTR
+                thumbnails instantly.</p>
+        </section>
+
+        <!-- Generator Interface -->
+        <section class="generator-card glass-panel">
+            <div class="input-group">
+                <label for="prompt-input">What is your video about?</label>
+                <textarea id="prompt-input"
+                    placeholder="e.g. A shocked YouTuber looking at a flying car, vibrant colors, 4k ultra realistic, text 'IMPOSSIBLE?!' in top right corner..."></textarea>
+            </div>
+
+            <div class="controls-row">
+                <div class="control-group">
+                    <label>Style</label>
+                    <div class="style-options">
+                        <button class="style-btn active" data-style="realistic">📸 Realistic</button>
+                        <button class="style-btn" data-style="comic">💥 Comic Book</button>
+                        <button class="style-btn" data-style="3d-render">🧊 3D Render</button>
+                        <button class="style-btn" data-style="anime">🎌 Anime</button>
+                        <button class="style-btn" data-style="painting">🎨 Digital Art</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label>Aspect Ratio</label>
+                    <select id="aspect-ratio">
+                        <option value="16:9">16:9 (YouTube Standard)</option>
+                        <option value="9:16">9:16 (Shorts/TikTok)</option>
+                        <option value="1:1">1:1 (Instagram)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <button id="generate-btn" class="primary-btn glow-effect">
+                    <span class="btn-text">Generate Thumbnail</span>
+                    <span class="loading-spinner hidden"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="result-section" class="results-area hidden">
+            <div class="section-header">
+                <h2>Your Masterpiece</h2>
+                <div class="actions">
+                    <button class="secondary-btn" id="regenerate-btn">🔄 Try Again</button>
+                </div>
+            </div>
+
+            <div class="image-preview-container glass-panel">
+                <img id="generated-image" src="" alt="Generated Thumbnail" class="hidden">
+                <div id="placeholder-state">
+                    <div class="pulse-circle"></div>
+                    <p>AI is dreaming up your thumbnail...</p>
+                </div>
+            </div>
+
+            <div class="download-actions">
+                <button id="download-btn" class="primary-btn small" disabled>Download HD</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- API Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content glass-panel">
+            <h3>⚙️ API Settings</h3>
+            <p class="modal-desc">Enter your OpenAI API Key to enable real image generation. Without it, the app runs in
+                <strong>Demo Mode</strong>.</p>
+
+            <div class="input-group">
+                <label for="api-key">OpenAI API Key</label>
+                <input type="password" id="api-key" placeholder="sk-...">
+            </div>
+
+            <div class="modal-actions">
+                <button id="close-modal" class="secondary-btn">Cancel</button>
+                <button id="save-key" class="primary-btn">Save Key</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ThumbGen.AI - Empowering Creators</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
