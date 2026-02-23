@@ -1,0 +1,67 @@
+<footer class="cc-footer">
+  <div class="cc-container cc-footer__grid">
+    <div class="cc-footer__brand">
+      <div class="cc-logo-wordmark">Crafty Crow</div>
+      <p class="cc-footer__text">
+        Minimalist garments crafted with intention. Clean lines, monochrome palette, everyday versatility.
+      </p>
+    </div>
+    <div class="cc-footer__columns">
+      <div class="cc-footer__column">
+        <h3 class="cc-footer__heading">{{ 'layout.footer.shop' | t }}</h3>
+        <ul>
+          <li><a href="/collections/all">{{ 'layout.footer.all_products' | t }}</a></li>
+          <li><a href="/collections/new">{{ 'layout.footer.new_arrivals' | t }}</a></li>
+          <li><a href="/collections/sale">{{ 'layout.footer.sale' | t }}</a></li>
+        </ul>
+      </div>
+      <div class="cc-footer__column">
+        <h3 class="cc-footer__heading">{{ 'layout.footer.info' | t }}</h3>
+        <ul>
+          <li><a href="/pages/about">{{ 'layout.footer.about' | t }}</a></li>
+          <li><a href="/pages/shipping">{{ 'layout.footer.shipping' | t }}</a></li>
+          <li><a href="/pages/contact">{{ 'layout.footer.contact' | t }}</a></li>
+        </ul>
+      </div>
+      <div class="cc-footer__column">
+        <h3 class="cc-footer__heading">{{ 'layout.footer.newsletter' | t }}</h3>
+        <p class="cc-footer__text">{{ settings.footer_newsletter_heading }}</p>
+        {% form 'customer', class: 'cc-footer__newsletter-form' %}
+          <input
+            type="email"
+            name="contact[email]"
+            class="cc-input"
+            placeholder="{{ 'newsletter.label' | t }}"
+            aria-label="{{ 'newsletter.label' | t }}"
+            required
+          >
+          <button type="submit" class="cc-button cc-button--primary">
+            {{ 'newsletter.button_label' | t }}
+          </button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+  <div class="cc-footer__bottom">
+    <div class="cc-container cc-footer__bottom-inner">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+      <span class="cc-footer__payments">
+        {{ 'layout.footer.secure_checkout' | t }}
+      </span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Footer"
+    }
+  ]
+}
+{% endschema %}
+

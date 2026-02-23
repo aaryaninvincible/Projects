@@ -1,0 +1,12 @@
+{% if product or variant %}
+  {% assign item = product | default: variant %}
+  <span class="cc-price">
+    {% if item.compare_at_price > item.price %}
+      <span class="cc-price__current">{{ item.price | money }}</span>
+      <span class="cc-price__compare">{{ item.compare_at_price | money }}</span>
+    {% else %}
+      <span class="cc-price__current">{{ item.price | money }}</span>
+    {% endif %}
+  </span>
+{% endif %}
+

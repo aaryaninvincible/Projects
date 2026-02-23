@@ -1,0 +1,19 @@
+<article class="cc-product-card">
+  <a href="{{ product.url }}" class="cc-product-card__media">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.title }}
+    {% else %}
+      <div class="cc-product-card__placeholder"></div>
+    {% endif %}
+  </a>
+  <div class="cc-product-card__body">
+    <a href="{{ product.url }}" class="cc-product-card__title">{{ product.title }}</a>
+    {% if product.vendor %}
+      <div class="cc-product-card__vendor">{{ product.vendor }}</div>
+    {% endif %}
+    <div class="cc-product-card__price">
+      {% render 'price', product: product %}
+    </div>
+  </div>
+</article>
+

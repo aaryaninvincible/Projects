@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "heading": "Crafty Crow",
+        "subheading": "Monochrome essentials, cut clean for everyday wear.",
+        "button_label": "Shop all",
+        "button_link": "/collections/all",
+        "image": ""
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured pieces",
+        "collection": "",
+        "products_to_show": 4,
+        "view_all_link": true
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "featured"
+  ]
+}
+

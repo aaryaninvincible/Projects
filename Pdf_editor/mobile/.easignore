@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+web-build/
+*.apk
+*.aab
+android/
+ios/
+.venv/
+venv/
+backend/
+frontend/

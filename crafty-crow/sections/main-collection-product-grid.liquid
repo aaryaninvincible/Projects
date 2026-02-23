@@ -1,0 +1,42 @@
+<section class="cc-section cc-collection">
+  <div class="cc-container">
+    <header class="cc-section-header cc-collection__header">
+      <h1 class="cc-section-title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="cc-collection__description rte">{{ collection.description }}</div>
+      {% endif %}
+    </header>
+
+    {% paginate collection.products by 24 %}
+      <div class="cc-collection__toolbar">
+        <div class="cc-collection__count">
+          {{ 'collections.general.items_with_count' | t: count: collection.products_count }}
+        </div>
+        <div class="cc-collection__sort">
+          {% render 'collection-sort' %}
+        </div>
+      </div>
+
+      <div class="cc-grid cc-grid--products">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+
+      {% render 'pagination', paginate: paginate %}
+    {% endpaginate %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection product grid",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Collection product grid"
+    }
+  ]
+}
+{% endschema %}
+

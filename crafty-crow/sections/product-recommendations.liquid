@@ -1,0 +1,25 @@
+{% if recommendations.performed and recommendations.products_count > 0 %}
+  <section class="cc-section cc-product-recommendations">
+    <div class="cc-container">
+      <h2 class="cc-section-title">{{ 'products.product.recommendations' | t }}</h2>
+      <div class="cc-grid cc-grid--products">
+        {% for product in recommendations.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product recommendations",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Product recommendations"
+    }
+  ]
+}
+{% endschema %}
+

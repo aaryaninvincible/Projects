@@ -6,7 +6,10 @@ load_dotenv()
 
 api_key = os.getenv("OPENAI_API_KEY")
 if api_key:
-    client = openai.OpenAI(api_key=api_key)
+    client = openai.OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=api_key
+    )
 else:
     client = None
 
@@ -56,7 +59,7 @@ def generate_pandas_code(columns, headdata, user_prompt):
     
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="deepseek/deepseek-r1:free",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": prompt}

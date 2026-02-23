@@ -1,0 +1,20 @@
+{% if paginate.pages > 1 %}
+  <nav class="cc-pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+    {% if paginate.previous %}
+      <a href="{{ paginate.previous.url }}" class="cc-pagination__link cc-pagination__link--prev">
+        {{ 'general.pagination.previous' | t }}
+      </a>
+    {% endif %}
+
+    <span class="cc-pagination__status">
+      {{ 'general.pagination.current_page' | t: current: paginate.current_page, total: paginate.pages }}
+    </span>
+
+    {% if paginate.next %}
+      <a href="{{ paginate.next.url }}" class="cc-pagination__link cc-pagination__link--next">
+        {{ 'general.pagination.next' | t }}
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}
+
