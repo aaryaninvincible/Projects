@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Zone | Admin Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff9d;
+            --secondary: #0088ff;
+            --accent: #ff00aa;
+            --dark: #0a0a0f;
+            --darker: #050508;
+            --light: #f0f0f0;
+            --gray: #1a1a25;
+            --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--darker);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        /* Auth Overlay */
+        #auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .auth-card {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            width: 100%;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-danger {
+            color: #ff3333;
+            border-color: #ff3333;
+        }
+
+        .btn-danger:hover {
+            background-color: #ff3333;
+            color: white;
+            box-shadow: 0 0 10px #ff3333;
+        }
+
+        /* Dashboard */
+        #dashboard {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Data Tables / Cards */
+        .card {
+            background: var(--gray);
+            border: 1px solid rgba(0, 136, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--primary);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 0, 170, 0.05);
+            border: 1px solid rgba(255, 0, 170, 0.2);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .stat-card h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Auth Overlay -->
+    <div id="auth-overlay">
+        <div class="auth-card">
+            <h2 style="font-family: 'Orbitron', sans-serif; color: var(--primary); margin-bottom: 20px;">ADMIN LOGIN
+            </h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <p id="auth-error" style="color: #ff3333; font-size: 0.9rem; margin-bottom: 15px; display: none;"></p>
+                <button type="submit" class="btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <header style="padding: 0 20px; margin-bottom: 40px; border-bottom: none;">
+            <div class="container" style="display: flex; justify-content: space-between; width: 100%;">
+                <a href="#" class="logo">ADMIN PANEL</a>
+                <div>
+                    <a href="index.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem; margin-right: 10px;"
+                        target="_blank">View Site</a>
+                    <button id="logoutBtn" class="btn btn-danger"
+                        style="padding: 5px 15px; font-size: 0.9rem; width: auto;">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="admin-nav">
+                <button class="tab-btn active" data-tab="queries">Contact Queries</button>
+                <button class="tab-btn" data-tab="projects">Manage Projects</button>
+                <button class="tab-btn" data-tab="stats">Manage Stats</button>
+            </div>
+
+            <!-- Queries Tab -->
+            <div id="queries" class="tab-content active">
+                <h2 style="margin-bottom: 20px; color: var(--primary);">Recent Messages</h2>
+                <div id="queriesList">
+                    <p>Loading queries...</p>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects" class="tab-content">
+                <h2 style="margin-bottom: 20px; color: var(--primary);">Add New Project</h2>
+                <div class="card">
+                    <form id="projectForm">
+                        <div class="input-group">
+                            <label>Project Title</label>
+                            <input type="text" id="projTitle" class="form-control" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Description</label>
+                            <textarea id="projDesc" class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label>Technologies (comma separated)</label>
+                            <input type="text" id="projTech" class="form-control" placeholder="React, Node, Firebase"
+                                required>
+                        </div>
+                        <div class="input-group">
+                            <label>Live Link (optional)</label>
+                            <input type="url" id="projLink" class="form-control">
+                        </div>
+                        <div class="input-group">
+                            <label>GitHub Link (optional)</label>
+                            <input type="url" id="projGithub" class="form-control">
+                        </div>
+                        <div class="input-group">
+                            <label>Category</label>
+                            <select id="projCategory" class="form-control">
+                                <option value="featured">Featured Project (Home Page)</option>
+                                <option value="web">Web Development</option>
+                                <option value="graphics">Graphic Design</option>
+                                <option value="iot">IoT Projects</option>
+                                <option value="ai">AI/ML Projects</option>
+                            </select>
+                        </div>
+                        <!-- In the future, you'd add image upload via Firebase Storage here -->
+                        <div class="input-group">
+                            <label>Image URL (Temporary text input until Storage is configured)</label>
+                            <input type="url" id="projImgUrl" class="form-control"
+                                placeholder="https://example.com/image.jpg" required>
+                        </div>
+                        <button type="submit" class="btn">Add Project</button>
+                    </form>
+                </div>
+
+                <h2 style="margin-top: 40px; margin-bottom: 20px; color: var(--secondary);">Existing Projects</h2>
+                <div id="existingProjectsList">
+                    <p>Loading projects...</p>
+                </div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div id="stats" class="tab-content">
+                <h2 style="margin-bottom: 20px; color: var(--accent);">Update Dashboard Stats</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Instagram Followers</h3>
+                        <h2 id="currentInstaFollowers">Loading...</h2>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Instagram Views</h3>
+                        <h2 id="currentInstaViews">Loading...</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <form id="statsForm">
+                        <div class="input-group">
+                            <label>Update Followers (number/text, e.g., "13.5K")</label>
+                            <input type="text" id="instaFollowers" class="form-control" required>
+                        </div>
+                        <div class="input-group">
+                            <label>Update Views (number/text, e.g., "2.5M")</label>
+                            <input type="text" id="instaViews" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn"
+                            style="border-color: var(--accent); color: var(--accent);">Save Stats</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="admin.js"></script>
+    <script>
+        // Simple Vanilla JS Tab Switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

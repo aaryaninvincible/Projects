@@ -3,9 +3,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <title>
       {{ page_title }}{% if current_tags %} – {{ current_tags | join: ', ' }}{% endif %}{% if current_page != 1 %} – {{ 'general.pagination.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} – {{ shop.name }}{% endunless %}
     </title>
+    {% liquid
+      case settings.font_body
+        when 'inter'
+          assign body_font = "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        when 'poppins'
+          assign body_font = "'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        else
+          assign body_font = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+      endcase
+
+      case settings.font_heading
+        when 'inter'
+          assign heading_font = "'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        when 'poppins'
+          assign heading_font = "'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+        else
+          assign heading_font = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+      endcase
+
+      case settings.spacing_scale
+        when 'compact'
+          assign section_padding = '2.25rem'
+        when 'airy'
+          assign section_padding = '4rem'
+        else
+          assign section_padding = '3rem'
+      endcase
+    %}
+    <style>
+      :root{
+        --cc-bg: {{ settings.color_background }};
+        --cc-surface: {{ settings.color_surface }};
+        --cc-text: {{ settings.color_text }};
+        --cc-accent: {{ settings.color_accent }};
+        --cc-border: {{ settings.color_border }};
+        --cc-content-width: {{ settings.content_width }}px;
+        --cc-section-padding: {{ section_padding }};
+        --cc-font-body: {{ body_font }};
+        --cc-font-heading: {{ heading_font }};
+      }
+    </style>
     {{ 'theme.css' | asset_url | stylesheet_tag }}
     {{ content_for_header }}
   </head>

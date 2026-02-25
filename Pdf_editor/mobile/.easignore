@@ -1,12 +1,38 @@
+# Standard React Native & Expo Ignores
 node_modules/
 .expo/
 dist/
 web-build/
+expo-env.d.ts
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+.metro-health-check*
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+.DS_Store
+*.pem
+.env*.local
+*.tsbuildinfo
+/ios
+/android
+ios/
+android/
+**/.git
+**/.gradle
+**/.idea
+
+# Custom Project Ignores
 *.apk
 *.aab
-android/
-ios/
 .venv/
 venv/
 backend/
 frontend/
+Pdf_editor/
+Pdf\ Editor\ App/
