@@ -1436,6 +1436,10 @@
         }
 
         loadLiveStats();
+    </script>
+
+    <!-- Independent Particle System Script -->
+    <script>
         // ----------------------------------------------------
         // Interactive Particle Background System
         // ----------------------------------------------------
@@ -1467,7 +1471,6 @@
         function bindInteractiveElements() {
             const interactiveElements = document.querySelectorAll('.project-card, .btn, .client-card, .stat-box, .nav-links a');
             interactiveElements.forEach(el => {
-                // Remove older listeners if re-binding to prevent duplicates
                 el.removeEventListener('mouseenter', handleMouseEnter);
                 el.removeEventListener('mouseleave', handleMouseLeave);
 
@@ -1486,7 +1489,7 @@
                 this.baseY = Math.random() * height;
                 this.x = this.baseX;
                 this.y = this.baseY;
-                this.size = Math.random() * 2 + 1;
+                this.size = Math.random() * 3 + 1.5; // Increased size
                 this.density = (Math.random() * 30) + 1;
                 this.color = ['#00ff9d', '#0088ff', '#ff00aa'][Math.floor(Math.random() * 3)];
                 this.vx = 0;
@@ -1506,10 +1509,9 @@
                     const dyCenter = (rect.top + rect.height / 2) - this.y;
                     const distToCenter = Math.sqrt(dxCenter * dxCenter + dyCenter * dyCenter);
 
-                    // If particle is somewhat close to the hovered element, pull it into the shape
                     if (distToCenter < Math.max(rect.width, rect.height) + 300) {
                         const isLeft = this.index % 2 === 0;
-                        const part = this.index % 3; // 0: top curl, 1: bottom curl, 2: vertical line
+                        const part = this.index % 3;
 
                         if (isLeft) {
                             targetX = rect.left - padding;
@@ -1523,13 +1525,10 @@
                             else { targetY = rect.top - padding + Math.random() * (rect.height + padding * 2); }
                         }
 
-                        // Add slight jitter to form a glowing fuzzy shape instead of a crisp line
                         targetX += (Math.random() - 0.5) * 6;
                         targetY += (Math.random() - 0.5) * 6;
                     }
                 } else {
-                    // Standard floating movement & mouse repulsion
-                    // Move target slightly around base
                     targetX = this.baseX + Math.sin(Date.now() * 0.001 + this.index) * 20;
                     targetY = this.baseY + Math.cos(Date.now() * 0.002 + this.index) * 20;
 
@@ -1547,7 +1546,6 @@
                     }
                 }
 
-                // Spring physics
                 const spring = hoveredElement ? 0.1 : 0.02;
                 const friction = hoveredElement ? 0.8 : 0.95;
 
@@ -1565,14 +1563,16 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
-                ctx.globalAlpha = 0.6;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.globalAlpha = 0.9;
                 ctx.fill();
             }
         }
 
         function initParticles() {
             particles = [];
-            const numParticles = Math.floor((width * height) / 6000);
+            const numParticles = Math.floor((width * height) / 4000); // Increased density
             for (let i = 0; i < numParticles; i++) {
                 particles.push(new Particle(i));
             }
@@ -1580,6 +1580,26 @@
 
         function animateParticles() {
             ctx.clearRect(0, 0, width, height);
+
+            // Draw connecting lines between close particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 80) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = particles[i].color;
+                        ctx.globalAlpha = 0.2 * (1 - distance / 80);
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
@@ -1593,14 +1613,15 @@
         // Initial binding
         bindInteractiveElements();
 
-        // Need to override loadGithubProjects slightly to ensure it calls bindInteractiveElements at the end
-        const originalLoadGithub = loadGithubProjects;
-        loadGithubProjects = async function () {
-            await originalLoadGithub();
-            bindInteractiveElements();
-        }
-
-        loadGithubProjects();
+        // Observer to bind elements if DOM changes dynamically
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length > 0) {
+                    bindInteractiveElements();
+                }
+            });
+        });
+        observer.observe(document.body, { childList: true, subtree: true });
 
     </script>
 </body>
