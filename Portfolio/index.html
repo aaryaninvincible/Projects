@@ -291,18 +291,19 @@
             height: 4px;
             width: 300px;
             margin: 30px auto;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary), var(--secondary));
+            background-size: 300% 100%;
             border-radius: 2px;
-            animation: rgbFlow 3s infinite alternate;
+            animation: smoothRgbFlow 3s linear infinite;
         }
 
-        @keyframes rgbFlow {
+        @keyframes smoothRgbFlow {
             0% {
-                background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+                background-position: 100% 50%;
             }
 
             100% {
-                background: linear-gradient(90deg, var(--accent), var(--primary), var(--secondary));
+                background-position: 0% 50%;
             }
         }
 
@@ -814,19 +815,37 @@
             <div class="hero-content">
                 <style>
                     .profile-container {
+                        position: relative;
                         width: 200px;
                         height: 200px;
                         margin: 0 auto 30px;
                         border-radius: 50%;
-                        padding: 5px;
-                        background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
-                        animation: rgbFlow 3s infinite alternate;
-                        box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: transform 0.3s ease;
+                    }
+
+                    .profile-container::before {
+                        content: '';
+                        position: absolute;
+                        top: -5px;
+                        right: -5px;
+                        bottom: -5px;
+                        left: -5px;
+                        border-radius: 50%;
+                        background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+                        animation: spinRGB 4s linear infinite;
+                        z-index: 0;
+                        box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+                        transition: box-shadow 0.3s ease;
                     }
 
                     .profile-container:hover {
                         transform: scale(1.05);
+                    }
+
+                    .profile-container:hover::before {
                         box-shadow: 0 0 30px rgba(0, 136, 255, 0.6);
                     }
 
@@ -837,6 +856,18 @@
                         object-fit: cover;
                         background-color: var(--dark);
                         border: 4px solid var(--dark);
+                        position: relative;
+                        z-index: 1;
+                    }
+
+                    @keyframes spinRGB {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+
+                        100% {
+                            transform: rotate(360deg);
+                        }
                     }
                 </style>
                 <div class="profile-container">
