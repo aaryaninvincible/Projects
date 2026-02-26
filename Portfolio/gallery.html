@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Projects gallery of Aryan Raikwar - Web Development, App Development, Graphic Design, IoT, and AI projects.">
+    <meta name="keywords"
+        content="aryan raikwar projects, portfolio gallery, free projects, web development, app development, graphics design, IoT, AI projects, github repos">
+    <meta name="author" content="Aryan Raikwar">
+    <meta property="og:title" content="Projects Gallery | Aryan Zone">
+    <meta property="og:description"
+        content="Projects gallery of Aryan Raikwar - Web Development, App Development, Graphic Design, IoT, and AI projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aryanxone.com/gallery.html">
     <title>Projects Gallery | Aryan Zone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -460,6 +470,65 @@
             pointer-events: all;
         }
 
+        /* Preloader & Transition */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 255, 157, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        body {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        body.page-transitioning {
+            animation: fadeOutPage 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOutPage {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -523,6 +592,11 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Background Effects -->
     <div class="rgb-bg"></div>
     <div class="grid-animation"></div>
@@ -832,6 +906,34 @@
     </footer>
 
     <script>
+        // Preloader and Page Transitions
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetUrl = this.getAttribute('href');
+                if (!targetUrl) return;
+
+                const isExternal = targetUrl.startsWith('http') || targetUrl.startsWith('mailto') || targetUrl.startsWith('tel') || this.hasAttribute('target');
+                const isAnchor = targetUrl.startsWith('#');
+                if (!isExternal && !isAnchor) {
+                    e.preventDefault();
+                    document.body.classList.add('page-transitioning');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500); // match fadeOutPage animation duration
+                }
+            });
+        });
+
         // Filter functionality
         document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('.filter-btn');

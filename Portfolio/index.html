@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Aryan Raikwar (aaryaninvincible) - IoT & Full Stack Developer, AI Engineer, and Tech Content Creator. Discover my projects, services, and expertise.">
+    <meta name="keywords"
+        content="aryan raikwar, aaryaninvincible, free projects, project work, engineer, IoT Developer, Full Stack Developer, AI Engineer, web development, web design, portfolio, freelance, tech content creator">
+    <meta name="author" content="Aryan Raikwar">
+    <meta property="og:title" content="Aryan Zone | Portfolio">
+    <meta property="og:description"
+        content="Portfolio of Aryan Raikwar - IoT & Full Stack Developer, AI Engineer, and Tech Content Creator.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aryanxone.com/">
     <title>Aryan Zone | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -736,6 +746,142 @@
             border-top: 1px solid rgba(0, 255, 157, 0.2);
         }
 
+        /* Mobile Navigation Sidebar Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+            transition: color 0.3s, padding-left 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .mobile-sidebar a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Preloader & Transition */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 255, 157, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        body {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        body.page-transitioning {
+            animation: fadeOutPage 0.5s ease-in forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOutPage {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
@@ -744,6 +890,10 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .about-content {
@@ -771,6 +921,11 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Background Effects -->
     <canvas id="bg-canvas"></canvas>
     <div class="rgb-bg"></div>
@@ -1425,6 +1580,34 @@
     </script>
 
     <script>
+        // Preloader and Page Transitions
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetUrl = this.getAttribute('href');
+                if (!targetUrl) return;
+
+                const isExternal = targetUrl.startsWith('http') || targetUrl.startsWith('mailto') || targetUrl.startsWith('tel') || this.hasAttribute('target');
+                const isAnchor = targetUrl.startsWith('#');
+                if (!isExternal && !isAnchor) {
+                    e.preventDefault();
+                    document.body.classList.add('page-transitioning');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500); // match fadeOutPage animation duration
+                }
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
