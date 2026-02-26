@@ -1147,8 +1147,76 @@
                         <textarea id="contactMessage" required rows="5"
                             style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; color: var(--light); font-family: 'Roboto Mono', monospace; resize: vertical;"></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; font-size: 1.1rem; padding: 15px;">Send
+                    <button type="submit" class="btn" id="contactBtn"
+                        style="width: 100%; font-size: 1.1rem; padding: 15px;">Send
                         Message</button>
+                    <div id="successAnimation"
+                        style="display: none; text-align: center; margin-top: 30px; animation: fadeIn 0.5s ease-out; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.2); padding: 25px; border-radius: 10px;">
+                        <style>
+                            .checkmark-circle {
+                                stroke-dasharray: 166;
+                                stroke-dashoffset: 166;
+                                stroke-width: 4;
+                                stroke-miterlimit: 10;
+                                stroke: var(--primary);
+                                fill: none;
+                                animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+                            }
+
+                            .checkmark-check {
+                                transform-origin: 50% 50%;
+                                stroke-dasharray: 48;
+                                stroke-dashoffset: 48;
+                                stroke-width: 4;
+                                stroke: var(--primary);
+                                fill: none;
+                                animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+                            }
+
+                            @keyframes stroke {
+                                100% {
+                                    stroke-dashoffset: 0;
+                                }
+                            }
+
+                            @keyframes fillSuccess {
+                                100% {
+                                    box-shadow: inset 0px 0px 0px 30px rgba(0, 255, 157, 0.1);
+                                }
+                            }
+
+                            .success-svg {
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 50%;
+                                display: block;
+                                margin: 0 auto 15px;
+                                stroke-width: 4;
+                                stroke: var(--primary);
+                                box-shadow: inset 0px 0px 0px rgba(0, 255, 157, 0.1);
+                                animation: fillSuccess .4s ease-in-out .4s forwards;
+                            }
+
+                            @keyframes fadeIn {
+                                from {
+                                    opacity: 0;
+                                    transform: translateY(-10px);
+                                }
+
+                                to {
+                                    opacity: 1;
+                                    transform: translateY(0);
+                                }
+                            }
+                        </style>
+                        <svg class="success-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25" />
+                            <path class="checkmark-check" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
+                        <h3 style="color: var(--primary); font-family: 'Orbitron', sans-serif;">Request Sent!</h3>
+                        <p style="color: #aaa; margin-top: 5px;">Thank you for reaching out. I've received your message
+                            and will get back to you shortly.</p>
+                    </div>
                     <p id="contactStatus"
                         style="text-align: center; margin-top: 15px; font-weight: bold; display: none;"></p>
                 </form>
@@ -1408,9 +1476,12 @@
                 e.preventDefault();
                 const btn = contactForm.querySelector('button');
                 const status = document.getElementById('contactStatus');
+                const successAnim = document.getElementById('successAnimation');
 
                 btn.textContent = "Sending...";
                 btn.disabled = true;
+                status.style.display = "none";
+                if (successAnim) successAnim.style.display = "none";
 
                 try {
                     const name = document.getElementById('contactName').value;
@@ -1425,17 +1496,23 @@
                     });
 
                     contactForm.reset();
-                    status.textContent = "Message sent successfully! I'll get back to you soon.";
-                    status.style.color = "var(--primary)";
-                    status.style.display = "block";
 
-                    setTimeout(() => { status.style.display = "none"; }, 5000);
+                    if (successAnim) {
+                        btn.style.display = "none";
+                        successAnim.style.display = "block";
+                        setTimeout(() => {
+                            successAnim.style.display = "none";
+                            btn.style.display = "block";
+                            btn.textContent = "Send Message";
+                            btn.disabled = false;
+                        }, 5000);
+                    }
+
                 } catch (error) {
                     console.error("Error sending message: ", error);
                     status.textContent = "Failed to send message. Please try again later.";
                     status.style.color = "#ff3333";
                     status.style.display = "block";
-                } finally {
                     btn.textContent = "Send Message";
                     btn.disabled = false;
                 }
