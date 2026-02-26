@@ -812,6 +812,36 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
+                <style>
+                    .profile-container {
+                        width: 200px;
+                        height: 200px;
+                        margin: 0 auto 30px;
+                        border-radius: 50%;
+                        padding: 5px;
+                        background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+                        animation: rgbFlow 3s infinite alternate;
+                        box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    }
+
+                    .profile-container:hover {
+                        transform: scale(1.05);
+                        box-shadow: 0 0 30px rgba(0, 136, 255, 0.6);
+                    }
+
+                    .profile-container img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        background-color: var(--dark);
+                        border: 4px solid var(--dark);
+                    }
+                </style>
+                <div class="profile-container">
+                    <img src="Profile.jpg" alt="Aryan Raikwar">
+                </div>
                 <h1>ARyan <span>RAIKWAR</span></h1>
                 <div class="rgb-line"></div>
                 <p>IoT & Full Stack Developer | AI Engineer | Tech Content Creator with 13K+ followers | Passionate
