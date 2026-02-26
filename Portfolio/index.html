@@ -1120,8 +1120,24 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
+    <footer
+        style="position: relative; overflow: hidden; background: linear-gradient(270deg, var(--darker), #0a192f, var(--darker)); background-size: 400% 400%; animation: gradientBG 15s ease infinite;">
+        <style>
+            @keyframes gradientBG {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+        </style>
+        <div class="container" style="position: relative; z-index: 1;">
             <p style="margin-bottom: 10px;">&copy; 2024 Aryan Zone. All rights reserved.</p>
             <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email:
                 aryanraikwar78@gmail.com</p>
@@ -1605,6 +1621,12 @@
         observer.observe(document.body, { childList: true, subtree: true });
 
     </script>
+
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 
 </html>
