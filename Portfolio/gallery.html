@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects Gallery | Aryan Zone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #00ff9d;
@@ -17,13 +20,13 @@
             --gray: #1a1a25;
             --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Roboto Mono', monospace;
             background-color: var(--dark);
@@ -32,7 +35,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        
+
         /* RGB background effect */
         .rgb-bg {
             position: fixed;
@@ -42,10 +45,10 @@
             height: 100%;
             z-index: -2;
             background: radial-gradient(circle at 20% 50%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
-                        radial-gradient(circle at 80% 20%, rgba(0, 136, 255, 0.05) 0%, transparent 20%),
-                        radial-gradient(circle at 40% 80%, rgba(255, 0, 170, 0.05) 0%, transparent 20%);
+                radial-gradient(circle at 80% 20%, rgba(0, 136, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 40% 80%, rgba(255, 0, 170, 0.05) 0%, transparent 20%);
         }
-        
+
         /* Animated grid */
         .grid-animation {
             position: fixed;
@@ -53,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 136, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 136, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -61,12 +64,17 @@
             opacity: 0.3;
             animation: gridMove 20s linear infinite;
         }
-        
+
         @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
         }
-        
+
         /* Header & Navigation */
         header {
             background-color: rgba(10, 10, 15, 0.9);
@@ -77,20 +85,20 @@
             z-index: 1000;
             top: 0;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
         }
-        
+
         .logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -101,17 +109,22 @@
             text-shadow: var(--neon-glow);
             animation: logoGlow 3s infinite alternate;
         }
-        
+
         @keyframes logoGlow {
-            0% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
-            100% { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary); }
+            0% {
+                text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+            }
+
+            100% {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            }
         }
-        
+
         .nav-links {
             display: flex;
             gap: 30px;
         }
-        
+
         .nav-links a {
             color: var(--light);
             text-decoration: none;
@@ -120,11 +133,11 @@
             position: relative;
             padding: 5px 0;
         }
-        
+
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -135,18 +148,18 @@
             background-color: var(--primary);
             transition: width 0.3s;
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         /* Main Content */
         .hero {
             padding: 150px 0 80px;
             text-align: center;
             position: relative;
         }
-        
+
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
@@ -154,14 +167,14 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 40px;
             color: #aaa;
         }
-        
+
         /* Category Filters */
         .category-filters {
             display: flex;
@@ -170,7 +183,7 @@
             margin-bottom: 50px;
             flex-wrap: wrap;
         }
-        
+
         .filter-btn {
             padding: 12px 25px;
             background: rgba(255, 255, 255, 0.05);
@@ -182,14 +195,15 @@
             font-family: 'Roboto Mono', monospace;
             font-size: 0.9rem;
         }
-        
-        .filter-btn:hover, .filter-btn.active {
+
+        .filter-btn:hover,
+        .filter-btn.active {
             background: var(--primary);
             color: var(--dark);
             border-color: var(--primary);
             transform: translateY(-2px);
         }
-        
+
         /* Gallery Grid */
         .gallery-grid {
             display: grid;
@@ -197,7 +211,7 @@
             gap: 30px;
             margin-bottom: 80px;
         }
-        
+
         .project-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -206,13 +220,13 @@
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
-        
+
         .project-card:hover {
             transform: translateY(-15px) scale(1.02);
             border-color: var(--primary);
             box-shadow: 0 20px 40px rgba(0, 255, 157, 0.15);
         }
-        
+
         .project-image {
             height: 220px;
             width: 100%;
@@ -220,18 +234,18 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
-        
+
         .project-card:hover .project-image img {
             transform: scale(1.1);
         }
-        
+
         .category-badge {
             position: absolute;
             top: 15px;
@@ -244,11 +258,11 @@
             z-index: 2;
             border: 1px solid var(--primary);
         }
-        
+
         .project-content {
             padding: 25px;
         }
-        
+
         .project-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.4rem;
@@ -258,13 +272,13 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .project-desc {
             color: #aaa;
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
-        
+
         .project-meta {
             display: flex;
             justify-content: space-between;
@@ -272,12 +286,12 @@
             font-size: 0.9rem;
             color: #777;
         }
-        
+
         .project-links {
             display: flex;
             gap: 15px;
         }
-        
+
         .btn {
             display: inline-block;
             padding: 8px 20px;
@@ -290,46 +304,46 @@
             transition: all 0.3s;
             font-size: 0.9rem;
         }
-        
+
         .btn:hover {
             background: var(--primary);
             color: var(--dark);
             box-shadow: var(--neon-glow);
         }
-        
+
         .btn-secondary {
             border-color: var(--secondary);
             color: var(--secondary);
         }
-        
+
         .btn-secondary:hover {
             background: var(--secondary);
             color: var(--dark);
             box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
         }
-        
+
         .btn-youtube {
             border-color: #FF0000;
             color: #FF0000;
         }
-        
+
         .btn-youtube:hover {
             background: #FF0000;
             color: white;
             box-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000;
         }
-        
+
         .btn-instagram {
             border-color: #E1306C;
             color: #E1306C;
         }
-        
+
         .btn-instagram:hover {
             background: #E1306C;
             color: white;
             box-shadow: 0 0 10px #E1306C, 0 0 20px #E1306C;
         }
-        
+
         /* Stats Section */
         .stats-section {
             background: rgba(0, 0, 0, 0.3);
@@ -338,25 +352,25 @@
             margin: 60px 0;
             border: 1px solid rgba(0, 136, 255, 0.2);
         }
-        
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             text-align: center;
         }
-        
+
         .stat-item {
             padding: 20px;
         }
-        
+
         .stat-number {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 10px;
         }
-        
+
         /* Footer */
         footer {
             background-color: var(--darker);
@@ -364,39 +378,141 @@
             text-align: center;
             border-top: 1px solid rgba(0, 255, 157, 0.2);
         }
-        
+
+        .footer-socials a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Sidebar Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+            transition: color 0.3s, padding-left 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .mobile-sidebar a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .nav-links {
                 display: none;
             }
-            
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .category-filters {
                 gap: 10px;
             }
-            
+
             .filter-btn {
                 padding: 10px 15px;
                 font-size: 0.8rem;
             }
         }
-        
+
         /* Category Colors */
-        .category-web { border-left: 4px solid var(--primary); }
-        .category-graphics { border-left: 4px solid var(--accent); }
-        .category-iot { border-left: 4px solid #00ccff; }
-        .category-ai { border-left: 4px solid #ff6b6b; }
-        .category-youtube { border-left: 4px solid #FF0000; }
-        .category-github { border-left: 4px solid #6cc644; }
-        
+        .category-web {
+            border-left: 4px solid var(--primary);
+        }
+
+        .category-graphics {
+            border-left: 4px solid var(--accent);
+        }
+
+        .category-iot {
+            border-left: 4px solid #00ccff;
+        }
+
+        .category-ai {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .category-youtube {
+            border-left: 4px solid #FF0000;
+        }
+
+        .category-github {
+            border-left: 4px solid #6cc644;
+        }
+
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -405,11 +521,12 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Background Effects -->
     <div class="rgb-bg"></div>
     <div class="grid-animation"></div>
-    
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -424,16 +541,34 @@
                     <a href="index.html#about">About</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
-    
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#projects" class="mobile-link">Projects</a>
+        <a href="gallery.html" class="mobile-link" style="color: var(--accent);">All Projects</a>
+        <a href="updates.html" class="mobile-link">Updates</a>
+        <a href="index.html#clients" class="mobile-link">Clients</a>
+        <a href="index.html#about" class="mobile-link">About</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>PROJECTS GALLERY</h1>
-            <p>Explore my complete portfolio including web development projects, graphic designs, IoT solutions, AI/ML projects, YouTube content, and GitHub repositories.</p>
-            
+            <p>Explore my complete portfolio including web development projects, graphic designs, IoT solutions, AI/ML
+                projects, YouTube content, and GitHub repositories.</p>
+
             <!-- Category Filters -->
             <div class="category-filters">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -446,7 +581,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Projects Gallery -->
     <section>
         <div class="container">
@@ -455,13 +590,15 @@
                 <div class="project-card category-web" data-category="web">
                     <div class="project-image">
                         <div class="category-badge">Web Development</div>
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ambulance Booking System">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Ambulance Booking System">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-ambulance"></i> Ambulance Booking System
                         </h3>
-                        <p class="project-desc">PHP, SQL, JavaScript, SCSS based platform for emergency ambulance booking with real-time tracking.</p>
+                        <p class="project-desc">PHP, SQL, JavaScript, SCSS based platform for emergency ambulance
+                            booking with real-time tracking.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Jan 2024</span>
                             <span><i class="fas fa-code"></i> PHP, JS, SCSS</span>
@@ -472,40 +609,45 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Graphics Design Projects -->
                 <div class="project-card category-graphics" data-category="graphics">
                     <div class="project-image">
                         <div class="category-badge">Graphics Design</div>
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="YouTube Thumbnails">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="YouTube Thumbnails">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-palette"></i> YouTube Thumbnails Collection
                         </h3>
-                        <p class="project-desc">100+ engaging thumbnails designed for tech tutorials with high click-through rates.</p>
+                        <p class="project-desc">100+ engaging thumbnails designed for tech tutorials with high
+                            click-through rates.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Ongoing</span>
                             <span><i class="fas fa-eye"></i> 2M+ Views</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram" target="_blank">View</a>
+                            <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram"
+                                target="_blank">View</a>
                             <a href="#" class="btn btn-secondary">Download Pack</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- IoT Projects -->
                 <div class="project-card category-iot" data-category="iot">
                     <div class="project-image">
                         <div class="category-badge">IoT Project</div>
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IoT Smart Device">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="IoT Smart Device">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-microchip"></i> Smart Agriculture Device
                         </h3>
-                        <p class="project-desc">IoT-based agricultural monitoring system with real-time sensor data and automated controls.</p>
+                        <p class="project-desc">IoT-based agricultural monitoring system with real-time sensor data and
+                            automated controls.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Aug 2024</span>
                             <span><i class="fas fa-chart-line"></i> 25% Efficiency Gain</span>
@@ -516,18 +658,20 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- AI/ML Projects -->
                 <div class="project-card category-ai" data-category="ai">
                     <div class="project-image">
                         <div class="category-badge">AI/ML Project</div>
-                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI Career Counseling">
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="AI Career Counseling">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-robot"></i> AI Career Counseling
                         </h3>
-                        <p class="project-desc">AI-powered career guidance platform using NLP and machine learning algorithms.</p>
+                        <p class="project-desc">AI-powered career guidance platform using NLP and machine learning
+                            algorithms.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Mar 2024</span>
                             <span><i class="fas fa-trophy"></i> SIH Finalist</span>
@@ -538,40 +682,45 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- YouTube Videos -->
                 <div class="project-card category-youtube" data-category="youtube">
                     <div class="project-image">
                         <div class="category-badge">YouTube Video</div>
-                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="React Tutorial">
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="React Tutorial">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fab fa-youtube"></i> React IoT Dashboard Tutorial
                         </h3>
-                        <p class="project-desc">Complete tutorial on building real-time IoT dashboards with React.js and Node.js.</p>
+                        <p class="project-desc">Complete tutorial on building real-time IoT dashboards with React.js and
+                            Node.js.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Nov 2024</span>
                             <span><i class="fas fa-eye"></i> 150K+ Views</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://youtube.com/@codesworld.exe" class="btn btn-youtube" target="_blank">Watch</a>
+                            <a href="https://youtube.com/@codesworld.exe" class="btn btn-youtube"
+                                target="_blank">Watch</a>
                             <a href="#" class="btn btn-secondary">Source Code</a>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- GitHub Repositories -->
                 <div class="project-card category-github" data-category="github">
                     <div class="project-image">
                         <div class="category-badge">GitHub Repository</div>
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="POS System">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="POS System">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fab fa-github"></i> Python POS System
                         </h3>
-                        <p class="project-desc">Point of Sale system built with Python, Pandas, NumPy and Flask for efficient billing.</p>
+                        <p class="project-desc">Point of Sale system built with Python, Pandas, NumPy and Flask for
+                            efficient billing.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Jul 2024</span>
                             <span><i class="fas fa-star"></i> 45 Stars</span>
@@ -582,18 +731,20 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- More Web Projects -->
                 <div class="project-card category-web" data-category="web">
                     <div class="project-image">
                         <div class="category-badge">Web Development</div>
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Platform">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="E-commerce Platform">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-shopping-cart"></i> Voltros E-commerce
                         </h3>
-                        <p class="project-desc">Complete e-commerce platform for electronics with payment integration and admin dashboard.</p>
+                        <p class="project-desc">Complete e-commerce platform for electronics with payment integration
+                            and admin dashboard.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Oct 2024</span>
                             <span><i class="fas fa-bolt"></i> Live Project</span>
@@ -604,18 +755,20 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- More Graphics Projects -->
                 <div class="project-card category-graphics" data-category="graphics">
                     <div class="project-image">
                         <div class="category-badge">Graphics Design</div>
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Banner Designs">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Banner Designs">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">
                             <i class="fas fa-ad"></i> Digital Marketing Banners
                         </h3>
-                        <p class="project-desc">Collection of 50+ banner designs for digital marketing campaigns across various platforms.</p>
+                        <p class="project-desc">Collection of 50+ banner designs for digital marketing campaigns across
+                            various platforms.</p>
                         <div class="project-meta">
                             <span><i class="far fa-calendar"></i> Sep 2024</span>
                             <span><i class="fas fa-layer-group"></i> 50+ Designs</span>
@@ -627,7 +780,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Stats Section -->
             <div class="stats-section">
                 <div class="stats-grid">
@@ -649,7 +802,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Back to Home -->
             <div style="text-align: center; margin: 50px 0;">
                 <a href="index.html" class="btn" style="padding: 12px 40px; font-size: 1.1rem;">
@@ -658,37 +811,42 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <p style="margin-bottom: 10px;">&copy; 2024 Aryan Zone. All rights reserved.</p>
-            <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email: aryanraikwar78@gmail.com</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email:
+                aryanraikwar78@gmail.com</p>
             <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
-                <a href="https://github.com/aaryaninvincible" style="color: var(--secondary); text-decoration: none;">GitHub</a> | 
-                <a href="https://instagram.com/codesworld.exe" style="color: #E1306C; text-decoration: none;">Instagram</a> | 
-                <a href="https://youtube.com/@codesworld.exe" style="color: #FF0000; text-decoration: none;">YouTube</a> | 
-                <a href="https://linkedin.com/in/aryanraikwar" style="color: #0077B5; text-decoration: none;">LinkedIn</a>
+                <a href="https://github.com/aaryaninvincible"
+                    style="color: var(--secondary); text-decoration: none;">GitHub</a> |
+                <a href="https://instagram.com/codesworld.exe"
+                    style="color: #E1306C; text-decoration: none;">Instagram</a> |
+                <a href="https://youtube.com/@codesworld.exe" style="color: #FF0000; text-decoration: none;">YouTube</a>
+                |
+                <a href="https://linkedin.com/in/aryanraikwar"
+                    style="color: #0077B5; text-decoration: none;">LinkedIn</a>
             </p>
         </div>
     </footer>
-    
+
     <script>
         // Filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
-            
+
             filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', function () {
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
-                    
+
                     // Add active class to clicked button
                     this.classList.add('active');
-                    
+
                     const filter = this.getAttribute('data-filter');
-                    
+
                     // Filter projects
                     projectCards.forEach(card => {
                         if (filter === 'all') {
@@ -716,13 +874,13 @@
                     });
                 });
             });
-            
+
             // Add hover effects
             projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
+                card.addEventListener('mouseenter', function () {
                     const category = this.getAttribute('data-category');
                     const badges = this.querySelectorAll('.category-badge');
-                    
+
                     badges.forEach(badge => {
                         if (category === 'web') badge.style.background = 'rgba(0, 255, 157, 0.9)';
                         if (category === 'graphics') badge.style.background = 'rgba(255, 0, 170, 0.9)';
@@ -732,17 +890,17 @@
                         if (category === 'github') badge.style.background = 'rgba(108, 198, 68, 0.9)';
                     });
                 });
-                
-                card.addEventListener('mouseleave', function() {
+
+                card.addEventListener('mouseleave', function () {
                     const badges = this.querySelectorAll('.category-badge');
                     badges.forEach(badge => {
                         badge.style.background = 'rgba(0, 0, 0, 0.8)';
                     });
                 });
             });
-            
+
             // Add scroll effect to header
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
                     header.style.backgroundColor = 'rgba(5, 5, 8, 0.95)';
@@ -750,7 +908,41 @@
                     header.style.backgroundColor = 'rgba(10, 10, 15, 0.9)';
                 }
             });
+
+            // Mobile Menu Functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMobileMenu() {
+                mobileSidebar.classList.toggle('open');
+                mobileOverlay.classList.toggle('open');
+
+                // Toggle hamburger / close icon
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileSidebar.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+            // Close sidebar when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileSidebar.classList.contains('open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
         });
     </script>
 </body>
+
 </html>

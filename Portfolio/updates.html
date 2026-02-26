@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latest Updates | Aryan Zone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary: #00ff9d;
@@ -17,13 +20,13 @@
             --gray: #1a1a25;
             --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Roboto Mono', monospace;
             background-color: var(--dark);
@@ -32,7 +35,7 @@
             overflow-x: hidden;
             position: relative;
         }
-        
+
         /* RGB background effect */
         .rgb-bg {
             position: fixed;
@@ -42,10 +45,10 @@
             height: 100%;
             z-index: -2;
             background: radial-gradient(circle at 20% 50%, rgba(0, 255, 157, 0.05) 0%, transparent 20%),
-                        radial-gradient(circle at 80% 20%, rgba(0, 136, 255, 0.05) 0%, transparent 20%),
-                        radial-gradient(circle at 40% 80%, rgba(255, 0, 170, 0.05) 0%, transparent 20%);
+                radial-gradient(circle at 80% 20%, rgba(0, 136, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 40% 80%, rgba(255, 0, 170, 0.05) 0%, transparent 20%);
         }
-        
+
         /* Animated grid */
         .grid-animation {
             position: fixed;
@@ -53,7 +56,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 136, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 136, 255, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -61,12 +64,17 @@
             opacity: 0.3;
             animation: gridMove 20s linear infinite;
         }
-        
+
         @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
         }
-        
+
         /* Header & Navigation */
         header {
             background-color: rgba(10, 10, 15, 0.9);
@@ -77,20 +85,20 @@
             z-index: 1000;
             top: 0;
         }
-        
+
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
         }
-        
+
         .logo {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.8rem;
@@ -101,17 +109,22 @@
             text-shadow: var(--neon-glow);
             animation: logoGlow 3s infinite alternate;
         }
-        
+
         @keyframes logoGlow {
-            0% { text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary); }
-            100% { text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary); }
+            0% {
+                text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+            }
+
+            100% {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            }
         }
-        
+
         .nav-links {
             display: flex;
             gap: 30px;
         }
-        
+
         .nav-links a {
             color: var(--light);
             text-decoration: none;
@@ -120,11 +133,11 @@
             position: relative;
             padding: 5px 0;
         }
-        
+
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -135,18 +148,18 @@
             background-color: var(--primary);
             transition: width 0.3s;
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         /* Main Content */
         .hero {
             padding: 150px 0 60px;
             text-align: center;
             position: relative;
         }
-        
+
         .hero h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
@@ -154,14 +167,14 @@
             color: var(--light);
             text-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 40px;
             color: #aaa;
         }
-        
+
         /* New Update Form */
         .new-update-form {
             background: rgba(255, 255, 255, 0.05);
@@ -171,23 +184,23 @@
             margin-bottom: 50px;
             backdrop-filter: blur(10px);
         }
-        
+
         .new-update-form h3 {
             color: var(--primary);
             margin-bottom: 20px;
             font-family: 'Orbitron', sans-serif;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
             color: var(--light);
         }
-        
+
         .form-control {
             width: 100%;
             padding: 12px 15px;
@@ -197,22 +210,22 @@
             color: var(--light);
             font-family: 'Roboto Mono', monospace;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
         }
-        
+
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
         }
-        
+
         /* Updates Feed */
         .updates-feed {
             margin-bottom: 80px;
         }
-        
+
         .update-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 255, 157, 0.1);
@@ -223,13 +236,13 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .update-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(0, 255, 157, 0.1);
         }
-        
+
         .update-card::before {
             content: '';
             position: absolute;
@@ -239,7 +252,7 @@
             height: 100%;
             background: var(--primary);
         }
-        
+
         .update-header {
             display: flex;
             justify-content: space-between;
@@ -248,7 +261,7 @@
             flex-wrap: wrap;
             gap: 15px;
         }
-        
+
         .update-type {
             display: inline-block;
             padding: 5px 15px;
@@ -258,12 +271,12 @@
             font-size: 0.8rem;
             font-weight: bold;
         }
-        
+
         .update-date {
             color: #aaa;
             font-size: 0.9rem;
         }
-        
+
         .new-badge {
             background-color: var(--accent);
             color: white;
@@ -273,26 +286,26 @@
             font-weight: bold;
             margin-left: 10px;
         }
-        
+
         .update-title {
             font-family: 'Orbitron', sans-serif;
             font-size: 1.5rem;
             color: var(--light);
             margin-bottom: 15px;
         }
-        
+
         .update-content {
             color: #aaa;
             margin-bottom: 20px;
         }
-        
+
         .update-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
             margin-bottom: 20px;
         }
-        
+
         .update-tag {
             padding: 5px 12px;
             background: rgba(0, 136, 255, 0.1);
@@ -300,13 +313,13 @@
             border-radius: 15px;
             font-size: 0.8rem;
         }
-        
+
         .update-links {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .btn {
             display: inline-block;
             padding: 8px 20px;
@@ -319,59 +332,83 @@
             transition: all 0.3s;
             font-size: 0.9rem;
         }
-        
+
         .btn:hover {
             background: var(--primary);
             color: var(--dark);
             box-shadow: var(--neon-glow);
         }
-        
+
         .btn-secondary {
             border-color: var(--secondary);
             color: var(--secondary);
         }
-        
+
         .btn-secondary:hover {
             background: var(--secondary);
             color: var(--dark);
             box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
         }
-        
+
         .btn-youtube {
             border-color: #FF0000;
             color: #FF0000;
         }
-        
+
         .btn-youtube:hover {
             background: #FF0000;
             color: white;
             box-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000;
         }
-        
+
         .btn-github {
             border-color: #6cc644;
             color: #6cc644;
         }
-        
+
         .btn-github:hover {
             background: #6cc644;
             color: white;
             box-shadow: 0 0 10px #6cc644, 0 0 20px #6cc644;
         }
-        
+
         /* Update Type Colors */
-        .type-project .update-type { background: rgba(0, 255, 157, 0.1); color: var(--primary); }
-        .type-project::before { background: var(--primary); }
-        
-        .type-youtube .update-type { background: rgba(255, 0, 0, 0.1); color: #FF0000; }
-        .type-youtube::before { background: #FF0000; }
-        
-        .type-github .update-type { background: rgba(108, 198, 68, 0.1); color: #6cc644; }
-        .type-github::before { background: #6cc644; }
-        
-        .type-achievement .update-type { background: rgba(255, 215, 0, 0.1); color: #FFD700; }
-        .type-achievement::before { background: #FFD700; }
-        
+        .type-project .update-type {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--primary);
+        }
+
+        .type-project::before {
+            background: var(--primary);
+        }
+
+        .type-youtube .update-type {
+            background: rgba(255, 0, 0, 0.1);
+            color: #FF0000;
+        }
+
+        .type-youtube::before {
+            background: #FF0000;
+        }
+
+        .type-github .update-type {
+            background: rgba(108, 198, 68, 0.1);
+            color: #6cc644;
+        }
+
+        .type-github::before {
+            background: #6cc644;
+        }
+
+        .type-achievement .update-type {
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+        }
+
+        .type-achievement::before {
+            background: #FFD700;
+        }
+
         /* Live Indicator */
         .live-indicator {
             display: inline-flex;
@@ -380,13 +417,21 @@
             color: var(--accent);
             animation: pulse 2s infinite;
         }
-        
+
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
-        
+
         /* Footer */
         footer {
             background-color: var(--darker);
@@ -394,22 +439,103 @@
             text-align: center;
             border-top: 1px solid rgba(0, 255, 157, 0.2);
         }
-        
+
+        /* Mobile Navigation Sidebar Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+            transition: color 0.3s, padding-left 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .mobile-sidebar a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .nav-links {
                 display: none;
             }
-            
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .update-header {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            
+
             .update-links {
                 flex-direction: column;
                 align-items: flex-start;
@@ -417,11 +543,12 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Background Effects -->
     <div class="rgb-bg"></div>
     <div class="grid-animation"></div>
-    
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -436,18 +563,36 @@
                     <a href="index.html#about">About</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
-    
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#projects" class="mobile-link">Projects</a>
+        <a href="gallery.html" class="mobile-link">All Projects</a>
+        <a href="updates.html" class="mobile-link" style="color: var(--accent);">Updates</a>
+        <a href="index.html#clients" class="mobile-link">Clients</a>
+        <a href="index.html#about" class="mobile-link">About</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1>LATEST UPDATES</h1>
-            <p>Stay updated with my latest projects, tutorials, achievements, and professional milestones. I regularly post about new developments here.</p>
+            <p>Stay updated with my latest projects, tutorials, achievements, and professional milestones. I regularly
+                post about new developments here.</p>
         </div>
     </section>
-    
+
     <!-- New Update Form (For Admin Use) -->
     <section style="display: none;" id="adminForm">
         <div class="container">
@@ -469,7 +614,8 @@
                     </div>
                     <div class="form-group">
                         <label for="updateContent">Content</label>
-                        <textarea id="updateContent" class="form-control" placeholder="Describe your update..."></textarea>
+                        <textarea id="updateContent" class="form-control"
+                            placeholder="Describe your update..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="updateTags">Tags (comma separated)</label>
@@ -484,10 +630,13 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Updates Feed -->
     <section class="updates-feed">
         <div class="container">
+            <!-- Live GitHub Updates Container -->
+            <div id="live-github-updates"></div>
+
             <!-- Update 1 - New Project -->
             <div class="update-card type-project">
                 <div class="update-header">
@@ -502,8 +651,11 @@
                 </div>
                 <h3 class="update-title">Launched Ouranos Robotics E-commerce Store</h3>
                 <div class="update-content">
-                    <p>Successfully deployed a complete Shopify-based e-commerce solution with custom IoT integrations for Ouranos Robotics. The platform features enhanced user experience, real-time inventory management, and improved conversion rates by 30%.</p>
-                    <p>Implemented custom Shopify themes, payment gateway integration, and IoT device tracking system.</p>
+                    <p>Successfully deployed a complete Shopify-based e-commerce solution with custom IoT integrations
+                        for Ouranos Robotics. The platform features enhanced user experience, real-time inventory
+                        management, and improved conversion rates by 30%.</p>
+                    <p>Implemented custom Shopify themes, payment gateway integration, and IoT device tracking system.
+                    </p>
                 </div>
                 <div class="update-tags">
                     <span class="update-tag">Shopify</span>
@@ -517,7 +669,7 @@
                     <a href="#" class="btn btn-secondary">Case Study</a>
                 </div>
             </div>
-            
+
             <!-- Update 2 - YouTube Video -->
             <div class="update-card type-youtube">
                 <div class="update-header">
@@ -529,14 +681,16 @@
                 </div>
                 <h3 class="update-title">New Tutorial: Building IoT Dashboard with React & Node.js</h3>
                 <div class="update-content">
-                    <p>Published a comprehensive tutorial on creating real-time IoT dashboards using React.js and Node.js. The video covers:</p>
+                    <p>Published a comprehensive tutorial on creating real-time IoT dashboards using React.js and
+                        Node.js. The video covers:</p>
                     <ul style="padding-left: 20px; margin: 10px 0;">
                         <li>Real-time data visualization with Chart.js</li>
                         <li>WebSocket integration for live updates</li>
                         <li>Responsive dashboard design</li>
                         <li>Deployment to AWS</li>
                     </ul>
-                    <p>The video has gained 150K+ views in the first week and positive feedback from the developer community.</p>
+                    <p>The video has gained 150K+ views in the first week and positive feedback from the developer
+                        community.</p>
                 </div>
                 <div class="update-tags">
                     <span class="update-tag">React.js</span>
@@ -554,7 +708,7 @@
                     </a>
                 </div>
             </div>
-            
+
             <!-- Update 3 - GitHub Update -->
             <div class="update-card type-github">
                 <div class="update-header">
@@ -565,7 +719,8 @@
                 </div>
                 <h3 class="update-title">Open-Sourced Python POS System</h3>
                 <div class="update-content">
-                    <p>Released the complete source code for my Python-based Point of Sale system on GitHub. This project demonstrates:</p>
+                    <p>Released the complete source code for my Python-based Point of Sale system on GitHub. This
+                        project demonstrates:</p>
                     <ul style="padding-left: 20px; margin: 10px 0;">
                         <li>Efficient data handling with Pandas and NumPy</li>
                         <li>RESTful API design with Flask</li>
@@ -582,13 +737,14 @@
                     <span class="update-tag">POS System</span>
                 </div>
                 <div class="update-links">
-                    <a href="https://github.com/aaryaninvincible/python-pos-system" class="btn btn-github" target="_blank">
+                    <a href="https://github.com/aaryaninvincible/python-pos-system" class="btn btn-github"
+                        target="_blank">
                         <i class="fab fa-github"></i> View Repository
                     </a>
                     <a href="#" class="btn btn-secondary">Documentation</a>
                 </div>
             </div>
-            
+
             <!-- Update 4 - Achievement -->
             <div class="update-card type-achievement">
                 <div class="update-header">
@@ -599,7 +755,8 @@
                 </div>
                 <h3 class="update-title">Reached 13K+ Followers on Instagram 🎉</h3>
                 <div class="update-content">
-                    <p>My tech content channel @codesworld.exe has crossed 13,000 followers on Instagram! This milestone was achieved through consistent sharing of:</p>
+                    <p>My tech content channel @codesworld.exe has crossed 13,000 followers on Instagram! This milestone
+                        was achieved through consistent sharing of:</p>
                     <ul style="padding-left: 20px; margin: 10px 0;">
                         <li>Programming tutorials and tips</li>
                         <li>Project showcases and demos</li>
@@ -615,13 +772,14 @@
                     <span class="update-tag">Tech Education</span>
                 </div>
                 <div class="update-links">
-                    <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram" style="border-color: #E1306C; color: #E1306C;" target="_blank">
+                    <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram"
+                        style="border-color: #E1306C; color: #E1306C;" target="_blank">
                         <i class="fab fa-instagram"></i> Visit Profile
                     </a>
                     <a href="#" class="btn btn-secondary">Analytics Report</a>
                 </div>
             </div>
-            
+
             <!-- Update 5 - New Project -->
             <div class="update-card type-project">
                 <div class="update-header">
@@ -632,7 +790,8 @@
                 </div>
                 <h3 class="update-title">Voltros.in E-commerce Platform Launch</h3>
                 <div class="update-content">
-                    <p>Successfully launched the Voltros.in e-commerce platform for electronics and tech products. Key features include:</p>
+                    <p>Successfully launched the Voltros.in e-commerce platform for electronics and tech products. Key
+                        features include:</p>
                     <ul style="padding-left: 20px; margin: 10px 0;">
                         <li>Custom-built admin dashboard</li>
                         <li>Multiple payment gateway integration</li>
@@ -654,7 +813,7 @@
                     <a href="#" class="btn btn-secondary">Technical Details</a>
                 </div>
             </div>
-            
+
             <!-- Load More Button -->
             <div style="text-align: center; margin-top: 40px;">
                 <button id="loadMore" class="btn" style="padding: 12px 40px;">
@@ -663,7 +822,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Back to Home -->
     <section style="padding: 40px 0;">
         <div class="container">
@@ -674,25 +833,30 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="container">
             <p style="margin-bottom: 10px;">&copy; 2024 Aryan Zone. All rights reserved.</p>
-            <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email: aryanraikwar78@gmail.com</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email:
+                aryanraikwar78@gmail.com</p>
             <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
-                Follow for updates: 
-                <a href="https://github.com/aaryaninvincible" style="color: var(--secondary); text-decoration: none; margin: 0 10px;">GitHub</a> | 
-                <a href="https://instagram.com/codesworld.exe" style="color: #E1306C; text-decoration: none; margin: 0 10px;">Instagram</a> | 
-                <a href="https://youtube.com/@codesworld.exe" style="color: #FF0000; text-decoration: none; margin: 0 10px;">YouTube</a> | 
-                <a href="https://linkedin.com/in/aryanraikwar" style="color: #0077B5; text-decoration: none; margin: 0 10px;">LinkedIn</a>
+                Follow for updates:
+                <a href="https://github.com/aaryaninvincible"
+                    style="color: var(--secondary); text-decoration: none; margin: 0 10px;">GitHub</a> |
+                <a href="https://instagram.com/codesworld.exe"
+                    style="color: #E1306C; text-decoration: none; margin: 0 10px;">Instagram</a> |
+                <a href="https://youtube.com/@codesworld.exe"
+                    style="color: #FF0000; text-decoration: none; margin: 0 10px;">YouTube</a> |
+                <a href="https://linkedin.com/in/aryanraikwar"
+                    style="color: #0077B5; text-decoration: none; margin: 0 10px;">LinkedIn</a>
             </p>
         </div>
     </footer>
-    
+
     <script>
         // Add scroll effect to header
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 50) {
                 header.style.backgroundColor = 'rgba(5, 5, 8, 0.95)';
@@ -700,36 +864,36 @@
                 header.style.backgroundColor = 'rgba(10, 10, 15, 0.9)';
             }
         });
-        
+
         // Load more updates functionality
-        document.getElementById('loadMore').addEventListener('click', function() {
+        document.getElementById('loadMore').addEventListener('click', function () {
             const button = this;
             button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
             button.disabled = true;
-            
+
             // Simulate loading more updates
             setTimeout(() => {
                 // In a real application, you would fetch more updates from a server
                 // For now, we'll just show an alert
                 alert('More updates would be loaded from database in production version.');
-                
+
                 button.innerHTML = '<i class="fas fa-sync-alt"></i> Load More Updates';
                 button.disabled = false;
             }, 1500);
         });
-        
+
         // New update form submission (admin only)
         const updateForm = document.getElementById('updateForm');
         if (updateForm) {
-            updateForm.addEventListener('submit', function(e) {
+            updateForm.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 // In a real application, you would send this data to a server
                 alert('Update would be posted to database in production version.');
                 this.reset();
             });
         }
-        
+
         // Show admin form with secret key (for demonstration)
         // In production, this would be protected with proper authentication
         const secretKey = 'aryan123';
@@ -737,16 +901,16 @@
         if (urlParams.get('admin') === secretKey) {
             document.getElementById('adminForm').style.display = 'block';
         }
-        
+
         // Auto-hide "Just Now" indicator after 24 hours
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const liveIndicators = document.querySelectorAll('.live-indicator');
             liveIndicators.forEach(indicator => {
                 setTimeout(() => {
                     indicator.style.display = 'none';
                 }, 86400000); // 24 hours
             });
-            
+
             // Remove "NEW" badge after 7 days
             const newBadges = document.querySelectorAll('.new-badge');
             newBadges.forEach(badge => {
@@ -754,7 +918,111 @@
                     badge.style.display = 'none';
                 }, 604800000); // 7 days
             });
+
+            // Mobile Menu Functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMobileMenu() {
+                if (!mobileSidebar) return;
+                mobileSidebar.classList.toggle('open');
+                mobileOverlay.classList.toggle('open');
+
+                // Toggle hamburger / close icon
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileSidebar.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+            // Close sidebar when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileSidebar.classList.contains('open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
         });
+
+        // Fetch Live GitHub Activity
+        async function loadLiveGithubActivity() {
+            const githubUsername = "aaryaninvincible";
+            const liveContainer = document.getElementById('live-github-updates');
+
+            if (!liveContainer) return;
+
+            try {
+                // Fetch public events
+                const response = await fetch(`https://api.github.com/users/${githubUsername}/events/public`);
+                if (!response.ok) throw new Error("Failed to fetch GitHub events");
+
+                const events = await response.json();
+
+                // Find the most recent PushEvent (actual code update)
+                const pushEvent = events.find(event => event.type === 'PushEvent');
+
+                if (pushEvent) {
+                    const repoName = pushEvent.repo.name.split('/')[1]; // Get just the repo name, not username/repo
+                    const commitMsg = pushEvent.payload.commits[0]?.message || 'Updated project files';
+                    const commitUrl = `https://github.com/${pushEvent.repo.name}/commit/${pushEvent.payload.commits[0]?.sha}`;
+                    const repoUrl = `https://github.com/${pushEvent.repo.name}`;
+
+                    // Format Date nicely
+                    const eventDate = new Date(pushEvent.created_at);
+                    const formattedDate = eventDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+                    const updateCardHtml = `
+                        <div class="update-card type-github" style="border-color: #6cc644; box-shadow: 0 0 15px rgba(108, 198, 68, 0.2);">
+                            <div class="update-header">
+                                <div>
+                                    <span class="update-type">GitHub Push</span>
+                                    <span class="new-badge" style="background: #6cc644;">LIVE NOW</span>
+                                    <span class="live-indicator" style="color: #6cc644;">
+                                        <i class="fas fa-circle" style="font-size: 0.7rem;"></i> Just Updated
+                                    </span>
+                                </div>
+                                <span class="update-date">${formattedDate}</span>
+                            </div>
+                            <h3 class="update-title">Pushed Code to <span style="color: #6cc644;">${repoName}</span></h3>
+                            <div class="update-content">
+                                <p style="font-style: italic; border-left: 3px solid #6cc644; padding-left: 10px; margin-bottom: 15px;">"${commitMsg}"</p>
+                                <p>I just pushed new code to my GitHub repository. Click below to view the commit or check out the entire project.</p>
+                            </div>
+                            <div class="update-tags">
+                                <span class="update-tag">GitHub API</span>
+                                <span class="update-tag">Live Activity</span>
+                                <span class="update-tag">Code Push</span>
+                            </div>
+                            <div class="update-links" style="margin-top: 15px;">
+                                <a href="${commitUrl}" class="btn btn-github" target="_blank">
+                                    <i class="fas fa-code-commit"></i> View Commit
+                                </a>
+                                <a href="${repoUrl}" class="btn btn-secondary" style="border-color: #aaa; color: #aaa;" target="_blank">
+                                    <i class="fab fa-github"></i> View Repo
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    liveContainer.innerHTML = updateCardHtml;
+                }
+            } catch (error) {
+                console.error("Error loading GitHub activity:", error);
+            }
+        }
+
+        loadLiveGithubActivity();
     </script>
 </body>
+
 </html>

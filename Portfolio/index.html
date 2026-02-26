@@ -805,9 +805,26 @@
                     <a href="index.html#about">About</a>
                     <a href="index.html#contact">Contact</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#projects" class="mobile-link">Projects</a>
+        <a href="gallery.html" class="mobile-link" style="color: var(--accent);">All Projects</a>
+        <a href="updates.html" class="mobile-link">Updates</a>
+        <a href="index.html#clients" class="mobile-link">Clients</a>
+        <a href="index.html#about" class="mobile-link">About</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -1301,38 +1318,50 @@
                 </div>
                 
                 <div class="gallery-grid">
+                    <!-- AI & Full Stack Projects -->
+                    <div class="gallery-item" data-category="web">
+                        <div class="gallery-img">
+                            <i class="fas fa-file-excel" style="font-size: 4rem; color: #217346;"></i>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">AI & Full Stack</span>
+                            <h3>ExcelAI Editor</h3>
+                            <p>An intelligent Excel editor powered by AI for data manipulation</p>
+                            <div class="project-links" style="margin-top: 15px;">
+                                <a href="https://github.com/aaryaninvincible/ExcelAI_Editor" class="btn btn-secondary" target="_blank">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- App Development Projects -->
+                    <div class="gallery-item" data-category="app">
+                        <div class="gallery-img">
+                            <i class="fas fa-file-pdf" style="font-size: 4rem; color: #F40F02;"></i>
+                        </div>
+                        <div class="gallery-content">
+                            <span class="gallery-category">App Development</span>
+                            <h3>Mobile PDF Editor</h3>
+                            <p>A high-performance Android PDF editor application</p>
+                            <div class="project-links" style="margin-top: 15px;">
+                                <a href="https://github.com/aaryaninvincible/Pdf_editor" class="btn btn-secondary" target="_blank">View Project</a>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Web Development Projects -->
                     <div class="gallery-item" data-category="web">
                         <div class="gallery-img">
-                            <i class="fas fa-laptop-code" style="font-size: 4rem; color: var(--primary);"></i>
+                            <i class="fas fa-rocket" style="font-size: 4rem; color: var(--accent);"></i>
                         </div>
                         <div class="gallery-content">
                             <span class="gallery-category">Web Development</span>
-                            <h3>Ambulance Booking System</h3>
-                            <p>PHP, SQL, JavaScript, SCSS based platform</p>
+                            <h3>Digital Marketing Landing Pages</h3>
+                            <p>High-conversion sleek landing pages with premium animations</p>
                             <div class="project-links" style="margin-top: 15px;">
-                                <a href="#" class="btn">Live Demo</a>
-                                <a href="#" class="btn btn-secondary">GitHub</a>
+                                <a href="#" class="btn btn-secondary">View Showcase</a>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Graphics Design Projects -->
-                    <div class="gallery-item" data-category="graphics">
-                        <div class="gallery-img">
-                            <i class="fas fa-palette" style="font-size: 4rem; color: var(--accent);"></i>
-                        </div>
-                        <div class="gallery-content">
-                            <span class="gallery-category">Graphics Design</span>
-                            <h3>YouTube Thumbnails</h3>
-                            <p>100+ engaging thumbnails for tech tutorials</p>
-                            <div class="project-links" style="margin-top: 15px;">
-                                <a href="#" class="btn">View Gallery</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Add more gallery items for each category -->
                 </div>
             </div>
         </section>
@@ -1428,18 +1457,29 @@
         document.addEventListener('DOMContentLoaded', function () {
             const stats = document.querySelectorAll('.stat-number');
             stats.forEach(stat => {
-                const target = parseInt(stat.textContent);
-                let current = 0;
-                const increment = target / 50;
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        stat.textContent = target + (stat.textContent.includes('+') ? '+' : '');
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '');
-                    }
-                }, 30);
+                const text = stat.textContent;
+                // Match the number part and the suffix part (e.g., "13", "K+")
+                const match = text.match(/^(\d+(?:\.\d+)?)(.*)$/);
+
+                if (match) {
+                    const target = parseFloat(match[1]);
+                    const suffix = match[2];
+
+                    let current = 0;
+                    const increment = target / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            // Format back to original if it's a whole number or keeping decimal
+                            const finalValue = Number.isInteger(target) ? target : target.toFixed(1);
+                            stat.textContent = finalValue + suffix;
+                            clearInterval(timer);
+                        } else {
+                            const currentValue = Number.isInteger(target) ? Math.floor(current) : current.toFixed(1);
+                            stat.textContent = currentValue + suffix;
+                        }
+                    }, 30);
+                }
             });
 
             // Show update notification after 2 seconds
@@ -1463,6 +1503,40 @@
         setTimeout(() => {
             closeNotification();
         }, 10000);
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMobileMenu() {
+            mobileSidebar.classList.toggle('open');
+            mobileOverlay.classList.toggle('open');
+
+            // Toggle hamburger / close icon
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileSidebar.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        // Close sidebar when clicking a link
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileSidebar.classList.contains('open')) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
     </script>
     <!-- Firebase Integration Script -->
     <script type="module">
@@ -1590,6 +1664,7 @@
         }
 
         loadLiveStats();
+        loadGithubProjects();
     </script>
 
     <!-- Independent Particle System Script -->
