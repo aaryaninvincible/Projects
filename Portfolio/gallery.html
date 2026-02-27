@@ -31,6 +31,51 @@
             --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
         }
 
+        body.light-mode {
+            --primary: #059669;
+            --secondary: #2563eb;
+            --accent: #db2777;
+            --dark: #f3f4f6;
+            --darker: #e5e7eb;
+            --light: #111827;
+            --gray: #ffffff;
+            --neon-glow: 0 0 5px currentColor;
+        }
+
+        body.light-mode header {
+            background-color: rgba(243, 244, 246, 0.9);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        body.light-mode .live-update-notification,
+        body.light-mode .mobile-sidebar {
+            background: rgba(243, 244, 246, 0.95);
+        }
+
+        body.light-mode .project-image,
+        body.light-mode .gallery-img,
+        body.light-mode .project-img {
+            background: #e5e7eb;
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+
         * {
             margin: 0;
             padding: 0;
@@ -482,7 +527,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .spinner {
@@ -505,10 +559,6 @@
             animation: fadeInPage 0.8s ease-out forwards;
         }
 
-        body.page-transitioning {
-            animation: fadeOutPage 0.5s ease-in forwards;
-        }
-
         @keyframes fadeInPage {
             0% {
                 opacity: 0;
@@ -519,15 +569,6 @@
             }
         }
 
-        @keyframes fadeOutPage {
-            0% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -554,6 +595,18 @@
             .filter-btn {
                 padding: 10px 15px;
                 font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 0 14px;
+            }
+
+            nav {
+                padding: 14px 0;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
         }
 
@@ -614,6 +667,9 @@
                     <a href="index.html#clients">Clients</a>
                     <a href="index.html#about">About</a>
                     <a href="index.html#contact">Contact</a>
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -634,6 +690,10 @@
         <a href="index.html#clients" class="mobile-link">Clients</a>
         <a href="index.html#about" class="mobile-link">About</a>
         <a href="index.html#contact" class="mobile-link">Contact</a>
+        <button class="theme-toggle-btn" id="mobile-theme-toggle-btn" aria-label="Toggle Theme"
+            style="margin-top: 20px; text-align: left; padding-left: 0;">
+            <i class="fas fa-moon" style="margin-right: 10px;"></i> Toggle Theme
+        </button>
     </div>
 
     <!-- Hero Section -->
@@ -906,14 +966,46 @@
     </footer>
 
     <script>
-        // Preloader and Page Transitions
+        // Theme Toggle Logic
+        const initTheme = () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+            const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+            const mobileThemeIcon = mobileThemeToggleBtn ? mobileThemeToggleBtn.querySelector('i') : null;
+
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
+                if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+            }
+
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+
+                if (themeIcon) {
+                    themeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (mobileThemeIcon) {
+                    mobileThemeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+        };
+
+        // Initialize theme
+        initTheme();
+
+        // Preloader and page switch loader animation
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
+                preloader.classList.add('hidden');
             }
         });
 
@@ -926,10 +1018,11 @@
                 const isAnchor = targetUrl.startsWith('#');
                 if (!isExternal && !isAnchor) {
                     e.preventDefault();
-                    document.body.classList.add('page-transitioning');
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) preloader.classList.remove('hidden');
                     setTimeout(() => {
                         window.location.href = targetUrl;
-                    }, 500); // match fadeOutPage animation duration
+                    }, 420);
                 }
             });
         });

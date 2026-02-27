@@ -31,6 +31,50 @@
             --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
         }
 
+        body.light-mode {
+            --primary: #059669;
+            --secondary: #2563eb;
+            --accent: #db2777;
+            --dark: #f3f4f6;
+            --darker: #e5e7eb;
+            --light: #111827;
+            --gray: #ffffff;
+            --neon-glow: 0 0 5px currentColor;
+        }
+
+        body.light-mode header {
+            background-color: rgba(243, 244, 246, 0.9);
+            border-bottom: 1px solid rgba(5, 150, 105, 0.2);
+        }
+
+        body.light-mode .live-update-notification,
+        body.light-mode .mobile-sidebar {
+            background: rgba(243, 244, 246, 0.95);
+        }
+
+        body.light-mode .project-img,
+        body.light-mode .gallery-img {
+            background: #e5e7eb;
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+
         * {
             margin: 0;
             padding: 0;
@@ -835,7 +879,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .spinner {
@@ -858,10 +911,6 @@
             animation: fadeInPage 0.8s ease-out forwards;
         }
 
-        body.page-transitioning {
-            animation: fadeOutPage 0.5s ease-in forwards;
-        }
-
         @keyframes fadeInPage {
             0% {
                 opacity: 0;
@@ -872,20 +921,104 @@
             }
         }
 
-        @keyframes fadeOutPage {
-            0% {
-                opacity: 1;
-            }
 
-            100% {
-                opacity: 0;
-            }
+        /* Landing Page Games */
+        .games-selector {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .games-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .games-grid {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 14px;
+            padding: 18px;
+            backdrop-filter: blur(6px);
+            display: none;
+        }
+
+        .game-card.active {
+            display: block;
+        }
+
+        .game-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #a9a9b3;
+            margin-bottom: 10px;
+        }
+
+        .game-canvas {
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 136, 255, 0.25);
+            background: #080b16;
+            touch-action: none;
+            display: block;
+        }
+
+        .game-controls {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            border: 1px solid rgba(0, 255, 157, 0.35);
+            background: rgba(0, 255, 157, 0.08);
+            color: var(--light);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        .game-select-btn.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 157, 0.18);
+        }
+
+        .touch-controls {
+            display: flex;
+            gap: 10px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                line-height: 1.55;
             }
 
             .nav-links {
@@ -915,6 +1048,27 @@
 
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .game-canvas {
+                height: 200px;
+            }
+
+            .games-grid {
+                max-width: 100%;
+            }
+
+            .container {
+                padding: 0 14px;
+            }
+
+            nav {
+                padding: 14px 0;
+            }
+
+            .hero-cta-row .btn {
+                width: 100%;
+                max-width: 360px;
             }
         }
     </style>
@@ -949,16 +1103,20 @@
             <nav>
                 <a href="index.html" class="logo">ARYAN ZONE</a>
                 <div class="nav-links">
-                    <a href="index.html#home">Home</a>
-                    <a href="index.html#projects">Projects</a>
+                    <a href="#home">Home</a>
+                    <a href="#games">Games</a>
+                    <a href="#projects">Projects</a>
                     <a href="gallery.html" class="notification-badge">
                         All Projects
                         <span class="notification-dot"></span>
                     </a>
                     <a href="updates.html">Updates</a>
-                    <a href="index.html#clients">Clients</a>
-                    <a href="index.html#about">About</a>
-                    <a href="index.html#contact">Contact</a>
+                    <a href="#clients">Clients</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -972,13 +1130,18 @@
     <!-- Mobile Sidebar -->
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="mobile-sidebar" id="mobile-sidebar">
-        <a href="index.html#home" class="mobile-link">Home</a>
-        <a href="index.html#projects" class="mobile-link">Projects</a>
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#games" class="mobile-link">Games</a>
+        <a href="#projects" class="mobile-link">Projects</a>
         <a href="gallery.html" class="mobile-link" style="color: var(--accent);">All Projects</a>
         <a href="updates.html" class="mobile-link">Updates</a>
-        <a href="index.html#clients" class="mobile-link">Clients</a>
-        <a href="index.html#about" class="mobile-link">About</a>
-        <a href="index.html#contact" class="mobile-link">Contact</a>
+        <a href="#clients" class="mobile-link">Clients</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <button class="theme-toggle-btn" id="mobile-theme-toggle-btn" aria-label="Toggle Theme"
+            style="margin-top: 20px; text-align: left; padding-left: 0;">
+            <i class="fas fa-moon" style="margin-right: 10px;"></i> Toggle Theme
+        </button>
     </div>
 
     <!-- Hero Section -->
@@ -1104,12 +1267,75 @@
                 </div>
 
                 <!-- View Latest Project Button -->
-                <div style="margin-top: 40px;">
+                <div class="hero-cta-row" style="margin-top: 40px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
                     <a href="#projects" class="btn" style="padding: 15px 30px; font-size: 1.1rem; position: relative;">
                         <i class="fas fa-rocket" style="margin-right: 10px;"></i> View Latest Projects
                         <span
                             style="position: absolute; top: -10px; right: -10px; background: var(--accent); color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; animation: pulse 2s infinite;">3</span>
                     </a>
+                    <a href="#games" class="btn btn-secondary" style="padding: 15px 30px; font-size: 1.1rem;">
+                        <i class="fas fa-gamepad" style="margin-right: 10px;"></i> Play Mini Games
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Games -->
+    <section id="games">
+        <div class="container">
+            <h2 class="section-title">PLAY MINI GAMES</h2>
+            <p style="text-align: center; max-width: 780px; margin: 0 auto 35px;">
+                3 quick solo 2D games built for mobile and desktop. Use keyboard on PC or touch buttons on phone.
+            </p>
+            <div class="games-selector">
+                <button class="game-btn game-select-btn active" data-game="flappy">Flappy Neon</button>
+                <button class="game-btn game-select-btn" data-game="dino">Dino Dash Lite</button>
+                <button class="game-btn game-select-btn" data-game="dodge">Sky Dodge</button>
+            </div>
+            <div class="games-nav">
+                <button class="game-btn" id="prevGame">Prev Game</button>
+                <button class="game-btn" id="nextGame">Next Game</button>
+            </div>
+            <div class="games-grid">
+                <div class="game-card active" data-game="flappy">
+                    <h3>Flappy Neon</h3>
+                    <div class="game-meta"><span>Tap / Space = Flap</span><span id="flappyScore">Score: 0</span></div>
+                    <canvas id="flappyCanvas" class="game-canvas" width="360" height="220"></canvas>
+                    <div class="game-controls">
+                        <button class="game-btn" id="flappyStart">Start / Restart</button>
+                        <button class="game-btn" id="flappyPause">Pause</button>
+                        <div class="touch-controls">
+                            <button class="game-btn" id="flappyTap">Tap</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="dino">
+                    <h3>Dino Dash Lite</h3>
+                    <div class="game-meta"><span>Tap / Space = Jump</span><span id="dinoScore">Score: 0</span></div>
+                    <canvas id="dinoCanvas" class="game-canvas" width="360" height="220"></canvas>
+                    <div class="game-controls">
+                        <button class="game-btn" id="dinoStart">Start / Restart</button>
+                        <button class="game-btn" id="dinoPause">Pause</button>
+                        <div class="touch-controls">
+                            <button class="game-btn" id="dinoJump">Jump</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card" data-game="dodge">
+                    <h3>Sky Dodge</h3>
+                    <div class="game-meta"><span>Left / Right or Touch</span><span id="dodgeScore">Score: 0</span></div>
+                    <canvas id="dodgeCanvas" class="game-canvas" width="360" height="220"></canvas>
+                    <div class="game-controls">
+                        <button class="game-btn" id="dodgeStart">Start / Restart</button>
+                        <button class="game-btn" id="dodgePause">Pause</button>
+                        <div class="touch-controls">
+                            <button class="game-btn" id="dodgeLeft">Left</button>
+                            <button class="game-btn" id="dodgeRight">Right</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1177,72 +1403,71 @@
             <h2 class="section-title">FEATURED PROJECTS</h2>
             <div class="projects-grid">
 
-                <!-- Project 1: Ambulance Booking System -->
+                <!-- Project 1: Excel AI Editor -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-ambulance"></i>
+                        <i class="fas fa-file-excel"></i>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Ambulance Booking System</h3>
-                        <p class="project-desc">Seamless ambulance booking platform built with PHP, SQL, JavaScript, and
-                            SCSS. Users can add and book ambulances in just a few steps for emergencies or scheduled
-                            transport.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">SCSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2: AI Career Counseling -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">AI Career Counseling Website</h3>
-                        <p class="project-desc">Led team to develop an AI-based career counseling website that reached
-                            finals in Smart India Hackathon. Built with HTML, CSS, JavaScript, NLP, ML, and AI
-                            technologies.</p>
+                        <h3 class="project-title">Excel AI Editor</h3>
+                        <p class="project-desc">An intelligent Excel editor powered by AI for data manipulation and
+                            advanced spreadsheet management.</p>
                         <div class="project-tech">
                             <span class="tech-tag">AI</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">ML</span>
                             <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">GitHub</a>
+                            <a href="../ExcelAI Editor/index.html" class="btn" target="_blank">Live Demo</a>
+                            <a href="https://github.com/aaryaninvincible/ExcelAI_Editor" class="btn btn-secondary"
+                                target="_blank">View Code</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3: Latest E-commerce Platform -->
+                <!-- Project 2: Bawarchi 2.0 -->
                 <div class="project-card">
                     <div class="project-img">
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-utensils"></i>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Ouranos Robotics E-commerce <span
-                                style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 15px; font-size: 0.7rem; margin-left: 10px;">NEW</span>
-                        </h3>
-                        <p class="project-desc">Latest Shopify-based e-commerce platform with custom IoT integrations.
-                            Enhanced user experience and improved conversion rates by 30%.</p>
+                        <h3 class="project-title">Bawarchi 2.0</h3>
+                        <p class="project-desc">A modern restaurant website featuring a dynamic menu, responsive design,
+                            and an elegant user interface.</p>
                         <div class="project-tech">
-                            <span class="tech-tag">Shopify</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
                             <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">IoT</span>
-                            <span class="tech-tag">Liquid</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://shop.ouranosrobotics.com" class="btn" target="_blank">Live Demo</a>
-                            <a href="#" class="btn btn-secondary">Case Study</a>
+                            <a href="../Bawarchi_2.0/index.html" class="btn" target="_blank">Live Demo</a>
+                            <a href="https://github.com/aaryaninvincible/Projects/tree/main/Bawarchi_2.0"
+                                class="btn btn-secondary" target="_blank">View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Linguistic Academy -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Linguistic Academy <span
+                                style="background: var(--accent); color: white; padding: 2px 8px; border-radius: 15px; font-size: 0.7rem; margin-left: 10px;">NEW</span>
+                        </h3>
+                        <p class="project-desc">A comprehensive language learning platform with interactive lessons and
+                            a beautiful user interface.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Vanilla JS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="../Linguistic Academy/index.html" class="btn" target="_blank">Live Demo</a>
+                            <a href="https://github.com/aaryaninvincible/Projects/tree/main/Linguistic%20Academy"
+                                class="btn btn-secondary" target="_blank">View Code</a>
                         </div>
                     </div>
                 </div>
@@ -1251,6 +1476,22 @@
             <div style="text-align: center; margin-top: 50px;">
                 <a href="gallery.html" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">
                     <i class="fas fa-th-large" style="margin-right: 10px;"></i> View All Projects Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Projects Section -->
+    <section id="github-projects" style="background: var(--darker); padding-top: 50px; padding-bottom: 50px;">
+        <div class="container">
+            <h2 class="section-title">LATEST GITHUB REPOS</h2>
+            <div class="projects-grid github-projects-grid">
+                <!-- GitHub projects will be loaded here dynamically -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="https://github.com/aaryaninvincible" class="btn btn-secondary" target="_blank" style="padding: 15px 40px; font-size: 1.1rem;">
+                    <i class="fab fa-github" style="margin-right: 10px;"></i> View Full GitHub Profile
                 </a>
             </div>
         </div>
@@ -1580,14 +1821,46 @@
     </script>
 
     <script>
-        // Preloader and Page Transitions
+        // Theme Toggle Logic
+        const initTheme = () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+            const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+            const mobileThemeIcon = mobileThemeToggleBtn ? mobileThemeToggleBtn.querySelector('i') : null;
+
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
+                if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+            }
+
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+
+                if (themeIcon) {
+                    themeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (mobileThemeIcon) {
+                    mobileThemeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+        };
+
+        // Initialize theme
+        initTheme();
+
+        // Preloader and page switch loader animation
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
+                preloader.classList.add('hidden');
             }
         });
 
@@ -1600,10 +1873,11 @@
                 const isAnchor = targetUrl.startsWith('#');
                 if (!isExternal && !isAnchor) {
                     e.preventDefault();
-                    document.body.classList.add('page-transitioning');
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) preloader.classList.remove('hidden');
                     setTimeout(() => {
                         window.location.href = targetUrl;
-                    }, 500); // match fadeOutPage animation duration
+                    }, 420);
                 }
             });
         });
@@ -1721,10 +1995,524 @@
         });
 
     </script>
+
+    <!-- Mini Games Script -->
+    <script>
+        (() => {
+            const flappyCanvas = document.getElementById('flappyCanvas');
+            const dinoCanvas = document.getElementById('dinoCanvas');
+            const dodgeCanvas = document.getElementById('dodgeCanvas');
+            if (!flappyCanvas || !dinoCanvas || !dodgeCanvas) return;
+
+            let activeGame = 'flappy';
+            const safeFocus = (id) => { activeGame = id; };
+
+            function setupFlappy() {
+                const ctx = flappyCanvas.getContext('2d');
+                const scoreEl = document.getElementById('flappyScore');
+                const startBtn = document.getElementById('flappyStart');
+                const pauseBtn = document.getElementById('flappyPause');
+                const tapBtn = document.getElementById('flappyTap');
+
+                const W = flappyCanvas.width;
+                const H = flappyCanvas.height;
+                let running = false, started = false, paused = false, over = false, score = 0, last = 0, spawn = 0;
+                let bird = { x: 70, y: H / 2, vy: 0, r: 10 };
+                let pipes = [];
+
+                function reset() {
+                    score = 0;
+                    over = false;
+                    paused = false;
+                    started = false;
+                    spawn = 0;
+                    bird = { x: 70, y: H / 2, vy: 0, r: 10 };
+                    pipes = [];
+                    scoreEl.textContent = 'Score: 0';
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function flap() {
+                    safeFocus('flappy');
+                    if (!started || over) start();
+                    else if (paused) resume();
+                    bird.vy = -250;
+                }
+
+                function end() {
+                    running = false;
+                    over = true;
+                    paused = false;
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function start() {
+                    safeFocus('flappy');
+                    reset();
+                    running = true;
+                    started = true;
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function pause() {
+                    if (!running || over) return;
+                    running = false;
+                    paused = true;
+                    pauseBtn.textContent = 'Resume';
+                }
+
+                function resume() {
+                    if (!paused || over) return;
+                    paused = false;
+                    running = true;
+                    pauseBtn.textContent = 'Pause';
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function togglePause() {
+                    if (paused) resume();
+                    else pause();
+                }
+
+                function update(dt) {
+                    spawn -= dt;
+                    if (spawn <= 0) {
+                        const gap = 78;
+                        const top = 20 + Math.random() * (H - gap - 40);
+                        pipes.push({ x: W + 20, top, gap, passed: false });
+                        spawn = 1.2;
+                    }
+
+                    bird.vy += 500 * dt;
+                    bird.y += bird.vy * dt;
+
+                    for (const p of pipes) {
+                        p.x -= 140 * dt;
+                        if (!p.passed && p.x + 36 < bird.x) {
+                            p.passed = true;
+                            score += 1;
+                            scoreEl.textContent = `Score: ${score}`;
+                        }
+
+                        const hitX = bird.x + bird.r > p.x && bird.x - bird.r < p.x + 36;
+                        const hitTop = bird.y - bird.r < p.top;
+                        const hitBottom = bird.y + bird.r > p.top + p.gap;
+                        if (hitX && (hitTop || hitBottom)) end();
+                    }
+
+                    pipes = pipes.filter(p => p.x + 36 > -10);
+                    if (bird.y + bird.r > H || bird.y - bird.r < 0) end();
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, W, H);
+                    ctx.fillStyle = '#0b1020';
+                    ctx.fillRect(0, 0, W, H);
+
+                    ctx.fillStyle = '#00ff9d';
+                    pipes.forEach(p => {
+                        ctx.fillRect(p.x, 0, 36, p.top);
+                        ctx.fillRect(p.x, p.top + p.gap, 36, H);
+                    });
+
+                    ctx.beginPath();
+                    ctx.arc(bird.x, bird.y, bird.r, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ff00aa';
+                    ctx.fill();
+                    ctx.closePath();
+
+                    if (!running && over) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Game Over - Restart', 95, H / 2);
+                    } else if (!running && paused) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Paused', 150, H / 2);
+                    }
+                }
+
+                function loop(ts) {
+                    if (!running) { draw(); return; }
+                    const dt = Math.min(0.033, (ts - last) / 1000);
+                    last = ts;
+                    update(dt);
+                    draw();
+                    if (running) requestAnimationFrame(loop);
+                }
+
+                startBtn.addEventListener('click', start);
+                pauseBtn.addEventListener('click', togglePause);
+                tapBtn.addEventListener('click', flap);
+                flappyCanvas.addEventListener('pointerdown', flap);
+                flappyCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); flap(); }, { passive: false });
+                reset();
+                draw();
+                return { action: flap, pause, resume, isPaused: () => paused, isRunning: () => running };
+            }
+
+            function setupDino() {
+                const ctx = dinoCanvas.getContext('2d');
+                const scoreEl = document.getElementById('dinoScore');
+                const startBtn = document.getElementById('dinoStart');
+                const pauseBtn = document.getElementById('dinoPause');
+                const jumpBtn = document.getElementById('dinoJump');
+                const W = dinoCanvas.width;
+                const H = dinoCanvas.height;
+
+                let running = false, started = false, paused = false, over = false, score = 0, last = 0, spawn = 0;
+                let dino = { x: 45, y: 165, w: 22, h: 35, vy: 0 };
+                let obstacles = [];
+                const ground = 200;
+
+                function reset() {
+                    running = false; started = false; paused = false; over = false; score = 0; spawn = 0;
+                    dino = { x: 45, y: 165, w: 22, h: 35, vy: 0 };
+                    obstacles = [];
+                    scoreEl.textContent = 'Score: 0';
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function jump() {
+                    safeFocus('dino');
+                    if (!started || over) start();
+                    else if (paused) resume();
+                    if (dino.y + dino.h >= ground) dino.vy = -320;
+                }
+
+                function start() {
+                    safeFocus('dino');
+                    reset();
+                    running = true;
+                    started = true;
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function end() {
+                    running = false;
+                    over = true;
+                    paused = false;
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function pause() {
+                    if (!running || over) return;
+                    running = false;
+                    paused = true;
+                    pauseBtn.textContent = 'Resume';
+                }
+
+                function resume() {
+                    if (!paused || over) return;
+                    paused = false;
+                    running = true;
+                    pauseBtn.textContent = 'Pause';
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function togglePause() {
+                    if (paused) resume();
+                    else pause();
+                }
+
+                function update(dt) {
+                    spawn -= dt;
+                    if (spawn <= 0) {
+                        obstacles.push({ x: W + 10, y: 170, w: 16 + Math.random() * 10, h: 30 });
+                        spawn = 0.9 + Math.random() * 0.7;
+                    }
+
+                    dino.vy += 760 * dt;
+                    dino.y += dino.vy * dt;
+                    if (dino.y + dino.h > ground) {
+                        dino.y = ground - dino.h;
+                        dino.vy = 0;
+                    }
+
+                    for (const ob of obstacles) {
+                        ob.x -= 200 * dt;
+                        const hit = dino.x < ob.x + ob.w && dino.x + dino.w > ob.x &&
+                            dino.y < ob.y + ob.h && dino.y + dino.h > ob.y;
+                        if (hit) end();
+                    }
+                    obstacles = obstacles.filter(ob => ob.x + ob.w > -5);
+                    score += dt * 10;
+                    scoreEl.textContent = `Score: ${Math.floor(score)}`;
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, W, H);
+                    ctx.fillStyle = '#070f17';
+                    ctx.fillRect(0, 0, W, H);
+                    ctx.fillStyle = '#2a3c5e';
+                    ctx.fillRect(0, ground, W, 3);
+                    ctx.fillStyle = '#00ff9d';
+                    ctx.fillRect(dino.x, dino.y, dino.w, dino.h);
+                    ctx.fillStyle = '#0088ff';
+                    obstacles.forEach(ob => ctx.fillRect(ob.x, ob.y, ob.w, ob.h));
+
+                    if (!running && over) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Crashed - Restart', 115, H / 2);
+                    } else if (!running && paused) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Paused', 150, H / 2);
+                    }
+                }
+
+                function loop(ts) {
+                    if (!running) { draw(); return; }
+                    const dt = Math.min(0.033, (ts - last) / 1000);
+                    last = ts;
+                    update(dt);
+                    draw();
+                    if (running) requestAnimationFrame(loop);
+                }
+
+                startBtn.addEventListener('click', start);
+                pauseBtn.addEventListener('click', togglePause);
+                jumpBtn.addEventListener('click', jump);
+                dinoCanvas.addEventListener('pointerdown', jump);
+                dinoCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); }, { passive: false });
+                reset();
+                draw();
+                return { action: jump, pause, resume, isPaused: () => paused, isRunning: () => running };
+            }
+
+            function setupDodge() {
+                const ctx = dodgeCanvas.getContext('2d');
+                const scoreEl = document.getElementById('dodgeScore');
+                const startBtn = document.getElementById('dodgeStart');
+                const pauseBtn = document.getElementById('dodgePause');
+                const leftBtn = document.getElementById('dodgeLeft');
+                const rightBtn = document.getElementById('dodgeRight');
+                const W = dodgeCanvas.width;
+                const H = dodgeCanvas.height;
+
+                let running = false, started = false, paused = false, over = false, score = 0, last = 0, spawn = 0;
+                let player = { x: W / 2 - 16, y: H - 24, w: 32, h: 12 };
+                let blocks = [];
+                let moveLeft = false, moveRight = false;
+
+                function reset() {
+                    running = false; started = false; paused = false; over = false; score = 0; spawn = 0;
+                    player = { x: W / 2 - 16, y: H - 24, w: 32, h: 12 };
+                    blocks = [];
+                    moveLeft = false; moveRight = false;
+                    scoreEl.textContent = 'Score: 0';
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function start() {
+                    safeFocus('dodge');
+                    reset();
+                    running = true;
+                    started = true;
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function end() {
+                    running = false;
+                    over = true;
+                    paused = false;
+                    pauseBtn.textContent = 'Pause';
+                }
+
+                function pause() {
+                    if (!running || over) return;
+                    running = false;
+                    paused = true;
+                    pauseBtn.textContent = 'Resume';
+                }
+
+                function resume() {
+                    if (!paused || over) return;
+                    paused = false;
+                    running = true;
+                    pauseBtn.textContent = 'Pause';
+                    last = performance.now();
+                    requestAnimationFrame(loop);
+                }
+
+                function togglePause() {
+                    if (paused) resume();
+                    else pause();
+                }
+
+                function update(dt) {
+                    if (moveLeft) player.x -= 220 * dt;
+                    if (moveRight) player.x += 220 * dt;
+                    player.x = Math.max(0, Math.min(W - player.w, player.x));
+
+                    spawn -= dt;
+                    if (spawn <= 0) {
+                        const bw = 16 + Math.random() * 20;
+                        blocks.push({ x: Math.random() * (W - bw), y: -15, w: bw, h: 12 + Math.random() * 16, v: 90 + Math.random() * 130 });
+                        spawn = 0.3 + Math.random() * 0.35;
+                    }
+
+                    for (const b of blocks) {
+                        b.y += b.v * dt;
+                        const hit = player.x < b.x + b.w && player.x + player.w > b.x &&
+                            player.y < b.y + b.h && player.y + player.h > b.y;
+                        if (hit) end();
+                    }
+                    blocks = blocks.filter(b => b.y < H + 20);
+                    score += dt * 12;
+                    scoreEl.textContent = `Score: ${Math.floor(score)}`;
+                }
+
+                function draw() {
+                    ctx.clearRect(0, 0, W, H);
+                    ctx.fillStyle = '#111027';
+                    ctx.fillRect(0, 0, W, H);
+                    ctx.fillStyle = '#0088ff';
+                    blocks.forEach(b => ctx.fillRect(b.x, b.y, b.w, b.h));
+                    ctx.fillStyle = '#00ff9d';
+                    ctx.fillRect(player.x, player.y, player.w, player.h);
+                    if (!running && over) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Hit - Restart', 130, H / 2);
+                    } else if (!running && paused) {
+                        ctx.fillStyle = '#f0f0f0';
+                        ctx.font = '16px Orbitron';
+                        ctx.fillText('Paused', 150, H / 2);
+                    }
+                }
+
+                function loop(ts) {
+                    if (!running) { draw(); return; }
+                    const dt = Math.min(0.033, (ts - last) / 1000);
+                    last = ts;
+                    update(dt);
+                    draw();
+                    if (running) requestAnimationFrame(loop);
+                }
+
+                function pressLeft(on) { safeFocus('dodge'); moveLeft = on; }
+                function pressRight(on) { safeFocus('dodge'); moveRight = on; }
+
+                startBtn.addEventListener('click', start);
+                pauseBtn.addEventListener('click', togglePause);
+                leftBtn.addEventListener('pointerdown', () => pressLeft(true));
+                leftBtn.addEventListener('pointerup', () => pressLeft(false));
+                leftBtn.addEventListener('pointerleave', () => pressLeft(false));
+                rightBtn.addEventListener('pointerdown', () => pressRight(true));
+                rightBtn.addEventListener('pointerup', () => pressRight(false));
+                rightBtn.addEventListener('pointerleave', () => pressRight(false));
+
+                dodgeCanvas.addEventListener('pointerdown', (e) => {
+                    safeFocus('dodge');
+                    const rect = dodgeCanvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    player.x = Math.max(0, Math.min(W - player.w, (x / rect.width) * W - player.w / 2));
+                    if (!started || over) start();
+                    else if (paused) resume();
+                });
+                dodgeCanvas.addEventListener('pointermove', (e) => {
+                    if (!running) return;
+                    const rect = dodgeCanvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    player.x = Math.max(0, Math.min(W - player.w, (x / rect.width) * W - player.w / 2));
+                });
+
+                reset();
+                draw();
+                return {
+                    leftDown: () => pressLeft(true),
+                    leftUp: () => pressLeft(false),
+                    rightDown: () => pressRight(true),
+                    rightUp: () => pressRight(false),
+                    pause,
+                    resume,
+                    isPaused: () => paused,
+                    isRunning: () => running
+                };
+            }
+
+            const flappy = setupFlappy();
+            const dino = setupDino();
+            const dodge = setupDodge();
+            const games = { flappy, dino, dodge };
+
+            const gameCards = document.querySelectorAll('.game-card[data-game]');
+            const selectBtns = document.querySelectorAll('.game-select-btn[data-game]');
+            const gameOrder = ['flappy', 'dino', 'dodge'];
+            const prevGameBtn = document.getElementById('prevGame');
+            const nextGameBtn = document.getElementById('nextGame');
+
+            function setActiveGame(gameId) {
+                activeGame = gameId;
+                gameCards.forEach(card => {
+                    card.classList.toggle('active', card.getAttribute('data-game') === gameId);
+                });
+                selectBtns.forEach(btn => {
+                    const isActive = btn.getAttribute('data-game') === gameId;
+                    btn.classList.toggle('active', isActive);
+                    btn.style.borderColor = isActive ? 'var(--primary)' : 'rgba(0, 255, 157, 0.35)';
+                    btn.style.background = isActive ? 'rgba(0, 255, 157, 0.18)' : 'rgba(0, 255, 157, 0.08)';
+                });
+                Object.keys(games).forEach(key => {
+                    if (key !== gameId) games[key].pause();
+                });
+            }
+
+            selectBtns.forEach(btn => {
+                btn.addEventListener('click', () => setActiveGame(btn.getAttribute('data-game')));
+            });
+            if (prevGameBtn) {
+                prevGameBtn.addEventListener('click', () => {
+                    const idx = gameOrder.indexOf(activeGame);
+                    const nextIdx = (idx - 1 + gameOrder.length) % gameOrder.length;
+                    setActiveGame(gameOrder[nextIdx]);
+                });
+            }
+            if (nextGameBtn) {
+                nextGameBtn.addEventListener('click', () => {
+                    const idx = gameOrder.indexOf(activeGame);
+                    const nextIdx = (idx + 1) % gameOrder.length;
+                    setActiveGame(gameOrder[nextIdx]);
+                });
+            }
+            setActiveGame('flappy');
+
+            document.addEventListener('keydown', (e) => {
+                const tag = (e.target && e.target.tagName) || '';
+                if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (activeGame === 'dino') dino.action();
+                    else flappy.action();
+                }
+                if (activeGame === 'dodge' && e.code === 'ArrowLeft') dodge.leftDown();
+                if (activeGame === 'dodge' && e.code === 'ArrowRight') dodge.rightDown();
+                if (activeGame === 'dino' && e.code === 'ArrowUp') dino.action();
+                if (e.code === 'KeyP') {
+                    e.preventDefault();
+                    games[activeGame].isPaused() ? games[activeGame].resume() : games[activeGame].pause();
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (activeGame === 'dodge' && e.code === 'ArrowLeft') dodge.leftUp();
+                if (activeGame === 'dodge' && e.code === 'ArrowRight') dodge.rightUp();
+            });
+        })();
+    </script>
+
     <!-- Firebase Integration Script -->
     <script type="module">
         import { db } from './firebase-config.js';
-        import { collection, addDoc, getDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { collection, addDoc, getDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
         // Contact Form Submission
         const contactForm = document.getElementById('contactForm');
@@ -1741,15 +2529,18 @@
                 if (successAnim) successAnim.style.display = "none";
 
                 try {
-                    const name = document.getElementById('contactName').value;
-                    const email = document.getElementById('contactEmail').value;
-                    const message = document.getElementById('contactMessage').value;
+                    if (!db) throw new Error("Firebase is not initialized.");
+                    const name = document.getElementById('contactName').value.trim();
+                    const email = document.getElementById('contactEmail').value.trim();
+                    const message = document.getElementById('contactMessage').value.trim();
+                    if (!name || !email || !message) throw new Error("Please fill all fields.");
 
                     await addDoc(collection(db, "queries"), {
                         name,
                         email,
                         message,
-                        timestamp: new Date()
+                        timestamp: serverTimestamp(),
+                        clientTime: new Date().toISOString()
                     });
 
                     contactForm.reset();
@@ -1767,7 +2558,7 @@
 
                 } catch (error) {
                     console.error("Error sending message: ", error);
-                    status.textContent = "Failed to send message. Please try again later.";
+                    status.textContent = `Failed to send message: ${error.message || 'Please try again later.'}`;
                     status.style.color = "#ff3333";
                     status.style.display = "block";
                     btn.textContent = "Send Message";
@@ -1799,7 +2590,7 @@
         // Load Live GitHub Projects
         async function loadGithubProjects() {
             const githubUsername = "aaryaninvincible"; // The user's GitHub username
-            const projectsGrid = document.querySelector('.projects-grid');
+            const projectsGrid = document.querySelector('.github-projects-grid');
 
             if (!projectsGrid) return;
 
@@ -1831,7 +2622,7 @@
                                         <span class="tech-tag">GitHub API</span>
                                     </div>
                                     <div class="project-links">
-                                        ${repo.homepage ? `<a href="${repo.homepage}" class="btn" target="_blank">Live Demo</a>` : ''}
+                                        <a href="${repo.homepage ? repo.homepage : repo.html_url}" class="btn" target="_blank">${repo.homepage ? 'Live Demo' : 'View GitHub'}</a>
                                         <a href="${repo.html_url}" class="btn btn-secondary" target="_blank">View Code</a>
                                     </div>
                                 </div>

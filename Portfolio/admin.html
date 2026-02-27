@@ -21,6 +21,40 @@
             --neon-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
         }
 
+        body.light-mode {
+            --primary: #059669;
+            --secondary: #2563eb;
+            --accent: #db2777;
+            --dark: #f3f4f6;
+            --darker: #e5e7eb;
+            --light: #111827;
+            --gray: #ffffff;
+            --neon-glow: 0 0 5px currentColor;
+        }
+
+        body.light-mode header,
+        body.light-mode .card,
+        body.light-mode .auth-card {
+            background-color: rgba(243, 244, 246, 0.9);
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -32,6 +66,44 @@
             background-color: var(--dark);
             color: var(--light);
             line-height: 1.6;
+        }
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 255, 157, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .container {
@@ -221,10 +293,39 @@
             color: var(--accent);
             font-family: 'Orbitron', sans-serif;
         }
+
+        @media (max-width: 768px) {
+            .auth-card {
+                margin: 0 14px;
+                padding: 24px 18px;
+            }
+
+            .container {
+                padding: 0 14px;
+            }
+
+            .admin-nav {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                font-size: 0.95rem;
+            }
+
+            #dashboard {
+                padding: 20px 0 40px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
     <!-- Auth Overlay -->
     <div id="auth-overlay">
         <div class="auth-card">
@@ -240,6 +341,7 @@
                     <input type="password" id="password" class="form-control" required>
                 </div>
                 <p id="auth-error" style="color: #ff3333; font-size: 0.9rem; margin-bottom: 15px; display: none;"></p>
+                <p style="color:#9ca3af; font-size:0.8rem; margin-bottom: 12px;">Use your admin ID and password.</p>
                 <button type="submit" class="btn">Login</button>
             </form>
         </div>
@@ -248,9 +350,14 @@
     <!-- Dashboard -->
     <div id="dashboard">
         <header style="padding: 0 20px; margin-bottom: 40px; border-bottom: none;">
-            <div class="container" style="display: flex; justify-content: space-between; width: 100%;">
+            <div class="container"
+                style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
                 <a href="#" class="logo">ADMIN PANEL</a>
-                <div>
+                <div style="display: flex; align-items: center;">
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme"
+                        style="margin-right: 15px;">
+                        <i class="fas fa-moon"></i>
+                    </button>
                     <a href="index.html" class="btn" style="padding: 5px 15px; font-size: 0.9rem; margin-right: 10px;"
                         target="_blank">View Site</a>
                     <button id="logoutBtn" class="btn btn-danger"
@@ -363,6 +470,56 @@
     <!-- Scripts -->
     <script type="module" src="admin.js"></script>
     <script>
+        // Preloader and page switch loader animation
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) preloader.classList.add('hidden');
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetUrl = this.getAttribute('href');
+                if (!targetUrl) return;
+                const isExternal = targetUrl.startsWith('http') || targetUrl.startsWith('mailto') || targetUrl.startsWith('tel') || this.hasAttribute('target');
+                const isAnchor = targetUrl.startsWith('#');
+                if (!isExternal && !isAnchor) {
+                    e.preventDefault();
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) preloader.classList.remove('hidden');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 420);
+                }
+            });
+        });
+
+        // Theme Toggle Logic
+        const initTheme = () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
+            }
+
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+
+                if (themeIcon) {
+                    themeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+        };
+
+        initTheme();
+
         // Simple Vanilla JS Tab Switching
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
