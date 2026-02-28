@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, Pressable, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../../src/theme/colors';
 import { typography } from '../../src/theme/typography';
 import { useCart } from '../../src/context/CartContext';
 import { useOrder } from '../../src/context/OrderContext';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 import { collection, query, onSnapshot, doc, getDoc } from 'firebase/firestore';
 import { firebaseDb } from '../../src/lib/firebase';
+import { useThemeSettings } from '../../src/context/ThemeContext';
 
 const TEMPLATE_MENU = [
   { id: 't1', name: 'Sample Combo Meal', price: 150, desc: 'A placeholder meal combo for testing.', veg: true, image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=500&q=80' },
@@ -21,6 +21,7 @@ export default function ShopScreen() {
   const router = useRouter();
   const { addToCart, items, getCartTotal } = useCart();
   const { orders } = useOrder();
+  const { colors } = useThemeSettings();
   
   const [shop, setShop] = useState<any>(null);
   const [menuItems, setMenuItems] = useState<any[]>([]);
@@ -60,50 +61,50 @@ export default function ShopScreen() {
   const dynamicWaitTime = `${Math.max(10, activeOrdersForShop.length * 3 + parseInt(shop.time))} mins`;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Header Image */}
       <View style={styles.headerImageContainer}>
         <Image source={{ uri: shop.image }} style={styles.headerImage} />
         <View style={styles.overlay} />
         <SafeAreaView style={styles.safeHeader}>
-          <Pressable style={styles.backBtn} onPress={() => router.back()}>
+          <Pressable style={[styles.backBtn, { backgroundColor: 'rgba(0,0,0,0.5)' }]} onPress={() => router.back()}>
             <Ionicons name="arrow-back" size={24} color={colors.text} />
           </Pressable>
         </SafeAreaView>
       </View>
 
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        <View style={styles.shopInfoCard}>
-          <Text style={[typography.h1, styles.shopName]}>{shop.name}</Text>
+        <View style={[styles.shopInfoCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+          <Text style={[typography.h1, styles.shopName, { color: colors.text }]}>{shop.name}</Text>
           <View style={styles.metaRow}>
             <Ionicons name="star" size={16} color="#facc15" />
-            <Text style={styles.ratingText}>{shop.rating} ({shop.reviews} reviews)</Text>
-            <Text style={styles.dot}>•</Text>
-            <View style={styles.timeBadge}>
+            <Text style={[styles.ratingText, { color: colors.text }]}>{shop.rating} ({shop.reviews} reviews)</Text>
+            <Text style={[styles.dot, { color: colors.textMuted }]}>•</Text>
+            <View style={[styles.timeBadge, { backgroundColor: colors.primary }]}>
               <Ionicons name="time" size={14} color={colors.surface} />
               <Text style={styles.timeTextAlert}>{dynamicWaitTime}</Text>
             </View>
           </View>
-          <Text style={styles.tagsText}>{shop.tags.join(', ')}</Text>
+          <Text style={[styles.tagsText, { color: colors.textMuted }]}>{shop.tags.join(', ')}</Text>
         </View>
 
         <View style={styles.menuSection}>
-          <Text style={[typography.h2, styles.menuTitle]}>Menu</Text>
+          <Text style={[typography.h2, styles.menuTitle, { color: colors.text }]}>Menu</Text>
           
           {activeMenu.map((item: any, index: number) => (
-            <Animated.View key={item.id} style={styles.menuItemRow} entering={FadeInDown.delay(index * 150).duration(400)}>
+            <Animated.View key={item.id} style={[styles.menuItemRow, { backgroundColor: colors.surface, borderColor: colors.border }]} entering={FadeInDown.delay(index * 150).duration(400)}>
               <Image source={{ uri: item.image }} style={styles.menuImage} />
               <View style={styles.menuDetails}>
                 <View style={styles.row}>
                   <View style={[styles.vegBadge, item.veg ? styles.veg : styles.nonVeg]} />
-                  <Text style={[typography.h3, styles.itemName]}>{item.name}</Text>
+                  <Text style={[typography.h3, styles.itemName, { color: colors.text }]}>{item.name}</Text>
                 </View>
-                <Text style={styles.itemDesc}>{item.desc}</Text>
-                <Text style={styles.itemPrice}>₹{item.price}</Text>
+                <Text style={[styles.itemDesc, { color: colors.textMuted }]}>{item.desc}</Text>
+                <Text style={[styles.itemPrice, { color: colors.text }]}>₹{item.price}</Text>
               </View>
-              <Pressable style={styles.addBtn} onPress={() => addToCart(item, shop)}>
+              <Pressable style={[styles.addBtn, { backgroundColor: colors.surface, borderColor: colors.primary }]} onPress={() => addToCart(item, shop)}>
                 <Ionicons name="add" size={18} color={colors.primary} />
-                <Text style={styles.addBtnText}>ADD</Text>
+                <Text style={[styles.addBtnText, { color: colors.primary }]}>ADD</Text>
               </Pressable>
             </Animated.View>
           ))}
@@ -112,7 +113,7 @@ export default function ShopScreen() {
 
       {/* Floating View Cart Button */}
       {cartItemsCount > 0 && (
-        <View style={styles.floatingCart}>
+        <View style={[styles.floatingCart, { backgroundColor: colors.accent }]}>
           <View>
             <Text style={styles.cartTotalText}>{cartItemsCount} item{cartItemsCount > 1 ? 's' : ''} | ₹{cartTotal}</Text>
             <Text style={styles.cartSubText}>Extra charges may apply</Text>
@@ -128,38 +129,38 @@ export default function ShopScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1 },
   headerImageContainer: { height: 250, position: 'relative' },
   headerImage: { width: '100%', height: '100%' },
   overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(0,0,0,0.3)' },
   safeHeader: { position: 'absolute', top: 0, left: 0, right: 0, zIndex: 10, paddingHorizontal: 16, paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 0) + 16 : 16 },
-  backBtn: { width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' },
+  backBtn: { width: 40, height: 40, borderRadius: 20, justifyContent: 'center', alignItems: 'center' },
   scroll: { flex: 1, marginTop: -30 },
-  shopInfoCard: { backgroundColor: colors.surface, marginHorizontal: 16, borderRadius: 20, padding: 20, elevation: 6, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, borderWidth: 1, borderColor: colors.border },
-  shopName: { color: colors.text, marginBottom: 8 },
+  shopInfoCard: { marginHorizontal: 16, borderRadius: 20, padding: 20, elevation: 6, shadowColor: '#000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.1, shadowRadius: 10, borderWidth: 1 },
+  shopName: { marginBottom: 8 },
   metaRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
-  ratingText: { color: colors.text, marginLeft: 6, fontWeight: 'bold' },
-  dot: { color: colors.textMuted, marginHorizontal: 8 },
-  timeBadge: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.primary, paddingHorizontal: 8, paddingVertical: 4, borderRadius: 12 },
-  timeTextAlert: { color: colors.surface, marginLeft: 4, fontWeight: 'bold', fontSize: 12 },
-  tagsText: { color: colors.textMuted },
+  ratingText: { marginLeft: 6, fontWeight: 'bold' },
+  dot: { marginHorizontal: 8 },
+  timeBadge: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 12 },
+  timeTextAlert: { color: '#fff', marginLeft: 4, fontWeight: 'bold', fontSize: 12 },
+  tagsText: {},
   menuSection: { padding: 16, paddingBottom: 100 },
-  menuTitle: { color: colors.text, marginBottom: 16 },
-  menuItemRow: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.surface, padding: 12, borderRadius: 16, marginBottom: 12, borderWidth: 1, borderColor: colors.border },
+  menuTitle: { marginBottom: 16 },
+  menuItemRow: { flexDirection: 'row', alignItems: 'center', padding: 12, borderRadius: 16, marginBottom: 12, borderWidth: 1 },
   menuImage: { width: 80, height: 80, borderRadius: 12, marginRight: 12 },
   menuDetails: { flex: 1 },
   row: { flexDirection: 'row', alignItems: 'center', marginBottom: 4 },
   vegBadge: { width: 10, height: 10, borderRadius: 2, marginRight: 8, borderWidth: 1 },
   veg: { borderColor: 'green', backgroundColor: 'rgba(0,255,0,0.2)' },
   nonVeg: { borderColor: 'red', backgroundColor: 'rgba(255,0,0,0.2)' },
-  itemName: { color: colors.text, fontSize: 16 },
-  itemDesc: { color: colors.textMuted, fontSize: 12, marginBottom: 6 },
-  itemPrice: { color: colors.text, fontWeight: 'bold' },
-  addBtn: { backgroundColor: colors.surface, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8, borderWidth: 1, borderColor: colors.primary },
-  addBtnText: { color: colors.primary, fontWeight: 'bold', marginLeft: 4 },
-  floatingCart: { position: 'absolute', bottom: 20, left: 16, right: 16, backgroundColor: colors.accent, borderRadius: 16, padding: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', elevation: 10 },
-  cartTotalText: { color: colors.surface, fontWeight: 'bold', fontSize: 16 },
+  itemName: { fontSize: 16 },
+  itemDesc: { fontSize: 12, marginBottom: 6 },
+  itemPrice: { fontWeight: 'bold' },
+  addBtn: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8, borderWidth: 1 },
+  addBtnText: { fontWeight: 'bold', marginLeft: 4 },
+  floatingCart: { position: 'absolute', bottom: 20, left: 16, right: 16, borderRadius: 16, padding: 16, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', elevation: 10 },
+  cartTotalText: { color: '#fff', fontWeight: 'bold', fontSize: 16 },
   cartSubText: { color: 'rgba(255, 255, 255, 0.8)', fontSize: 12 },
   viewCartBtn: { flexDirection: 'row', alignItems: 'center', backgroundColor: 'rgba(255,255,255,0.2)', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 12 },
-  viewCartText: { color: colors.surface, fontWeight: 'bold', marginRight: 4 }
+  viewCartText: { color: '#ffffff', fontWeight: 'bold', marginRight: 4 }
 });

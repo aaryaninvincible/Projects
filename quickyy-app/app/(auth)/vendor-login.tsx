@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Alert, Pressable, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import { colors } from '../../src/theme/colors';
 import { typography } from '../../src/theme/typography';
 import { useAuth } from '../../src/context/AuthContext';
+import { useThemeSettings } from '../../src/context/ThemeContext';
 
 export default function VendorLoginScreen() {
   const router = useRouter();
   const { loginVendor } = useAuth();
+  const { colors } = useThemeSettings();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -30,16 +31,16 @@ export default function VendorLoginScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: colors.background }]}>
       <Pressable style={styles.backBtn} onPress={() => router.back()}>
         <Ionicons name="arrow-back" size={24} color={colors.text} />
       </Pressable>
       <View style={styles.content}>
-        <Text style={[typography.h1, styles.title]}>Vendor Login</Text>
-        <Text style={styles.subtitle}>Use your registered canteen account credentials.</Text>
+        <Text style={[typography.h1, styles.title, { color: colors.text }]}>Vendor Login</Text>
+        <Text style={[styles.subtitle, { color: colors.textMuted }]}>Use your registered canteen account credentials.</Text>
 
         <TextInput
-          style={styles.input}
+          style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text }]}
           placeholder="Email"
           autoCapitalize="none"
           keyboardType="email-address"
@@ -47,16 +48,16 @@ export default function VendorLoginScreen() {
           onChangeText={setEmail}
         />
         <TextInput
-          style={styles.input}
+          style={[styles.input, { backgroundColor: colors.surface, borderColor: colors.border, color: colors.text }]}
           placeholder="Password"
           secureTextEntry
           value={password}
           onChangeText={setPassword}
         />
 
-        <Pressable style={styles.button} onPress={handleLogin}>
+        <Pressable style={[styles.button, { backgroundColor: colors.primary }]} onPress={handleLogin}>
           <Text style={styles.buttonText}>{loading ? 'Signing In...' : 'Sign In as Vendor'}</Text>
-          <Ionicons name="arrow-forward" size={20} color={colors.surface} />
+          <Ionicons name="arrow-forward" size={20} color="#ffffff" />
         </Pressable>
       </View>
     </SafeAreaView>
@@ -64,22 +65,18 @@ export default function VendorLoginScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.background },
+  container: { flex: 1 },
   backBtn: { padding: 16, marginTop: 10 },
   content: { flex: 1, justifyContent: 'center', padding: 24 },
-  title: { color: colors.text, marginBottom: 8 },
-  subtitle: { color: colors.textMuted, marginBottom: 30 },
+  title: { marginBottom: 8 },
+  subtitle: { marginBottom: 30 },
   input: {
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 10,
     padding: 14,
     marginBottom: 12,
-    color: colors.text,
   },
   button: {
-    backgroundColor: colors.primary,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -87,5 +84,5 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     gap: 10,
   },
-  buttonText: { color: colors.surface, fontWeight: 'bold', fontSize: 18 },
+  buttonText: { color: '#ffffff', fontWeight: 'bold', fontSize: 18 },
 });

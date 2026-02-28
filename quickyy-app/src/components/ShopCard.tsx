@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
+import { useThemeSettings } from '../context/ThemeContext';
 
 type ShopCardProps = {
   shop: any;
@@ -10,13 +10,15 @@ type ShopCardProps = {
 };
 
 export const ShopCard = ({ shop, onPress }: ShopCardProps) => {
+  const { colors } = useThemeSettings();
+
   return (
-    <Pressable style={styles.card} onPress={onPress}>
+    <Pressable style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]} onPress={onPress}>
       <Image source={{ uri: shop.image }} style={styles.image} />
       <View style={styles.info}>
         <View style={styles.headerRow}>
-          <Text style={[typography.h3, styles.name]}>{shop.name}</Text>
-          <View style={styles.ratingBadge}>
+          <Text style={[typography.h3, styles.name, { color: colors.text }]}>{shop.name}</Text>
+          <View style={[styles.ratingBadge, { backgroundColor: colors.accent }]}>
             <Ionicons name="star" size={14} color="#facc15" />
             <Text style={styles.ratingText}>{shop.rating}</Text>
           </View>
@@ -25,10 +27,10 @@ export const ShopCard = ({ shop, onPress }: ShopCardProps) => {
         <View style={styles.metaRow}>
           <View style={styles.timeTag}>
             <Ionicons name="time-outline" size={14} color={colors.textMuted} />
-            <Text style={styles.timeText}>{shop.time}</Text>
+            <Text style={[styles.timeText, { color: colors.textMuted }]}>{shop.time}</Text>
           </View>
-          <Text style={styles.dot}>•</Text>
-          <Text style={styles.tagsText}>{shop.tags.join(', ')}</Text>
+          <Text style={[styles.dot, { color: colors.textMuted }]}>•</Text>
+          <Text style={[styles.tagsText, { color: colors.textMuted }]}>{shop.tags.join(', ')}</Text>
         </View>
       </View>
     </Pressable>
@@ -37,7 +39,6 @@ export const ShopCard = ({ shop, onPress }: ShopCardProps) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: colors.surface,
     borderRadius: 16,
     marginBottom: 20,
     overflow: 'hidden',
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 8,
     borderWidth: 1,
-    borderColor: colors.border,
   },
   image: {
     width: '100%',
@@ -62,19 +62,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 8,
   },
-  name: {
-    color: colors.text,
-  },
+  name: {},
   ratingBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.accent,
     paddingHorizontal: 6,
     paddingVertical: 2,
     borderRadius: 6,
   },
   ratingText: {
-    color: colors.surface,
+    color: '#ffffff',
     fontWeight: 'bold',
     marginLeft: 4,
     fontSize: 12,
@@ -88,16 +85,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   timeText: {
-    color: colors.textMuted,
     fontSize: 13,
     marginLeft: 4,
   },
-  dot: {
-    color: colors.textMuted,
-    marginHorizontal: 8,
-  },
-  tagsText: {
-    color: colors.textMuted,
-    fontSize: 13,
-  }
+  dot: { marginHorizontal: 8 },
+  tagsText: { fontSize: 13 }
 });

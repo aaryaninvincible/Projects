@@ -1,0 +1,10 @@
+node_modules/
+.expo/
+dist/
+build/
+web-build/
+.easignore
+.git/
+android/
+ios/
+.DS_Store

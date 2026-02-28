@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Platform, StatusBar, Pressable } from 'react-native';
 import { typography } from '../../src/theme/typography';
 import { BannerCarousel } from '../../src/components/BannerCarousel';
 import { CategoryList } from '../../src/components/CategoryList';
 import { ShopCard } from '../../src/components/ShopCard';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import Animated, { FadeInUp, FadeIn } from 'react-native-reanimated';
 import { collection, query, onSnapshot } from 'firebase/firestore';
 import { firebaseDb } from '../../src/lib/firebase';
@@ -16,10 +17,12 @@ import { ThemeToggle } from '../../src/components/ThemeToggle';
 export default function HomeScreen() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hour mock timer
+  const [showAllBestSellers, setShowAllBestSellers] = useState(false);
   const [shops, setShops] = useState<any[]>([]);
   const [categories, setCategories] = useState<any[]>([]);
   const [banners, setBanners] = useState<any[]>([]);
   const router = useRouter();
+  const tabBarHeight = useBottomTabBarHeight();
   const { profile } = useApp();
   const { colors } = useThemeSettings();
 
@@ -79,26 +82,32 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: tabBarHeight + 56 }]}
+        showsVerticalScrollIndicator={false}
+        scrollIndicatorInsets={{ bottom: tabBarHeight + 56 }}>
         {/* Header */}
-        <View style={styles.header}>
+        <Animated.View entering={FadeIn.duration(300)} style={styles.header}>
           <View>
             <Text style={[typography.caption, {color: colors.textMuted, marginBottom: 4}]}>Good Morning, {profile.name.split(' ')[0]} 👋</Text>
             <Text style={[typography.h2, {color: colors.text}]}>Craving something?</Text>
           </View>
           <View style={styles.headerRight}>
             <ThemeToggle />
-            <View style={[styles.profileBtn, { backgroundColor: colors.surface, borderColor: colors.primary }]}>
+            <Pressable
+              onPress={() => router.push('/(tabs)/profile')}
+              style={[styles.profileBtn, { backgroundColor: colors.surface, borderColor: colors.primary }]}>
               <Image 
                 source={{ uri: profile.avatar }} 
                 style={styles.avatar} 
               />
-            </View>
+            </Pressable>
           </View>
-        </View>
+        </Animated.View>
 
         {/* Search Bar Mock */}
-        <View style={[styles.searchBar, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+        <View style={[styles.searchBar, { backgroundColor: `${colors.surface}dd`, borderColor: colors.border }]}>
           <Ionicons name="search" size={20} color={colors.primary} />
           <Text style={{color: colors.textMuted, marginLeft: 8, fontSize: 15}}>Search for food, coffee, etc...</Text>
         </View>
@@ -158,10 +167,14 @@ export default function HomeScreen() {
               {/* Best Sellers */}
               <View style={styles.sectionHeader}>
                 <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>Best Selling Canteens</Text>
-                <Text style={[typography.button, styles.seeAll, { color: colors.primary }]}>See All</Text>
+                <Text
+                  style={[typography.button, styles.seeAll, { color: colors.primary }]}
+                  onPress={() => setShowAllBestSellers((prev) => !prev)}>
+                  {showAllBestSellers ? 'Show Less' : 'See All'}
+                </Text>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 20, gap: 16}}>
-                 {shops.filter(s => s.reviews > 200).map((shop, i) => (
+                 {(showAllBestSellers ? shops : shops.filter(s => s.reviews > 200)).map((shop, i) => (
                     <Animated.View key={`best-${shop.id}`} entering={FadeInUp.delay(i * 100).duration(400)} style={{width: 280}}>
                        <ShopCard shop={shop} onPress={() => handleShopPress(shop)} />
                     </Animated.View>
@@ -184,7 +197,7 @@ export default function HomeScreen() {
               <View style={styles.sectionHeader}>
                 <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>More Recommendations</Text>
               </View>
-              <View style={{paddingHorizontal: 16, paddingBottom: 40}}>
+              <View style={{paddingHorizontal: 16}}>
                  {shops.filter(s => s.rating < 4.5 && s.reviews <= 200).map((shop, i) => (
                     <Animated.View key={`rec-${shop.id}`} entering={FadeInUp.delay(i * 100).duration(400)}>
                        <ShopCard shop={shop} onPress={() => handleShopPress(shop)} />
@@ -209,6 +222,9 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 18,
   },
   header: {
     flexDirection: 'row',

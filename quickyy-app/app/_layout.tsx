@@ -16,10 +16,22 @@ export const unstable_settings = {
 
 // Inner Layout to consume Auth
 function InnerLayout() {
-  const { resolvedScheme } = useThemeSettings();
+  const { resolvedScheme, colors } = useThemeSettings();
   const { role, isLoading } = useAuth();
   const segments = useSegments();
   const router = useRouter();
+  const navigationTheme = {
+    ...(resolvedScheme === 'dark' ? DarkTheme : DefaultTheme),
+    colors: {
+      ...(resolvedScheme === 'dark' ? DarkTheme.colors : DefaultTheme.colors),
+      background: colors.background,
+      card: colors.surface,
+      border: colors.border,
+      text: colors.text,
+      primary: colors.primary,
+      notification: colors.secondary,
+    },
+  };
 
   useEffect(() => {
     if (isLoading) return;
@@ -55,12 +67,12 @@ function InnerLayout() {
   if (isLoading) return null; // Or a splash screen
 
   return (
-    <ThemeProvider value={resolvedScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <ThemeProvider value={navigationTheme}>
       <Stack
         screenOptions={{
           headerShown: false,
           animation: 'fade_from_bottom',
-          contentStyle: { backgroundColor: resolvedScheme === 'dark' ? '#0f1216' : '#f8f9fa' },
+          contentStyle: { backgroundColor: colors.background },
         }}>
         <Stack.Screen name="(auth)" />
         <Stack.Screen name="(tabs)" />

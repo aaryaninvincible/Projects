@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
+import { useThemeSettings } from '../context/ThemeContext';
 
 type CategoryListProps = {
   data: any[];
@@ -11,6 +11,8 @@ type CategoryListProps = {
 };
 
 export const CategoryList = ({ data, selectedId, onSelect }: CategoryListProps) => {
+  const { colors } = useThemeSettings();
+
   return (
     <ScrollView 
       horizontal 
@@ -25,14 +27,25 @@ export const CategoryList = ({ data, selectedId, onSelect }: CategoryListProps) 
             style={[styles.item, isSelected && styles.selectedItem]}
             onPress={() => onSelect(cat.id)}
           >
-            <View style={[styles.iconContainer, isSelected && styles.selectedIconContainer]}>
+            <View
+              style={[
+                styles.iconContainer,
+                { backgroundColor: colors.surface, borderColor: colors.border },
+                isSelected && { backgroundColor: colors.primary, borderColor: colors.primary },
+              ]}>
               <Ionicons 
                 name={cat.icon as any} 
                 size={22} 
                 color={isSelected ? colors.surface : colors.text} 
               />
             </View>
-            <Text style={[styles.name, isSelected && styles.selectedName, typography.caption]}>
+            <Text
+              style={[
+                styles.name,
+                { color: colors.textMuted },
+                isSelected && { color: colors.primary },
+                typography.caption,
+              ]}>
               {cat.name}
             </Text>
           </Pressable>
@@ -58,27 +71,16 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 30,
-    backgroundColor: colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: colors.border,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
     shadowRadius: 4,
     elevation: 2,
   },
-  selectedIconContainer: {
-    backgroundColor: colors.primary,
-    borderColor: colors.primary,
-  },
-  name: {
-    color: colors.textMuted,
-  },
-  selectedName: {
-    color: colors.primary,
-    fontWeight: 'bold',
-  }
+  name: {},
+  selectedName: { fontWeight: 'bold' }
 });
