@@ -3,7 +3,9 @@
     {% if product.featured_image %}
       {{ product.featured_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: product.title }}
     {% else %}
-      <div class="cc-product-card__placeholder"></div>
+      <div class="cc-product-card__placeholder">
+        {% render 'placeholder-mark' %}
+      </div>
     {% endif %}
   </a>
   <div class="cc-product-card__body">

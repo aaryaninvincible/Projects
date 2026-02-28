@@ -11,11 +11,15 @@
         </a>
       {% endif %}
     </div>
-    {% if section.settings.image != blank %}
-      <div class="cc-hero__media">
+    <div class="cc-hero__media">
+      {% if section.settings.image != blank %}
         {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.heading }}
-      </div>
-    {% endif %}
+      {% else %}
+        <div class="cc-hero__placeholder">
+          {% render 'placeholder-mark' %}
+        </div>
+      {% endif %}
+    </div>
   </div>
 </section>
 
@@ -27,7 +31,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Crafty Crow"
+      "default": "Crafty Crow Lehenga Studio"
     },
     {
       "type": "textarea",

@@ -225,6 +225,29 @@
   font-size: 0.8rem;
 }
 
+.cc-announcement {
+  border-bottom: 1px solid var(--cc-border);
+  background: #111;
+  color: #fff;
+  font-size: 0.8rem;
+}
+
+.cc-announcement__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 1.5rem;
+}
+
+.cc-announcement__link {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+}
+
 /* Forms & buttons */
 .cc-input,
 .cc-select,
@@ -379,6 +402,24 @@
 
 .cc-product__accordion-panel.is-open {
   display: block;
+}
+
+.cc-product__meta-block {
+  margin-top: 1.4rem;
+}
+
+.cc-product__meta-block h3 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.4rem;
+}
+
+.cc-product__meta-block p {
+  margin: 0;
+  color: #555;
+  line-height: 1.8;
+  font-size: 0.95rem;
 }
 
 /* Image with text / Editorial */

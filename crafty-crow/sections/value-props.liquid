@@ -1,0 +1,80 @@
+<section class="cc-section">
+  <div class="cc-container">
+    {% if section.settings.heading != blank %}
+      <div class="cc-section-header">
+        <h2 class="cc-section-title">{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+    <div class="cc-value-props__grid">
+      {% for block in section.blocks %}
+        <article class="cc-value-prop">
+          <h3 class="cc-value-prop__title">{{ block.settings.title }}</h3>
+          <p class="cc-value-prop__text">{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value props",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why girls love Crafty Crow lehengas"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Twirl-ready volume"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Lightweight cancan and clever paneling give you the perfect flare without feeling heavy on long wedding days."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Value props",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "title": "Comfort-first fit",
+            "text": "Soft linings, covered seams and adjustable closures keep your lehenga comfortable from pheras to after-party."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Modern, minimal detailing",
+            "text": "Clean embellishments and sharp cuts so your lehenga feels fashion-forward, not fussy."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "title": "Made for re-wear",
+            "text": "Pair the skirt with a shirt, style the blouse with jeans or drape the dupatta with another set—every piece is designed to mix and match."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,8 +1,21 @@
 {% liquid
   assign spacing = settings.spacing_scale
+  assign main_menu = section.settings.menu | default: linklists.main-menu
 %}
 
 <header class="cc-header{% if settings.header_sticky %} cc-header--sticky{% endif %}">
+  {% if section.settings.enable_announcement and section.settings.announcement_text != blank %}
+    <div class="cc-announcement">
+      <div class="cc-container cc-announcement__inner">
+        <span>{{ section.settings.announcement_text }}</span>
+        {% if section.settings.announcement_link != blank and section.settings.announcement_link_label != blank %}
+          <a href="{{ section.settings.announcement_link }}" class="cc-announcement__link">
+            {{ section.settings.announcement_link_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
   <div class="cc-container cc-header__inner cc-header__inner--{{ spacing }}">
     <div class="cc-header__left">
       <a href="{{ routes.root_url }}" class="cc-logo" style="max-width: {{ settings.logo_width }}px;">
@@ -14,9 +27,11 @@
       </a>
     </div>
     <nav class="cc-header__nav" aria-label="{{ 'layout.header.navigation' | t }}">
-      {% for link in linklists.main-menu.links %}
+      {% if main_menu %}
+        {% for link in main_menu.links %}
         <a href="{{ link.url }}" class="cc-header__link{% if link.active %} is-active{% endif %}">{{ link.title }}</a>
-      {% endfor %}
+        {% endfor %}
+      {% endif %}
     </nav>
     <div class="cc-header__right">
       {% if settings.header_show_search %}
@@ -37,16 +52,47 @@
     </div>
   </div>
   <nav class="cc-header__mobile-nav" aria-label="{{ 'layout.header.navigation' | t }}">
-    {% for link in linklists.main-menu.links %}
+    {% if main_menu %}
+      {% for link in main_menu.links %}
       <a href="{{ link.url }}" class="cc-header__mobile-link{% if link.active %} is-active{% endif %}">{{ link.title }}</a>
-    {% endfor %}
+      {% endfor %}
+    {% endif %}
   </nav>
 </header>
 
 {% schema %}
 {
   "name": "Header",
-  "settings": [],
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Free shipping on all lehengas within India"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement link"
+    },
+    {
+      "type": "text",
+      "id": "announcement_link_label",
+      "label": "Announcement link label",
+      "default": "Shop the lehenga edit"
+    }
+  ],
   "blocks": [],
   "presets": [
     {
