@@ -1,19 +1,32 @@
 {
   "expo": {
-    "name": "quickyy-app",
+    "name": "Quickyy",
     "slug": "quickyy-app",
     "version": "1.0.0",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "quickyyapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "aaryaninvincible.quickyy",
+      "buildNumber": "1",
       "supportsTablet": true
     },
     "android": {
       "package": "aaryaninvincible.quickyy",
+      "versionCode": 1,
       "googleServicesFile": "./google-services.json",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "POST_NOTIFICATIONS",
+        "CAMERA",
+        "READ_MEDIA_IMAGES"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -22,6 +35,9 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "web": {
       "output": "static",
@@ -52,7 +68,12 @@
       "FIREBASE_PROJECT_ID": "quickyy-7d315",
       "FIREBASE_STORAGE_BUCKET": "quickyy-7d315.firebasestorage.app",
       "FIREBASE_MESSAGING_SENDER_ID": "130182812583",
-      "FIREBASE_APP_ID": "1:130182812583:android:5f720a7bde1abf627b5c82"
-    }
+      "FIREBASE_APP_ID": "1:130182812583:android:5f720a7bde1abf627b5c82",
+      "router": {},
+      "eas": {
+        "projectId": "81ec0ce9-6d24-4a29-8e91-1d8047d1fd41"
+      }
+    },
+    "owner": "aaryaninvincible"
   }
 }

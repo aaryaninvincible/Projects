@@ -42,8 +42,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       try {
         const storedRole = await AsyncStorage.getItem('@auth_role');
         const storedVendor = await AsyncStorage.getItem('@vendor_details');
-        const storedUid = await AsyncStorage.getItem('@auth_uid');
+        let storedUid = await AsyncStorage.getItem('@auth_uid');
         
+        // Auto-recover missing Anonymous sessions if User is a student but the initial login failed
+        if (storedRole === 'student' && !storedUid && firebaseEnabled && firebaseAuth) {
+           try {
+             console.log("Recovering missing Anonymous Token...");
+             const result = await signInAnonymously(firebaseAuth);
+             storedUid = result.user.uid;
+             await AsyncStorage.setItem('@auth_uid', storedUid);
+           } catch(e) {
+             console.error("Failed to recover Anonymous Auth:", e);
+           }
+        }
+
         if (storedRole) setRole(storedRole as Role);
         if (storedVendor) setVendorDetails(JSON.parse(storedVendor));
         if (storedUid) setUid(storedUid);

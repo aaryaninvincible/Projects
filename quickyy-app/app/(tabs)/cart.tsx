@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Pressable, Platform, StatusBar } from 'react-native';
 import { colors } from '../../src/theme/colors';
 import { typography } from '../../src/theme/typography';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,6 +7,7 @@ import { useCart } from '../../src/context/CartContext';
 import { useOrder } from '../../src/context/OrderContext';
 import { useRouter } from 'expo-router';
 import { useApp } from '../../src/context/AppContext';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
 export default function CartScreen() {
   const { addNotification } = useApp();
@@ -60,7 +61,7 @@ export default function CartScreen() {
           <Text style={styles.headerShopName}>{items[0].shopName}</Text>
         </View>
 
-        <ScrollView style={styles.scroll}>
+        <Animated.ScrollView entering={FadeInUp.duration(300)} style={styles.scroll}>
           <View style={styles.itemsCard}>
             {items.map(item => (
               <View key={item.id} style={styles.cartItem}>
@@ -98,7 +99,7 @@ export default function CartScreen() {
               <Text style={styles.billTotalValue}>₹{total + 20}</Text>
             </View>
           </View>
-        </ScrollView>
+        </Animated.ScrollView>
 
         <View style={styles.footer}>
           <Pressable style={styles.checkoutBtn} onPress={handleCheckout}>

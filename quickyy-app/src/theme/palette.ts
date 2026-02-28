@@ -14,27 +14,27 @@ export type ThemeColors = {
 };
 
 export const lightColors: ThemeColors = {
-  primary: '#e23744',
-  secondary: '#fc8019',
+  primary: '#0f766e',
+  secondary: '#0ea5e9',
   accent: '#10b981',
-  background: '#f8f9fa',
+  background: '#f1f5f9',
   surface: '#ffffff',
-  text: '#1c1c1c',
-  textMuted: '#686b78',
-  border: '#e9e9eb',
+  text: '#0f172a',
+  textMuted: '#475569',
+  border: '#dbe3ee',
   transparent: 'transparent',
   danger: '#dc2626',
 };
 
 export const darkColors: ThemeColors = {
-  primary: '#f0525f',
-  secondary: '#ff9a3d',
+  primary: '#22d3ee',
+  secondary: '#14b8a6',
   accent: '#34d399',
-  background: '#0f1216',
-  surface: '#171b21',
-  text: '#f3f4f6',
-  textMuted: '#a1a1aa',
-  border: '#272c35',
+  background: '#020617',
+  surface: '#0f172a',
+  text: '#e2e8f0',
+  textMuted: '#94a3b8',
+  border: '#1e293b',
   transparent: 'transparent',
   danger: '#ef4444',
 };

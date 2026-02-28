@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { View, ScrollView, Image, Text, StyleSheet, Dimensions } from 'react-native';
-import { colors } from '../theme/colors';
 
 const { width } = Dimensions.get('window');
 const BANNER_WIDTH = width * 0.85;

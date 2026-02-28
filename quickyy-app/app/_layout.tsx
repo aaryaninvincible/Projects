@@ -27,15 +27,27 @@ function InnerLayout() {
     const inAuthGroup = segments[0] === '(auth)';
     const inTabsGroup = segments[0] === '(tabs)';
     const inVendorGroup = segments[0] === '(vendor)';
+    const studentAllowedStandalone = new Set([
+      'shop',
+      'edit-profile',
+      'settings',
+      'payment-methods',
+      'permissions',
+      'notifications',
+      'my-reviews',
+      'modal',
+    ]);
+    const firstSegment = segments[0] ?? '';
+    const inStudentStandalone = studentAllowedStandalone.has(firstSegment);
 
     if (!role && !inAuthGroup) {
       // Redirect to role selection if not logged in
       router.replace('/(auth)');
-    } else if (role === 'student' && !inTabsGroup) {
-      // Redirect to student tabs
+    } else if (role === 'student' && !inTabsGroup && !inStudentStandalone) {
+      // Redirect students only when they enter disallowed route groups
       router.replace('/(tabs)');
     } else if (role === 'vendor' && !inVendorGroup) {
-      // Redirect to vendor CMS
+      // Redirect vendor to vendor routes
       router.replace('/(vendor)');
     }
   }, [role, isLoading, segments, router]);
@@ -44,7 +56,12 @@ function InnerLayout() {
 
   return (
     <ThemeProvider value={resolvedScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          animation: 'fade_from_bottom',
+          contentStyle: { backgroundColor: resolvedScheme === 'dark' ? '#0f1216' : '#f8f9fa' },
+        }}>
         <Stack.Screen name="(auth)" />
         <Stack.Screen name="(tabs)" />
         <Stack.Screen name="(vendor)" />

@@ -34,13 +34,38 @@ If Firebase keys are empty, app still runs with local storage fallback.
 npx expo start
 ```
 
+4. Run readiness checks
+```bash
+npm run check
+```
+
 ## Deploy Readiness Checklist
 
 - Set all Firebase keys in `app.json`
 - Enable Firebase Auth (Anonymous + Email/Password)
 - Create Firestore database and rules
-- Verify app icons/splash and bundle IDs in `app.json`
+- Verify app icons/splash and package IDs in `app.json`
+- Ensure `google-services.json` exists at project root
 - Run lint before release:
 ```bash
 npm run lint
 ```
+
+## Build Android APK / AAB
+
+1. Login to Expo account:
+```bash
+npx eas login
+```
+
+2. Build installable APK (internal testing):
+```bash
+npm run build:apk
+```
+
+3. Build Play Store AAB (production):
+```bash
+npm run build:aab
+```
+
+4. Download build artifacts from the Expo build URL shown in terminal output.

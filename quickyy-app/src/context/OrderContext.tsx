@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { collection, doc, setDoc, query, onSnapshot, orderBy, where, updateDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, query, onSnapshot, where, updateDoc } from 'firebase/firestore';
+import { Alert } from 'react-native';
 import { firebaseDb } from '../lib/firebase';
 import { useAuth } from './AuthContext';
 
@@ -39,23 +40,30 @@ export const OrderProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (role === 'student') {
       // Students listen to their own orders
-      const q = query(collection(firebaseDb, 'orders'), where('userId', '==', uid), orderBy('date', 'desc'));
+      const q = query(collection(firebaseDb, 'orders'), where('userId', '==', uid));
       const unsub = onSnapshot(q, (snap) => {
-        setOrders(snap.docs.map(d => ({ id: d.id, ...d.data() } as Order)));
-      });
+        const payload = snap.docs.map(d => ({ id: d.id, ...d.data() } as Order));
+        payload.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        setOrders(payload);
+      }, (error) => console.warn("Firestore Student Orders Error:", error.message));
       return () => unsub();
     } else if (role === 'vendor' && vendorDetails?.name) {
       // Vendors listen to orders placed specifically for their shop
-      const q = query(collection(firebaseDb, 'orders'), where('shopName', '==', vendorDetails.name), orderBy('date', 'desc'));
+      const q = query(collection(firebaseDb, 'orders'), where('shopName', '==', vendorDetails.name));
       const unsub = onSnapshot(q, (snap) => {
-        setVendorOrders(snap.docs.map(d => ({ id: d.id, ...d.data() } as Order)));
-      });
+        const payload = snap.docs.map(d => ({ id: d.id, ...d.data() } as Order));
+        payload.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        setVendorOrders(payload);
+      }, (error) => console.warn("Firestore Vendor Orders Error:", error.message));
       return () => unsub();
     }
   }, [role, uid, vendorDetails]);
 
   const placeOrder = async (orderData: Omit<Order, 'id' | 'date' | 'status'>, shopId: string) => {
-    if (!firebaseDb || !uid) return;
+    if (!firebaseDb || !uid) {
+      Alert.alert("Authentication Error", "Please ensure Anonymous Login is enabled in your Firebase console. We could not verify your identity to place the order.");
+      return;
+    }
     
     const newOrderId = Math.random().toString(36).substr(2, 9);
     

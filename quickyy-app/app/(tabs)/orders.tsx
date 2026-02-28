@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Platform, StatusBar } from 'react-native';
 import { colors } from '../../src/theme/colors';
 import { typography } from '../../src/theme/typography';
 import { Ionicons } from '@expo/vector-icons';
 import { useOrder } from '../../src/context/OrderContext';
 import { useApp } from '../../src/context/AppContext';
 import { useRouter } from 'expo-router';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
 export default function OrdersScreen() {
   const { orders } = useOrder();
@@ -32,7 +33,7 @@ export default function OrdersScreen() {
           <Text style={styles.unreadText}>You have unread notifications. Tap the bell above.</Text>
         )}
 
-        <ScrollView contentContainerStyle={styles.scroll}>
+        <Animated.ScrollView entering={FadeInUp.duration(320)} contentContainerStyle={styles.scroll}>
           
           {orders.length === 0 ? (
             <View style={styles.emptyState}>
@@ -66,7 +67,7 @@ export default function OrdersScreen() {
             ))
           )}
 
-        </ScrollView>
+        </Animated.ScrollView>
       </View>
     </SafeAreaView>
   );

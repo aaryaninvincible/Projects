@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity, Platform, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, Image, Pressable, Platform, StatusBar } from 'react-native';
 import { typography } from '../../src/theme/typography';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useAuth } from '../../src/context/AuthContext';
 import { useApp } from '../../src/context/AppContext';
 import { useThemeSettings } from '../../src/context/ThemeContext';
+import { ThemeToggle } from '../../src/components/ThemeToggle';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -36,6 +38,9 @@ export default function ProfileScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
       <View style={styles.container}>
         <View style={[styles.profileHeader, { borderBottomColor: colors.border }]}>
+          <View style={styles.themeToggleWrap}>
+            <ThemeToggle />
+          </View>
           <Image 
             source={{ uri: profile.avatar }} 
             style={[styles.avatar, { borderColor: colors.secondary }]} 
@@ -46,9 +51,9 @@ export default function ProfileScreen() {
 
         <View style={styles.optionsList}>
           {options.map((opt, i) => (
-            <TouchableOpacity 
-               key={i} 
-               style={[styles.optionRow, { borderBottomColor: colors.border }]}
+            <Animated.View key={i} entering={FadeInDown.delay(i * 45).duration(250)}>
+            <Pressable 
+               style={({ pressed }) => [styles.optionRow, { borderBottomColor: colors.border, opacity: pressed ? 0.6 : 1 }]}
                onPress={() => handleOptionPress(opt)}
             >
               <View style={styles.optionLeft}>
@@ -56,7 +61,8 @@ export default function ProfileScreen() {
                 <Text style={[styles.optionTitle, { color: colors.text }, opt.color && { color: opt.color }]}>{opt.title}</Text>
               </View>
               <Ionicons name="chevron-forward" size={20} color={colors.textMuted} />
-            </TouchableOpacity>
+            </Pressable>
+            </Animated.View>
           ))}
         </View>
       </View>
@@ -68,6 +74,7 @@ const styles = StyleSheet.create({
   safeArea: { flex: 1, paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 },
   container: { flex: 1 },
   profileHeader: { alignItems: 'center', paddingVertical: 32, borderBottomWidth: 1 },
+  themeToggleWrap: { position: 'absolute', top: 12, right: 16 },
   avatar: { width: 100, height: 100, borderRadius: 50, marginBottom: 16, borderWidth: 3 },
   name: { marginBottom: 4 },
   email: {},

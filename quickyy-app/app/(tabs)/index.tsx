@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, SafeAreaView, Image, Platform, StatusBar } from 'react-native';
-import { colors } from '../../src/theme/colors';
 import { typography } from '../../src/theme/typography';
 import { BannerCarousel } from '../../src/components/BannerCarousel';
 import { CategoryList } from '../../src/components/CategoryList';
@@ -12,6 +11,7 @@ import { collection, query, onSnapshot } from 'firebase/firestore';
 import { firebaseDb } from '../../src/lib/firebase';
 import { useApp } from '../../src/context/AppContext';
 import { useThemeSettings } from '../../src/context/ThemeContext';
+import { ThemeToggle } from '../../src/components/ThemeToggle';
 
 export default function HomeScreen() {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
@@ -31,7 +31,7 @@ export default function HomeScreen() {
     const unsubShops = onSnapshot(qShops, (snap) => {
       const liveShops = snap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setShops(liveShops);
-    });
+    }, (error) => console.warn("Firestore DB Vendor Query Failed:", error.message));
 
     // Fetch Metadatas (Categories/Banners)
     const qMeta = query(collection(firebaseDb, 'app_metadata'));
@@ -41,7 +41,7 @@ export default function HomeScreen() {
       const liveCats = metas.filter(m => m.id.startsWith('category_'));
       setBanners(liveBanners);
       setCategories(liveCats);
-    });
+    }, (error) => console.warn("Firestore DB Metadata Query Failed:", error.message));
 
     return () => {
       unsubShops();
@@ -78,7 +78,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.header}>
@@ -86,11 +86,14 @@ export default function HomeScreen() {
             <Text style={[typography.caption, {color: colors.textMuted, marginBottom: 4}]}>Good Morning, {profile.name.split(' ')[0]} 👋</Text>
             <Text style={[typography.h2, {color: colors.text}]}>Craving something?</Text>
           </View>
-          <View style={[styles.profileBtn, { backgroundColor: colors.surface, borderColor: colors.primary }]}>
-            <Image 
-              source={{ uri: profile.avatar }} 
-              style={styles.avatar} 
-            />
+          <View style={styles.headerRight}>
+            <ThemeToggle />
+            <View style={[styles.profileBtn, { backgroundColor: colors.surface, borderColor: colors.primary }]}>
+              <Image 
+                source={{ uri: profile.avatar }} 
+                style={styles.avatar} 
+              />
+            </View>
           </View>
         </View>
 
@@ -104,7 +107,7 @@ export default function HomeScreen() {
         <BannerCarousel data={banners} />
 
         {/* Offer Zone Timer */}
-        <Animated.View entering={FadeIn.delay(300)} style={styles.offerZone}>
+        <Animated.View entering={FadeIn.delay(300)} style={[styles.offerZone, { borderColor: `${colors.secondary}55`, backgroundColor: `${colors.secondary}20` }]}>
            <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Ionicons name="flash" size={20} color="#f59e0b" />
               <Text style={styles.offerText}>Flash Deal Ends In: </Text>
@@ -116,7 +119,7 @@ export default function HomeScreen() {
 
         {/* Categories */}
         <View style={styles.sectionHeader}>
-          <Text style={[typography.h3, styles.sectionTitle]}>Categories</Text>
+          <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>Categories</Text>
           {selectedCategory !== '' && (
              <Text 
                style={[typography.button, {color: colors.primary}]} 
@@ -136,7 +139,7 @@ export default function HomeScreen() {
         {selectedCategory !== '' ? (
            <View style={styles.shopsContainer}>
               <View style={[styles.sectionHeader, {paddingHorizontal: 0}]}>
-                <Text style={[typography.h3, styles.sectionTitle]}>Category Results</Text>
+                <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>Category Results</Text>
               </View>
               {filteredShops.length > 0 ? (
                  filteredShops.map((shop, index) => (
@@ -146,7 +149,7 @@ export default function HomeScreen() {
                 ))
               ) : (
                 <View style={styles.emptyFilter}>
-                  <Text style={styles.emptyFilterText}>No shops found for this category.</Text>
+                  <Text style={[styles.emptyFilterText, { color: colors.textMuted }]}>No shops found for this category.</Text>
                 </View>
               )}
            </View>
@@ -154,8 +157,8 @@ export default function HomeScreen() {
            <>
               {/* Best Sellers */}
               <View style={styles.sectionHeader}>
-                <Text style={[typography.h3, styles.sectionTitle]}>Best Selling Canteens</Text>
-                <Text style={[typography.button, styles.seeAll]}>See All</Text>
+                <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>Best Selling Canteens</Text>
+                <Text style={[typography.button, styles.seeAll, { color: colors.primary }]}>See All</Text>
               </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{paddingHorizontal: 16, paddingBottom: 20, gap: 16}}>
                  {shops.filter(s => s.reviews > 200).map((shop, i) => (
@@ -167,7 +170,7 @@ export default function HomeScreen() {
 
               {/* Top Rated Canteens */}
               <View style={styles.sectionHeader}>
-                <Text style={[typography.h3, styles.sectionTitle]}>Top Rated</Text>
+                <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>Top Rated</Text>
               </View>
               <View style={{paddingHorizontal: 16, paddingBottom: 20}}>
                  {shops.filter(s => s.rating >= 4.5).map((shop, i) => (
@@ -179,7 +182,7 @@ export default function HomeScreen() {
 
               {/* More Recommendations */}
               <View style={styles.sectionHeader}>
-                <Text style={[typography.h3, styles.sectionTitle]}>More Recommendations</Text>
+                <Text style={[typography.h3, styles.sectionTitle, { color: colors.text }]}>More Recommendations</Text>
               </View>
               <View style={{paddingHorizontal: 16, paddingBottom: 40}}>
                  {shops.filter(s => s.rating < 4.5 && s.reviews <= 200).map((shop, i) => (
@@ -202,7 +205,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: colors.background,
     paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   container: {
@@ -216,6 +218,7 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 8,
   },
+  headerRight: { flexDirection: 'row', alignItems: 'center', gap: 8 },
   profileBtn: {
     width: 44,
     height: 44,
@@ -231,14 +234,12 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.surface,
     marginHorizontal: 16,
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderRadius: 12,
     marginTop: 16,
     borderWidth: 1,
-    borderColor: colors.border,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.05,
@@ -246,7 +247,6 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   searchText: {
-    color: colors.textMuted,
     marginLeft: 8,
     fontSize: 15,
   },
@@ -258,10 +258,10 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   sectionTitle: {
-    color: colors.text,
+    color: '#111827',
   },
   seeAll: {
-    color: colors.primary,
+    color: '#0f766e',
     fontWeight: 'bold',
   },
   shopsContainer: {
@@ -273,22 +273,20 @@ const styles = StyleSheet.create({
     paddingVertical: 32,
   },
   emptyFilterText: {
-    color: colors.textMuted,
+    color: '#64748b',
     fontStyle: 'italic',
   },
   offerZone: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'rgba(245, 158, 11, 0.15)',
     marginHorizontal: 16,
     padding: 12,
     borderRadius: 12,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: 'rgba(245, 158, 11, 0.3)'
   },
   offerText: { color: '#d97706', fontWeight: 'bold', marginLeft: 6 },
   timerBadge: { backgroundColor: '#f59e0b', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 6 },
-  timerText: { color: colors.surface, fontWeight: 'bold', fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace' }
+  timerText: { color: '#ffffff', fontWeight: 'bold', fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace' }
 });
