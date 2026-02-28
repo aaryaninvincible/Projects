@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "130182812583",
+    "project_id": "quickyy-7d315",
+    "storage_bucket": "quickyy-7d315.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130182812583:android:5f720a7bde1abf627b5c82",
+        "android_client_info": {
+          "package_name": "aaryaninvincible.quickyy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgAVLVLz7GAxxwgTvoIa-gzFX7-UHKhnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
