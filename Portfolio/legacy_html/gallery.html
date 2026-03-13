@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Projects gallery of Aryan Raikwar - Web Development, App Development, Graphic Design, IoT, and AI projects.">
+    <meta name="keywords"
+        content="aryan raikwar projects, portfolio gallery, free projects, web development, app development, graphics design, IoT, AI projects, github repos">
+    <meta name="author" content="Aryan Raikwar">
+    <meta property="og:title" content="Projects Gallery | Aryan Zone">
+    <meta property="og:description"
+        content="Projects gallery of Aryan Raikwar - Web Development, App Development, Graphic Design, IoT, and AI projects.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aryanxone.com/gallery.html">
+    <title>Projects Gallery | Aryan Zone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #10b981;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #1e293b;
+            --neon-glow: 0 0 10px rgba(56, 189, 248, 0.5);
+            --glass-bg: rgba(30, 41, 59, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-blur: blur(16px);
+            --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode {
+            --primary: #0284c7;
+            --secondary: #4f46e5;
+            --accent: #059669;
+            --dark: #f8fafc;
+            --darker: #e2e8f0;
+            --light: #0f172a;
+            --gray: #cbd5e1;
+            --neon-glow: 0 0 10px rgba(2, 132, 199, 0.3);
+            --glass-bg: rgba(255, 255, 255, 0.6);
+            --glass-border: rgba(0, 0, 0, 0.1);
+            --glass-blur: blur(16px);
+            --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        body.light-mode header {
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .live-update-notification,
+        body.light-mode .mobile-sidebar {
+            background: rgba(243, 244, 246, 0.95);
+        }
+
+        body.light-mode .project-image,
+        body.light-mode .gallery-img,
+        body.light-mode .project-img {
+            height: 200px;
+            width: 100%;
+            background-color: rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* RGB background effect */
+        /* Glowing Liquid Glass Background */
+        .rgb-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--darker);
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        .rgb-bg::before, .rgb-bg::after {
+            content: '';
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            animation: blobs 20s infinite ease-in-out alternate;
+        }
+
+        .rgb-bg::before {
+            top: -10vw;
+            left: -10vw;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            animation-duration: 25s;
+            animation-delay: -5s;
+        }
+
+        .rgb-bg::after {
+            bottom: -10vw;
+            right: -20vw;
+            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+        }
+
+        @keyframes blobs {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(15vw, 10vw) scale(1.1); }
+            66% { transform: translate(-10vw, 20vw) scale(0.9); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        /* Animated grid */
+        /* Glass frosted overlay over the blobs */
+        .grid-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            backdrop-filter: blur(60px);
+            -webkit-backdrop-filter: blur(60px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+            box-shadow: var(--glass-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-shadow: var(--neon-glow);
+            animation: logoGlow 3s infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% {
+                text-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
+            }
+
+            100% {
+                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .hero {
+            padding: 150px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #aaa;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            color: var(--light);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .project-card:hover { 
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2), var(--neon-glow);
+        }
+
+        .project-image {
+            height: 220px;
+            width: 100%;
+            background: #111;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 2;
+            border: 1px solid var(--primary);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            color: var(--light);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .project-desc {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            box-shadow: var(--neon-glow);
+        }
+
+        .btn-secondary {
+            border-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            box-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+        }
+
+        .btn-youtube {
+            border-color: #FF0000;
+            color: #FF0000;
+        }
+
+        .btn-youtube:hover {
+            background: #FF0000;
+            color: white;
+            box-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000;
+        }
+
+        .btn-instagram {
+            border-color: #E1306C;
+            color: #E1306C;
+        }
+
+        .btn-instagram:hover {
+            background: #E1306C;
+            color: white;
+            box-shadow: 0 0 10px #E1306C, 0 0 20px #E1306C;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(0, 136, 255, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: transparent;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .footer-socials a:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Navigation Sidebar Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 1.5rem;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 0 10px rgba(0, 255, 157, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.5);
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 250px;
+            height: 100vh;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(15px);
+            border-left: 1px solid var(--primary);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .mobile-sidebar.open {
+            right: 0;
+        }
+
+        .mobile-sidebar a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            font-family: 'Orbitron', sans-serif;
+            transition: color 0.3s, padding-left 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 10px;
+        }
+
+        .mobile-sidebar a:hover {
+            color: var(--primary);
+            padding-left: 10px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Preloader & Transition */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--dark);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: all;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(0, 255, 157, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        body {
+            opacity: 0;
+            animation: fadeInPage 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInPage {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filters {
+                gap: 10px;
+            }
+
+            .filter-btn {
+            padding: 10px 25px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            color: var(--light);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--glass-shadow);
+        }
+
+            .container {
+                padding: 0 14px;
+            }
+
+            nav {
+                padding: 14px 0;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Category Colors */
+        .category-web {
+            border-left: 4px solid var(--primary);
+        }
+
+        .category-graphics {
+            border-left: 4px solid var(--accent);
+        }
+
+        .category-iot {
+            border-left: 4px solid #00ccff;
+        }
+
+        .category-ai {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .category-youtube {
+            border-left: 4px solid #FF0000;
+        }
+
+        .category-github {
+            border-left: 4px solid #6cc644;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Background Effects -->
+    <div class="rgb-bg"></div>
+    <div class="grid-animation"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">ARYAN ZONE</a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="gallery.html" style="color: var(--primary);">All Projects</a>
+                    <a href="updates.html">Updates</a>
+                    <a href="index.html#clients">Clients</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                    <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#projects" class="mobile-link">Projects</a>
+        <a href="gallery.html" class="mobile-link" style="color: var(--accent);">All Projects</a>
+        <a href="updates.html" class="mobile-link">Updates</a>
+        <a href="index.html#clients" class="mobile-link">Clients</a>
+        <a href="index.html#about" class="mobile-link">About</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+        <button class="theme-toggle-btn" id="mobile-theme-toggle-btn" aria-label="Toggle Theme"
+            style="margin-top: 20px; text-align: left; padding-left: 0;">
+            <i class="fas fa-moon" style="margin-right: 10px;"></i> Toggle Theme
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>PROJECTS GALLERY</h1>
+            <p>Explore my complete portfolio including web development projects, graphic designs, IoT solutions, AI/ML
+                projects, YouTube content, and GitHub repositories.</p>
+
+            <!-- Category Filters -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="graphics">Graphics Design</button>
+                <button class="filter-btn" data-filter="iot">IoT Projects</button>
+                <button class="filter-btn" data-filter="ai">AI/ML Projects</button>
+                <button class="filter-btn" data-filter="youtube">YouTube Videos</button>
+                <button class="filter-btn" data-filter="github">GitHub Repos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Gallery -->
+    <section>
+        <div class="container">
+            <div class="gallery-grid" id="galleryContainer">
+                <!-- Web Development Projects -->
+                <div class="project-card category-web" data-category="web">
+                    <div class="project-image">
+                        <div class="category-badge">Web Development</div>
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Ambulance Booking System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-ambulance"></i> Ambulance Booking System
+                        </h3>
+                        <p class="project-desc">PHP, SQL, JavaScript, SCSS based platform for emergency ambulance
+                            booking with real-time tracking.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Jan 2024</span>
+                            <span><i class="fas fa-code"></i> PHP, JS, SCSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">Live Demo</a>
+                            <a href="#" class="btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graphics Design Projects -->
+                <div class="project-card category-graphics" data-category="graphics">
+                    <div class="project-image">
+                        <div class="category-badge">Graphics Design</div>
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="YouTube Thumbnails">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-palette"></i> YouTube Thumbnails Collection
+                        </h3>
+                        <p class="project-desc">100+ engaging thumbnails designed for tech tutorials with high
+                            click-through rates.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Ongoing</span>
+                            <span><i class="fas fa-eye"></i> 2M+ Views</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://instagram.com/codesworld.exe" class="btn btn-instagram"
+                                target="_blank">View</a>
+                            <a href="#" class="btn btn-secondary">Download Pack</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT Projects -->
+                <div class="project-card category-iot" data-category="iot">
+                    <div class="project-image">
+                        <div class="category-badge">IoT Project</div>
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="IoT Smart Device">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-microchip"></i> Smart Agriculture Device
+                        </h3>
+                        <p class="project-desc">IoT-based agricultural monitoring system with real-time sensor data and
+                            automated controls.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Aug 2024</span>
+                            <span><i class="fas fa-chart-line"></i> 25% Efficiency Gain</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">Case Study</a>
+                            <a href="#" class="btn btn-secondary">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI/ML Projects -->
+                <div class="project-card category-ai" data-category="ai">
+                    <div class="project-image">
+                        <div class="category-badge">AI/ML Project</div>
+                        <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="AI Career Counseling">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-robot"></i> AI Career Counseling
+                        </h3>
+                        <p class="project-desc">AI-powered career guidance platform using NLP and machine learning
+                            algorithms.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Mar 2024</span>
+                            <span><i class="fas fa-trophy"></i> SIH Finalist</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">Live Demo</a>
+                            <a href="#" class="btn btn-secondary">Research Paper</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- YouTube Videos -->
+                <div class="project-card category-youtube" data-category="youtube">
+                    <div class="project-image">
+                        <div class="category-badge">YouTube Video</div>
+                        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="React Tutorial">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fab fa-youtube"></i> React IoT Dashboard Tutorial
+                        </h3>
+                        <p class="project-desc">Complete tutorial on building real-time IoT dashboards with React.js and
+                            Node.js.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Nov 2024</span>
+                            <span><i class="fas fa-eye"></i> 150K+ Views</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://youtube.com/@codesworld.exe" class="btn btn-youtube"
+                                target="_blank">Watch</a>
+                            <a href="#" class="btn btn-secondary">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GitHub Repositories -->
+                <div class="project-card category-github" data-category="github">
+                    <div class="project-image">
+                        <div class="category-badge">GitHub Repository</div>
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="POS System">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fab fa-github"></i> Python POS System
+                        </h3>
+                        <p class="project-desc">Point of Sale system built with Python, Pandas, NumPy and Flask for
+                            efficient billing.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Jul 2024</span>
+                            <span><i class="fas fa-star"></i> 45 Stars</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aaryaninvincible" class="btn" target="_blank">GitHub</a>
+                            <a href="#" class="btn btn-secondary">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Web Projects -->
+                <div class="project-card category-web" data-category="web">
+                    <div class="project-image">
+                        <div class="category-badge">Web Development</div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="E-commerce Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-shopping-cart"></i> Voltros E-commerce
+                        </h3>
+                        <p class="project-desc">Complete e-commerce platform for electronics with payment integration
+                            and admin dashboard.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Oct 2024</span>
+                            <span><i class="fas fa-bolt"></i> Live Project</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://voltros.in" class="btn" target="_blank">Visit Site</a>
+                            <a href="#" class="btn btn-secondary">Case Study</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Graphics Projects -->
+                <div class="project-card category-graphics" data-category="graphics">
+                    <div class="project-image">
+                        <div class="category-badge">Graphics Design</div>
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Banner Designs">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">
+                            <i class="fas fa-ad"></i> Digital Marketing Banners
+                        </h3>
+                        <p class="project-desc">Collection of 50+ banner designs for digital marketing campaigns across
+                            various platforms.</p>
+                        <div class="project-meta">
+                            <span><i class="far fa-calendar"></i> Sep 2024</span>
+                            <span><i class="fas fa-layer-group"></i> 50+ Designs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Gallery</a>
+                            <a href="#" class="btn btn-secondary">Design Pack</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2M+</div>
+                        <p>YouTube Views</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">13K+</div>
+                        <p>Social Followers</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <p>GitHub Contributions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <div style="text-align: center; margin: 50px 0;">
+                <a href="index.html" class="btn" style="padding: 12px 40px; font-size: 1.1rem;">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 10px;">&copy; 2024 Aryan Zone. All rights reserved.</p>
+            <p style="color: #aaa; font-size: 0.9rem;">Jabalpur, Madhya Pradesh | Phone: 7999791878 | Email:
+                aryanraikwar78@gmail.com</p>
+            <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
+                <a href="https://github.com/aaryaninvincible"
+                    style="color: var(--secondary); text-decoration: none;">GitHub</a> |
+                <a href="https://instagram.com/codesworld.exe"
+                    style="color: #E1306C; text-decoration: none;">Instagram</a> |
+                <a href="https://youtube.com/@codesworld.exe" style="color: #FF0000; text-decoration: none;">YouTube</a>
+                |
+                <a href="https://linkedin.com/in/aryanraikwar"
+                    style="color: #0077B5; text-decoration: none;">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const initTheme = () => {
+            const themeToggleBtn = document.getElementById('theme-toggle-btn');
+            const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('i') : null;
+            const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle-btn');
+            const mobileThemeIcon = mobileThemeToggleBtn ? mobileThemeToggleBtn.querySelector('i') : null;
+
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                if (themeIcon) themeIcon.className = 'fas fa-sun';
+                if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+            }
+
+            const toggleTheme = () => {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+
+                if (themeIcon) {
+                    themeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                if (mobileThemeIcon) {
+                    mobileThemeIcon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+                }
+
+                localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+            };
+
+            if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+            if (mobileThemeToggleBtn) mobileThemeToggleBtn.addEventListener('click', toggleTheme);
+        };
+
+        // Initialize theme
+        initTheme();
+
+        // Preloader and page switch loader animation
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.classList.add('hidden');
+            }
+        });
+
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetUrl = this.getAttribute('href');
+                if (!targetUrl) return;
+
+                const isExternal = targetUrl.startsWith('http') || targetUrl.startsWith('mailto') || targetUrl.startsWith('tel') || this.hasAttribute('target');
+                const isAnchor = targetUrl.startsWith('#');
+                if (!isExternal && !isAnchor) {
+                    e.preventDefault();
+                    const preloader = document.getElementById('preloader');
+                    if (preloader) preloader.classList.remove('hidden');
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 420);
+                }
+            });
+        });
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            const category = card.getAttribute('data-category');
+                            if (category === filter) {
+                                card.style.display = 'block';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 10);
+                            } else {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                setTimeout(() => {
+                                    card.style.display = 'none';
+                                }, 300);
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Add hover effects
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    const category = this.getAttribute('data-category');
+                    const badges = this.querySelectorAll('.category-badge');
+
+                    badges.forEach(badge => {
+                        if (category === 'web') badge.style.background = 'rgba(0, 255, 157, 0.9)';
+                        if (category === 'graphics') badge.style.background = 'rgba(255, 0, 170, 0.9)';
+                        if (category === 'iot') badge.style.background = 'rgba(0, 204, 255, 0.9)';
+                        if (category === 'ai') badge.style.background = 'rgba(255, 107, 107, 0.9)';
+                        if (category === 'youtube') badge.style.background = 'rgba(255, 0, 0, 0.9)';
+                        if (category === 'github') badge.style.background = 'rgba(108, 198, 68, 0.9)';
+                    });
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    const badges = this.querySelectorAll('.category-badge');
+                    badges.forEach(badge => {
+                        badge.style.background = 'rgba(0, 0, 0, 0.8)';
+                    });
+                });
+            });
+
+            // Add scroll effect to header
+            window.addEventListener('scroll', function () {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(5, 5, 8, 0.95)';
+                } else {
+                    header.style.backgroundColor = 'rgba(10, 10, 15, 0.9)';
+                }
+            });
+
+            // Mobile Menu Functionality
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileSidebar = document.getElementById('mobile-sidebar');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            function toggleMobileMenu() {
+                mobileSidebar.classList.toggle('open');
+                mobileOverlay.classList.toggle('open');
+
+                // Toggle hamburger / close icon
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileSidebar.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+            // Close sidebar when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileSidebar.classList.contains('open')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="liquid-glass-fx.js"></script>
+</body>
+
+</html>

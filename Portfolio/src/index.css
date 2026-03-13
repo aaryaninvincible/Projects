@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-darker text-light font-mono overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-slate-800/40 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  
+  .glass-hover {
+    @apply hover:-translate-y-2 hover:border-white/30 hover:shadow-[0_15px_35px_rgba(0,0,0,0.2),0_0_15px_rgba(56,189,248,0.5)];
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+}
