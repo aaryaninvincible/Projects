@@ -1,3 +1,5 @@
 
 *.js
 !ROSE_DAY/app.js
+
+Portfolio/
