@@ -1,0 +1,4 @@
+{
+    "DockerRun.DisableDockerrc": true,
+    "livePreview.defaultPreviewPath": "/Mathbot/index.html"
+}
