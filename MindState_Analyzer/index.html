@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindState Analyzer | Cognitive & Emotional Load Detector</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- MediaPipe & Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-brain"></i>
+                <span>MindState</span>
+            </div>
+
+            <ul class="nav-links">
+                <li class="active"><a href="#"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fa-solid fa-video"></i> Session</a></li>
+                <li><a href="#"><i class="fa-solid fa-file-wavefront"></i> Reports</a></li>
+                <li><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            </ul>
+
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">System Idle</span>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Real-Time Behavioral Analysis</h1>
+                <div class="controls">
+                    <button id="startBtn" class="btn btn-primary"><i class="fa-solid fa-play"></i> Start
+                        Analysis</button>
+                    <button id="stopBtn" class="btn btn-danger" disabled><i class="fa-solid fa-stop"></i> Stop</button>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Video Feed Section -->
+                <div class="video-section card glass-effect">
+                    <div class="video-container">
+                        <video id="inputVideo" class="input_video" playsinline></video>
+                        <canvas id="outputCanvas" class="output_canvas"></canvas>
+                        <div class="loading-overlay" id="loadingOverlay">
+                            <div class="spinner"></div>
+                            <p>Initializing Neural Network...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Metrics Panel -->
+                <div class="metrics-section">
+                    <!-- Cognitive Load Card -->
+                    <div class="metric-card glass-effect">
+                        <div class="card-header">
+                            <i class="fa-solid fa-microchip"></i>
+                            <h3>Cognitive Load</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="value-display" id="cognitiveLoadValue">0%</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="cognitiveLoadBar" style="width: 0%"></div>
+                            </div>
+                            <p class="sub-text">Blink Rate & Brow Tension</p>
+                        </div>
+                    </div>
+
+                    <!-- Deception Probability Card -->
+                    <div class="metric-card glass-effect">
+                        <div class="card-header">
+                            <i class="fa-solid fa-user-secret"></i>
+                            <h3>Deception Probability</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="value-display" id="deceptionValue">Low</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="deceptionBar" style="width: 0%"></div>
+                            </div>
+                            <p class="sub-text">Micro-expressions & Asymmetry</p>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Level Card -->
+                    <div class="metric-card glass-effect">
+                        <div class="card-header">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <h3>Confidence</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="value-display" id="confidenceValue">Neutral</div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="confidenceBar" style="width: 0%"></div>
+                            </div>
+                            <p class="sub-text">Head Stability & Eye Contact</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Graph Section -->
+                <div class="graph-section card glass-effect">
+                    <h3>Live Signal Analysis</h3>
+                    <canvas id="realTimeChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>

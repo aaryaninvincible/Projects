@@ -1,0 +1,20 @@
+# Ignore everything in the root repository by default (all sibling projects)
+/*
+!Pdf_editor/
+
+# Additionally, ignore these specific items inside the Pdf_editor to keep the build tiny
+Pdf_editor/mobile/node_modules/
+Pdf_editor/mobile/.expo/
+Pdf_editor/mobile/android/
+Pdf_editor/mobile/ios/
+Pdf_editor/mobile/dist/
+Pdf_editor/mobile/web-build/
+Pdf_editor/mobile/*.apk
+Pdf_editor/mobile/*.aab
+Pdf_editor/backend/
+Pdf_editor/frontend/
+Pdf_editor/Pdf Editor App/
+Pdf_editor/.venv/
+Pdf_editor/venv/
+Pdf_editor/.idea/
+Pdf_editor/mobile/.venv/
