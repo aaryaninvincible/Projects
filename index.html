@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aryan Zone | Portfolio & 169+ Hosted Projects</title>
+  <meta name="description" content="Official Portfolio & Project Showcase of Aryan Raikwar. Explore 169+ live hosted web applications, games, tools, and UI projects with Live Demos and Source Code / Buy options.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #070a12;
+      --bg-card: rgba(18, 24, 40, 0.7);
+      --bg-card-hover: rgba(28, 38, 64, 0.9);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.4);
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --accent-green: #10b981;
+      --accent-gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --gradient-brand: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --glass-blur: blur(16px);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 6px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    /* Navigation Bar */
+    nav {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: var(--primary-light);
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.2rem;
+      background: var(--gradient-brand);
+      color: #fff;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      transition: var(--transition);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }
+
+    /* Header & Banner */
+    header {
+      padding: 3.5rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      color: #34d399;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      backdrop-filter: var(--glass-blur);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    /* Deployment / Info Banner */
+    .info-banner {
+      max-width: 1280px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+    }
+
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      backdrop-filter: var(--glass-blur);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .info-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    /* Controls Bar: Search & Filter */
+    .controls-container {
+      max-width: 1280px;
+      margin: 0 auto 2.5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1.1rem 1.5rem 1.1rem 3.2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      color: var(--text-main);
+      font-size: 1.05rem;
+      font-family: inherit;
+      backdrop-filter: var(--glass-blur);
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 1.2rem;
+    }
+
+    .categories-flex {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cat-btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .cat-btn:hover, .cat-btn.active {
+      background: var(--gradient-brand);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Projects Grid */
+    .projects-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    .grid-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      backdrop-filter: var(--glass-blur);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-brand);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      background: var(--bg-card-hover);
+      border-color: var(--border-glow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-top {
+      margin-bottom: 1.25rem;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--primary-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .tag-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 1.2rem;
+    }
+
+    .btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .btn-demo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .btn-demo:hover {
+      background: var(--primary-light);
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-buy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.7rem;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--accent-gold);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .btn-buy:hover {
+      background: var(--accent-gold);
+      color: #000;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-deploy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-deploy.vercel:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    .btn-deploy.netlify:hover {
+      background: #00c7b7;
+      color: #ffffff;
+      border-color: #00c7b7;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-dim);
+      font-size: 1.2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 2.5rem 1rem 2rem;
+      }
+      .btn-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="brand">
+      <i class="fa-solid fa-code"></i> Aryan Zone
+    </a>
+    <div class="nav-links">
+      <a href="./Portfolio_Original/index.html" class="nav-link" target="_blank">Portfolio Website</a>
+      <a href="https://github.com/aaryaninvincible/Projects" class="nav-btn" target="_blank">
+        <i class="fa-brands fa-github"></i> GitHub Repo
+      </a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="badge">
+      <i class="fa-solid fa-circle-check"></i> 169 Projects Hosted Live on GitHub Pages
+    </div>
+    <h1>Projects & Products Showcase</h1>
+    <p class="subtitle">
+      Explore my complete collection of 169+ web applications, games, tools, UI components, and web clones. Every project features a live interactive demo and source code / purchase options.
+    </p>
+  </header>
+
+  <div class="info-banner">
+    <div class="info-box">
+      <div class="info-left">
+        <div class="info-icon">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div>
+          <h4 style="font-size: 1.1rem; font-weight: 700;">GitHub Pages Live Deployment</h4>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            All 169 projects are hosted live on GitHub Pages under <span style="color: var(--primary-light); font-family: 'JetBrains Mono';">https://aaryaninvincible.github.io/Projects/</span>
+          </p>
+        </div>
+      </div>
+      <a href="https://github.com/aaryaninvincible/Projects" target="_blank" class="cat-btn" style="border-color: var(--primary-light); color: var(--primary-light);">
+        <i class="fa-solid fa-code-fork"></i> Fork Repository
+      </a>
+    </div>
+  </div>
+
+  <!-- Search & Filter Controls -->
+  <div class="controls-container">
+    <div class="search-wrapper">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search 169 projects by name, tech stack, or category (e.g. 2048, Clock, Quiz, React, Animation)..." oninput="filterProjects()">
+    </div>
+
+    <div class="categories-flex" id="categoryPills">
+      <button class="cat-btn active" onclick="setCategory('All')">All Projects (169)</button>
+      <button class="cat-btn" onclick="setCategory('Games & Interactive')">Games & Interactive</button>
+      <button class="cat-btn" onclick="setCategory('Clones & Apps')">Clones & Apps</button>
+      <button class="cat-btn" onclick="setCategory('Tools & Utilities')">Tools & Utilities</button>
+      <button class="cat-btn" onclick="setCategory('Portfolios & Sites')">Portfolios & Sites</button>
+      <button class="cat-btn" onclick="setCategory('Forms & Auth')">Forms & Auth</button>
+      <button class="cat-btn" onclick="setCategory('UI & Animations')">UI & Animations</button>
+    </div>
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-container">
+    <div class="grid-stats">
+      <span id="showingCount">Showing 169 projects</span>
+      <span style="font-size: 0.85rem; color: var(--text-dim);"><i class="fa-solid fa-cart-shopping" style="color: var(--accent-gold);"></i> Click "Buy / Source" for project source code</span>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+  </div>
+
+  <footer>
+    <p>Crafted with ❤️ for <strong>Aryan Raikwar (aaryaninvincible)</strong> | <a href="https://github.com/aaryaninvincible/Projects" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repository</a></p>
+  </footer>
+
+  <script>
+    const PROJECTS = [
+  {
+    "name": "2048 Game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "2D_Transformation",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "404-error",
+    "entry": "1-simple-error.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Analog Watch",
+    "entry": "hp11.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "Animated Search Form",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Animated_Clock",
+    "entry": "watch.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Animated-to-do-list-main",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "anime-main",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "AttendanceSystem",
+    "entry": "test.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Authentication",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "awesome_Social_icons",
+    "entry": "mysocial.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "ball game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Bawarchi_2.0",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "bgChanger",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "Biling_Software",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Browser",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "calculator2",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "car-animation",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Chat_Bot_Relation_Advise",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Check Internet Connection Status",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "CONCERT_WEBSITE_SAMPLE",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Contact Directory",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Contact us form",
+    "entry": "login.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "ContactForm",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Convert",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Countdown-Timer",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "css-1",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "css-10",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "css-11",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "css-2",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-3",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-4",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-5",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-6",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-7",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "css-8",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "css-9",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "CSS-Adjuster",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "CSS-JS Hybrid Animation",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Daily-Journal",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "JS",
+      "Node/React"
+    ]
+  },
+  {
+    "name": "Debit Card",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Digital Marketing Landing Page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "digital-clock",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "digitalClock",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "DiskSchedulingAlgorithms",
+    "entry": "cscan1.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Drawing pad",
+    "entry": "draw.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Drop Down Menu",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "drum-kit",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "drumkit",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Dynamic Quiz",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "dynamic-page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "E-Commerce",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Event",
+    "entry": "event.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "ExcelAI Editor",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Eyes Moving",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Fancy-Buttons",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "FAQ_Section",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "flappybird",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Flipkart clone",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Flipping_Login_card",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "CSS3"
+    ]
+  },
+  {
+    "name": "fluid-webpage",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Flying Bird Animation",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "FRONTEND_COURSE_WEBSITE",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "gallery-website",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "GERICHT",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "Node/React"
+    ]
+  },
+  {
+    "name": "Get Random Advice",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "UI & Animations",
+    "tags": [
+      "Node/React"
+    ]
+  },
+  {
+    "name": "github_profile",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "glassmorphism-calendar",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Gradient-generator",
+    "entry": "bggenerator.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Hover effect",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "html",
+    "entry": "a_simple_table_in_html.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "javascript",
+    "entry": "traingle_checker.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "javascript eyes",
+    "entry": "eyes-that-follow.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "joke-generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "jQuery",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "jsPDF with Custom font",
+    "entry": "demo.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Landing_page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "landing-page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Linguistic Academy",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "Node/React"
+    ]
+  },
+  {
+    "name": "Loading Screen",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "loginPage",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Math4Kids",
+    "entry": "divide.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Mathbot",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Maze Game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "mdown-editor",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "mediabook",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Memory-game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Metrics Calculator",
+    "entry": "capasitance.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "MindState_Analyzer",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Mole in a Hole Game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Multilevel dropdown",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Music-Store",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Myntra-Clone-main",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Name_Project",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "NASA Background Picker",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "NebulaChat",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "nft-preview-card-component",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Note_Pad",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "OnlineMockTestSystem",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "palindrome site",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "parallax-website",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Password Generator",
+    "entry": "pass.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Payment-Form",
+    "entry": "payment_form.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "PDF Password Opener",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Pdf_editor",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "php-1",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "pomodoro_webapp",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Portfolio using HTML",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Portfolio_Original",
+    "entry": "admin.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Profile Cards",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "ProfileCardsWithSlider",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "QR Code Scanner",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "quickyy-app",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Clones & Apps",
+    "tags": [
+      "Node/React"
+    ]
+  },
+  {
+    "name": "Quiz-app",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Quote-generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Random Color Flipper",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Random Number Gen_using local storage",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Random Quote Generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Random_Joke_Generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Random-color-Generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "react-weather-app-master",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Clones & Apps",
+    "tags": [
+      "Node/React"
+    ]
+  },
+  {
+    "name": "rentMyDog Responsive website",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Responsive Bootstrap Website",
+    "entry": "about.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "resume_builder",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Review Cards",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Forms & Auth",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Rock Paper Scissors",
+    "entry": "rock_paper_scissiors.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Roll-the-Dice",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "ROSE_DAY",
+    "entry": "admin.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Screen Recorder",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Scroll Two Div Parallel",
+    "entry": "Scroll Two Div Parallel.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Scrollable Fixed Size Box",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "search",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Search Bar",
+    "entry": "search_bar.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "SHAPES",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "shortLink",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Simon Game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Simple-list",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "simple-todo",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "simpleDarkmode",
+    "entry": "ex.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Skill Slider Frontend",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "Slide out Gallery",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "snake game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Socket IO Chat App",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Clones & Apps",
+    "tags": [
+      "JS",
+      "Node/React"
+    ]
+  },
+  {
+    "name": "Sorting_Visualizer",
+    "entry": "bubblesort.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Speed Typing Game",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "speedtest",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "Spotify",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Startup Landing Page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Sudhanshu",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "svg",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Temp-convt",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Text converter",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "TextUtils",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Thumnail_generator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "TicTacToe",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Timer App",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "TinDog Website [HTML + CSS + Bootstrap]",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "To-do list Web App",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "to-do-list",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Tribute-Page",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3"
+    ]
+  },
+  {
+    "name": "TV-show Search app",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "JS"
+    ]
+  },
+  {
+    "name": "twitterLogoCssOnly",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "UI & Animations",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "VAT Calculator",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "watch-store",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Tools & Utilities",
+    "tags": [
+      "Web"
+    ]
+  },
+  {
+    "name": "Weather App",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "webpage-using-api",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Portfolios & Sites",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Windows11 Clone",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5"
+    ]
+  },
+  {
+    "name": "Wordle_Clone",
+    "entry": "index.html",
+    "hasPkg": false,
+    "category": "Games & Interactive",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS"
+    ]
+  },
+  {
+    "name": "Youtube-Clone",
+    "entry": "index.html",
+    "hasPkg": true,
+    "category": "Clones & Apps",
+    "tags": [
+      "HTML5",
+      "CSS3",
+      "JS",
+      "Node/React"
+    ]
+  }
+];
+    const GITHUB_BASE = 'https://github.com/aaryaninvincible/Projects';
+    const GHPAGES_BASE = 'https://aaryaninvincible.github.io/Projects';
+
+    let currentCategory = 'All';
+
+    function renderProjects(data) {
+      const grid = document.getElementById('projectsGrid');
+      const countEl = document.getElementById('showingCount');
+      
+      countEl.textContent = `Showing ${data.length} project${data.length === 1 ? '' : 's'}`;
+
+      if (data.length === 0) {
+        grid.innerHTML = `<div class="no-results"><i class="fa-solid fa-folder-open" style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-dim);"></i><br>No projects match your search criteria.</div>`;
+        return;
+      }
+
+      grid.innerHTML = data.map(p => {
+        const entryPath = p.entry !== 'index.html' ? p.entry : '';
+        const ghPagesUrl = GHPAGES_BASE + '/' + encodeURIComponent(p.name) + '/' + entryPath;
+        const sourceUrl = GITHUB_BASE + '/tree/main/' + encodeURIComponent(p.name);
+        const vercelCloneUrl = `https://vercel.com/new/clone?repository-url=${encodeURIComponent(GITHUB_BASE + '/tree/main/' + p.name)}`;
+        const netlifyDeployUrl = `https://app.netlify.com/start/deploy?repository=${encodeURIComponent(GITHUB_BASE)}&base=${encodeURIComponent(p.name)}`;
+
+        return `
+          <div class="project-card">
+            <div class="card-top">
+              <div class="card-category">${p.category}</div>
+              <h3 class="card-title">${p.name}</h3>
+              <div class="card-tags">
+                ${p.tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+              </div>
+            </div>
+            
+            <div class="card-actions">
+              <div class="btn-row">
+                <a href="${ghPagesUrl}" target="_blank" class="btn-demo" title="View Live Demo on GitHub Pages">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+                </a>
+                <a href="${sourceUrl}" target="_blank" class="btn-buy" title="Get Source Code / Buy Project">
+                  <i class="fa-solid fa-cart-shopping"></i> Buy / Code
+                </a>
+              </div>
+
+              <div class="btn-row">
+                <a href="${vercelCloneUrl}" target="_blank" class="btn-deploy vercel" title="Deploy project to Vercel">
+                  <i class="fa-solid fa-v"></i> Vercel
+                </a>
+                <a href="${netlifyDeployUrl}" target="_blank" class="btn-deploy netlify" title="Deploy project to Netlify">
+                  <i class="fa-solid fa-diamond"></i> Netlify
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function setCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('#categoryPills .cat-btn').forEach(btn => {
+        if (btn.textContent.includes(cat) || (cat === 'All' && btn.textContent.includes('All Projects'))) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+      filterProjects();
+    }
+
+    function filterProjects() {
+      const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = PROJECTS.filter(p => {
+        const matchesCategory = currentCategory === 'All' || p.category === currentCategory;
+        const matchesSearch = !searchVal || 
+          p.name.toLowerCase().includes(searchVal) || 
+          p.category.toLowerCase().includes(searchVal) ||
+          p.tags.some(t => t.toLowerCase().includes(searchVal));
+
+        return matchesCategory && matchesSearch;
+      });
+
+      renderProjects(filtered);
+    }
+
+    // Initial Render
+    renderProjects(PROJECTS);
+  </script>
+</body>
+</html>
